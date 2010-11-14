@@ -951,3 +951,126 @@ ul.banner
 
 .topMar{margin-top:104px;}
 	
+	
+/* From style_3d.css */
+
+span.inputWrap {
+    display: block;
+    float: left;
+    width: 195px;
+    height: 34px;
+    background: url(../images/bg-input.gif) no-repeat top left;
+    position: relative;
+    margin: 0px 0px 10px 0px;
+}
+
+span.textWrap {
+    display: block;
+    float: left;
+    width: 385px;
+    height: 124px;
+    background: url(../images/bg-textarea.gif) no-repeat top left;
+    position: relative;
+    margin: 0px 5px 10px 0px;
+}
+
+span.inputWrap input {
+    display: block;
+    position: absolute;
+    width: 178px;
+    height: 24px;
+    padding: 5px 7px;
+    background: none !important;
+    border: none !important;
+    font-family: Arial, sans-serif;
+    color: gray;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+span.textWrap textarea {
+    display: block;
+    position: absolute;
+    width: 375px;
+    height: 104px;
+    padding: 10px 5px;
+    background: none !important;
+    border: none !important;
+    font-family: Arial, sans-serif;
+    color: gray;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+/* End of styles form style_3d.css */
+
+/* External Styles */
+a.shortbutton {
+    background: url("../images/button.png") no-repeat scroll -123px 0 transparent;
+    color: #FFFFFF;
+    float: left;
+    font-family: "Trebuchet MS";
+    font-size: 10px;
+    height: 20px;
+    line-height: 14px;
+    margin: 0;
+    padding: 4px 0 0;
+    text-align: center;
+    text-decoration: none;
+    text-transform: uppercase;
+    width: 53px;
+    cursor: pointer;
+}
+
+a.shortbutton:active {
+    background: url("../images/buttonHover.png") no-repeat scroll -123px 0 transparent;
+}
+
+a.button {
+	background: url("../images/more.png") no-repeat scroll;
+	color: white;
+	float: left;
+	font-family: Trebuchet MS, Arial, Helvetica, sans-serif;
+	font-size: 17px;
+	font-style: normal;
+    padding: 4px 0 0;
+    height: 39px;	
+	line-height: 32px;
+	/*margin-left: 50px;
+	margin-top: 260px;*/
+	text-align: center;
+	width: 82px;
+}
+
+a.button:active {
+    background-position: 0 1px;
+}
+
+.jScrollPaneContainer {
+    overflow: hidden;
+    position: relative;
+    z-index: 1;
+}
+
+.jScrollPaneTrack {
+    background: url("../images/track.png") repeat-y scroll 0 0 transparent;
+    cursor: pointer;
+    height: 100%;
+    left: 238px;
+    position: absolute;
+    top: 0;
+    width: 1px;
+}
+
+#news {
+    float: left;
+    width: 242px;
+}
+
+.scroll-pane {
+    float: left;
+    height: 220px;
+    overflow: auto;
+    width: 188px;
+}
+/* End of External styles */

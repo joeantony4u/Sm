@@ -1,0 +1,251 @@
+@import url('text.css');
+
+@import url('errors.css');
+
+
+
+
+
+label {
+
+    display:block;
+
+    float:left;
+
+    padding-right: 10px;
+
+    width: 100px;
+
+    text-align: right;
+
+    height: 40px;
+
+    line-height: 40px;
+
+}
+
+
+
+
+
+div.row {
+
+  clear: both;
+
+  padding-bottom:0px;
+
+  margin:0px;
+
+  }
+
+
+
+div.row span.label {
+
+    float: left;
+
+    width: 75px;
+
+    text-align: right;
+
+    padding:0px;
+
+    margin:0px;
+
+  padding-top: 15px;
+
+  }
+
+
+
+div.row span.formw {
+
+    float: right;
+
+    width: 475px;
+
+    text-align: left;
+
+  padding-top: 15px;
+
+} 
+
+
+
+fieldset {
+
+    padding: 10px;
+
+    float: left;
+
+    position: relative;
+
+}
+
+    
+
+
+
+
+
+.options input {
+
+    float: none;
+
+    padding-left: 0;
+
+}
+
+div.buttons {
+
+    clear: both;
+
+    float: left;
+
+    width: 300px;
+
+    padding-top: 20px;
+
+}
+
+
+
+.options label {
+
+    text-transform: none;
+
+}
+
+
+
+input[type="image"] {
+
+    color: #3B0023;
+
+    float: left;
+
+    height: 43px!important;
+
+    width: 138px!important;
+
+    cursor:pointer;
+
+    padding:0px!important;
+
+    margin:0px!important;
+
+}
+
+input[type="submit"]  {
+
+    float: left;
+
+    border: 0px solid #F2C9A5;
+
+    background-image: url(../images/b-send.jpg);
+
+    background-repeat: no-repeat;
+
+    height: 43px;
+
+    width: 138px;
+
+    cursor:pointer;
+
+}
+
+input.inp-bt {
+
+    color: #FFFFFF;
+
+    float: left;
+
+    border: 0px solid #F2C9A5;
+
+    background-image: url(../images/b-trimite.jpg);
+
+    background-repeat: no-repeat;
+
+    height: 43px!important;
+
+    width: 138px!important;
+
+    cursor:pointer;
+
+    padding:0px!important;
+
+    margin:0px!important;
+
+}
+
+#innerform {
+
+    float: none;
+
+    padding-top: 15px;
+
+}
+
+
+
+.clearthis {
+
+    clear: both;
+
+}
+
+input, textarea {
+
+    font-family:Georgia, "Times New Roman", Times, serif;
+
+    font-size: 0.9em;
+
+    color:#290018;
+
+    padding:12px;
+
+    width:439px;
+
+    border-top-style: none;
+
+    border-right-style: none;
+
+    border-bottom-style: none;
+
+    border-left-style: none;
+
+    border-top-width: 0px;
+
+    border-right-width: 0px;
+
+    border-bottom-width: 0px;
+
+    border-left-width: 0px;
+
+}
+
+input {
+
+    background-image: url(../images/input-bk.jpg);
+
+    background-repeat: no-repeat;
+
+    background-position: center center;
+
+}
+
+textarea{
+
+    background-image: url(../images/textarea-bk.jpg);
+
+    background-repeat: no-repeat;
+
+    background-position: center center;
+
+    padding-top: 9px;
+
+    padding-bottom: 6px;
+
+    font-size:1em;
+
+    }
