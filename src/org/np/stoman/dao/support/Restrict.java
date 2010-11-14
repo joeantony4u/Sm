@@ -19,7 +19,6 @@ public enum Restrict {
 
 	private String type;
 
-	@SuppressWarnings("unchecked")
 	public List<Criterion> restrict(Object[]... values) {
 
 		List<Criterion> criterions = new ArrayList<Criterion>();
