@@ -651,6 +651,12 @@ ul#blog li p
 	background:#376d9f;
 	margin-top:80px;
 }
+#btmtext-home
+{
+	width:100%;
+	float:left;
+	background:#376d9f;
+}
 #btmtext-main
 {
 	width:950px;

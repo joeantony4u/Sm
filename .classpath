@@ -19,6 +19,11 @@
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/mysql-connector-java-5.1.13-bin.jar"/>
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/slf4j-api-1.6.1.jar"/>
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/commons-logging-1.1.1.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/bsf-all-3.0-beta2.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/bsf-api-3.0-beta2.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/bsf-engines-3.0-beta2.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/bsf-utils-3.0-beta2.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/bsh-core-2.0b4.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
