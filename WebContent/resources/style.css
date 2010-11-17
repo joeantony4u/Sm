@@ -656,6 +656,9 @@ ul#blog li p
 	width:100%;
 	float:left;
 	background:#376d9f;
+	position: absolute;
+  	bottom: 0px;
+  	padding-top: 0;
 }
 #btmtext-main
 {
@@ -788,7 +791,6 @@ ul#list2 li a:hover{
 	float:left;
 	margin-top:36px;
 	background:url(../images/footerline.png) no-repeat;
-	
 }
 ul#nav
 {
@@ -827,8 +829,8 @@ ul#nav li a
 	float:left;
 	font-family:Arial, Helvetica, sans-serif;
 	font-size:12px;
-color:#d6dee6;
-margin-top:10px;
+	color:#d6dee6;
+	margin-top:10px;
 }
 #footer p a.template
 {
@@ -840,12 +842,12 @@ margin-top:10px;
 	float:left;
 	height:24px;
 	border:#fff solid 1px;
-		margin:30px 0 0 20px;
-		background:none;
-		font-family:Arial, Helvetica, sans-serif;
-		font-size:12px;
-		color:#fff;
-		padding-left:5px;
+	margin:30px 0 0 20px;
+	background:none;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:12px;
+	color:#fff;
+	padding-left:5px;
 }
 
 #centermid-suplft input:hover
@@ -861,9 +863,9 @@ margin-top:10px;
 	border:#fff solid 1px;
 	background:none;
 	font-family:Arial, Helvetica, sans-serif;
-		font-size:12px;
-		color:#fff;
-		padding-left:5px;
+	font-size:12px;
+	color:#fff;
+	padding-left:5px;
 }
 #centermid-suplft .text:hover
 {
@@ -880,19 +882,18 @@ margin-top:10px;
 	margin-left:20px
 }
 #container{	
-margin:0px;
-display:block;
-position:relative;
-top:0px;
-left:0px;
-text-align:left;
-width:875px;
-	height:342px;
-padding:0 0px 0 0px;
-margin:0px;
-float:left;
-border:0px;
-
+	margin:0px;
+	display:block;
+	position:relative;
+	top:0px;
+	left:0px;
+	text-align:left;
+	width:875px;
+		height:342px;
+	padding:0 0px 0 0px;
+	margin:0px;
+	float:left;
+	border:0px;
 }
 #slider{
 	width:875px;
@@ -1079,4 +1080,5 @@ a.button:active {
     overflow: auto;
     width: 188px;
 }
+
 /* End of External styles */

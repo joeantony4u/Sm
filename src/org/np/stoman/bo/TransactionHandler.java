@@ -1,12 +1,13 @@
 package org.np.stoman.bo;
 
+import static org.np.stoman.dao.support.HibernateSupport.getHibernateSupport;
+
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
 
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.np.stoman.dao.conf.HibernateUtil;
-import org.np.stoman.dao.support.HibernateSupport;
 
 public class TransactionHandler implements InvocationHandler {
 
@@ -20,7 +21,7 @@ public class TransactionHandler implements InvocationHandler {
 	public Object invoke(Object arg0, Method arg1, Object[] arg2)
 			throws Throwable {
 		Session session = HibernateUtil.openSession();
-		HibernateSupport.getInstance().setSession(session);
+		getHibernateSupport().setSession(session);
 		Transaction transaction = session.beginTransaction();
 		Object obj = null;
 		try {

@@ -27,10 +27,19 @@
 			});
 			$("a","#nextBtn").click();
 		});
+		
+		function binu() {
+			$("#container").click(function () {
+				  $("span:eq(0)").show("fast", function () {
+					  setTimeout("", 500);
+				    $(this).next("span").show("fast", arguments.callee);
+				  });
+			});
+		}
 	</script>
 
 </head>
-<body>
+<body style="background: #376d9f;">
 <div id="main">
 <div id="head">
  <div id="head-main">
@@ -50,13 +59,13 @@
 <div id="center-sup">
 <div id="bannertop">
   <div id="container">
-    <span class="inputWrap">
+    <span class="inputWrap" style="display: none;">
   		<input placeholder="user name" />
     </span>
-    <span class="inputWrap">
+    <span class="inputWrap" style="display: none;">
   		<input placeholder="password" />
     </span>
-        <a href="#" class="button">login</a>
+        <a href="#" class="button" onclick="binu();">login</a>
   </div>
 </div>
   </div>
@@ -91,6 +100,4 @@
  </div>
 </div>
 </div>
-
-
-<div style="background-image: initial; background-attachment: initial; background-origin: initial; background-clip: initial; background-color: rgb(255, 255, 191); border-top-width: 0px; border-right-width: 0px; border-bottom-width: 0px; border-left-width: 0px; border-style: initial; border-color: initial; color: rgb(0, 0, 0); margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; font-family: arial, sans-serif; font-size: 13px; font-style: normal; font-variant: normal; font-weight: normal; height: auto; line-height: normal; text-align: left; width: auto; direction: ltr; z-index: 99995; background-position: initial initial; background-repeat: initial initial; "></div></body></html>
+</body></html>

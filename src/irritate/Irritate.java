@@ -2,6 +2,7 @@ package irritate;
 
 import static org.np.stoman.dao.support.FieldConstants.ADDRESS;
 import static org.np.stoman.dao.support.FieldConstants.NAME;
+import static org.np.stoman.dao.support.HibernateSupport.getHibernateSupport;
 import static org.np.stoman.dao.support.Order.DESC;
 import static org.np.stoman.dao.support.Restrict.NOTEQ;
 import static org.np.stoman.dao.support.Restrict.NULL;
@@ -15,7 +16,6 @@ import org.np.stoman.bo.TransactionHandler;
 import org.np.stoman.bo.TransactionTest;
 import org.np.stoman.bo.TransactionTestInterface;
 import org.np.stoman.dao.conf.HibernateUtil;
-import org.np.stoman.dao.support.HibernateSupport;
 import org.np.stoman.persistence.Vendors;
 
 public class Irritate {
@@ -39,14 +39,14 @@ public class Irritate {
 		Transaction tr = s.beginTransaction();
 		Vendors v = new Vendors();
 		v.setName("V2");
-		HibernateSupport.getInstance().setSession(s);
-		HibernateSupport.getInstance().save(v);
+		getHibernateSupport().setSession(s);
+		getHibernateSupport().save(v);
 		tr.commit();
 		s.close();
 		System.out.println("After save");
 		Session s1 = HibernateUtil.openSession();
-		HibernateSupport.getInstance().setSession(s1);
-		v = HibernateSupport.getInstance().get(v.getClass()).get(0);
+		getHibernateSupport().setSession(s1);
+		v = getHibernateSupport().get(v.getClass()).get(0);
 		System.out.println("Id" + v.getVendorId());
 		s1.close();
 	}
@@ -55,10 +55,10 @@ public class Irritate {
 	@SuppressWarnings("unchecked")
 	public static void main2(String[] args) {
 		Session s = HibernateUtil.openSession();
-		HibernateSupport.getInstance().setSession(s);
+		getHibernateSupport().setSession(s);
 		long st = System.currentTimeMillis();
-		List<Vendors> vendors = HibernateSupport.getInstance().get(
-				Vendors.class, DESC.order(new String[] { NAME }),
+		List<Vendors> vendors = getHibernateSupport().get(Vendors.class,
+				DESC.order(new String[] { NAME }),
 				NULL.restrict(new Object[] { ADDRESS }),
 				NOTEQ.restrict(new Object[] { NAME, "V1" }));
 		System.out.println(System.currentTimeMillis() - st);

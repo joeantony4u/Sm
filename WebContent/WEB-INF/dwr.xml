@@ -3,19 +3,17 @@
     "-//GetAhead Limited//DTD Direct Web Remoting 3.0//EN"
     "http://getahead.org/dwr/dwr30.dtd">
 <dwr>
-  <allow>
-      <create creator="new" javascript="JDate">
-      <param name="class" value="java.util.Date"/>
-    </create>
-  <create creator="script" javascript="Authenticate">
-    <param name="class" value="org.np.stoman.ajax.interfaze.Authenticate"/>
-    <param name="language" value="beanshell"/>
-    <param name="script">
-      import org.np.stoman.proxy.ProxyProvider;
-      import org.np.stoman.ajax.interfaze.Authenticate;
-      import org.np.stoman.ajax.interfaze.impl.AuthenticateImpl;
-      return ProxyProvider.getProxy(Authenticate.class, new AuthenticateImpl());
-    </param>
-  </create>  
-  </allow>
+	<allow>
+		<create creator="script" javascript="Authenticate">
+			<param name="class" value="org.np.stoman.ajax.interfaze.Authenticate" />
+			<param name="language" value="beanshell" />
+			<!-- TODO: Move to scriptPath -->
+			<param name="script">
+				import org.np.stoman.proxy.ProxyProvider;
+				import org.np.stoman.ajax.interfaze.Authenticate;
+				import org.np.stoman.ajax.interfaze.impl.AuthenticateImpl;
+				return (Authenticate) ProxyProvider.getProxy(Authenticate.class, new AuthenticateImpl());
+    		</param>
+		</create>
+	</allow>
 </dwr>

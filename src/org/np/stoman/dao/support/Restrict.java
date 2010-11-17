@@ -19,6 +19,7 @@ public enum Restrict {
 
 	private String type;
 
+	@SuppressWarnings("rawtypes")
 	public List<Criterion> restrict(Object[]... values) {
 
 		List<Criterion> criterions = new ArrayList<Criterion>();

@@ -1,26 +1,28 @@
-package org.np.stoman.ajax.interfaze.handler;
+package org.np.stoman.ajax.dao.aop;
+
+import static org.np.stoman.dao.support.HibernateSupport.getHibernateSupport;
 
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
 
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.np.stoman.ajax.interfaze.AjaxMarker;
 import org.np.stoman.dao.conf.HibernateUtil;
-import org.np.stoman.dao.support.HibernateSupport;
 
-public class TransactionHandler<T> implements InvocationHandler {
+public class TransactionHandler implements InvocationHandler {
 
-	public TransactionHandler(T bo) {
+	public TransactionHandler(AjaxMarker bo) {
 		this.bo = bo;
 	}
 
-	private final T bo;
+	private final AjaxMarker bo;
 
 	@Override
 	public Object invoke(Object proxy, Method method, Object[] args)
 			throws Throwable {
 		Session session = HibernateUtil.openSession();
-		HibernateSupport.getInstance().setSession(session);
+		getHibernateSupport().setSession(session);
 		Transaction transaction = session.beginTransaction();
 		Object obj = null;
 		try {

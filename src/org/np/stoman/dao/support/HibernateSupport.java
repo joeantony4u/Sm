@@ -16,7 +16,7 @@ public class HibernateSupport {
 		session = new ThreadLocal<Session>();
 	}
 
-	public synchronized static HibernateSupport getInstance() {
+	public synchronized static HibernateSupport getHibernateSupport() {
 		if (hs == null)
 			hs = new HibernateSupport();
 		return hs;

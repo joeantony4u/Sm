@@ -1,0 +1,4 @@
+import org.np.stoman.proxy.ProxyProvider;
+import org.np.stoman.ajax.interfaze.Authenticate;
+import org.np.stoman.ajax.interfaze.impl.AuthenticateImpl;
+return ProxyProvider.getProxy(Authenticate.class, new AuthenticateImpl());
