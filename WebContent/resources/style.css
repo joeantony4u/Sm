@@ -1082,3 +1082,17 @@ a.button:active {
 }
 
 /* End of External styles */
+
+.easing-visibility {
+	position: relative; display: none;
+}
+	
+.login-container {
+	margin-left: 210px;
+	_margin-left: 0px; 
+}	
+
+.opacity-50 {
+	opacity:.50;
+	filter:alpha(opacity=50);
+}
