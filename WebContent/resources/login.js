@@ -58,7 +58,11 @@ var easings = [ 'easeInQuad', 'easeOutQuad', 'easeInCubic', 'easeOutCubic',
 			} else {
 				bimg.fadeOut('slow', function() {
 					bimg.attr('src', './images/dog.gif').fadeIn('slow');
-				}); 
+				});
+				// Testing - Need to remove the above code
+				bimg.remove();
+				$('<div/>').attr('id', 'chart-container').appendTo($('#container'));
+				plotCommonChart();
 			}
 		});
 	}
