@@ -4,65 +4,23 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
-<title>np | METATAB</title>
+<title>Login | STOMAN</title>
 <link href="./resources/style.css" rel="stylesheet" type="text/css"
-	media="all"><script src="./resources/jquery-1.4.js"
+	media="all">
+<link href="./resources/jquery.tabs.css" rel="stylesheet"
+	type="text/css"><!--[if lte IE 7]>
+        <link rel="stylesheet" href="jquery.tabs-ie.css" type="text/css" media="projection, screen">
+        <![endif]--> 
+        
+<script src="./resources/jquery-1.4.js"
 	type="text/javascript"></script> <script
 	src="./resources/jquery.history_remote.pack.js" type="text/javascript"></script>
 <script src="./resources/jquery.tabs.pack.js" type="text/javascript"></script>
 <script src="./resources/jquery.easing.js" type="text/javascript"></script>
 <script type="text/javascript" src="./resources/easySlider1.5.js"></script>
-<script type="text/javascript">
-	$(function() {
-		$('#container-4').tabs({
-			fxFade : true,
-			fxSpeed : 'fast'
-		});
-
-	});
-</script>
-<link href="./resources/jquery.tabs.css" rel="stylesheet"
-	type="text/css"><!--[if lte IE 7]>
-        <link rel="stylesheet" href="jquery.tabs-ie.css" type="text/css" media="projection, screen">
-        <![endif]--> <script type="text/javascript">
-<!--
-	$(document).ready(function() {
-		$.fn.reverse = [].reverse;
-		$("#slider").easySlider({
-			//auto: true,
-			continuous : true
-		});
-		$("a", "#nextBtn").click();
-		easingsOn('div.easing-visibility', 'show', easings[1]);
-		$('#container img').fadeIn(3000);
-	});
-
-	var easings = [ 'easeInQuad', 'easeOutQuad', 'easeInCubic', 'easeOutCubic',
-			'easeInQuart', 'easeOutQuart', 'easeInQuint', 'easeOutQuint',
-			'easeInSine', 'easeOutSine', 'easeInExpo', 'easeOutExpo',
-			'easeInCirc', 'easeOutCirc', 'easeInElastic', 'easeOutElastic',
-			'easeInBack', 'easeOutBack', 'easeInBounce', 'easeOutBounce' ];
-	function easingsOn(selector, visibility, easing) {
-		var elements = visibility == 'show' ? $(selector) : $(selector)
-				.reverse();
-		elements.each(function(i) {
-			var $de = $(this);
-			setTimeout(function() {
-				$de.animate({
-					height : visibility
-				}, 200, easing);
-			}, 200 * (i + 1));
-		});
-	}
-
-	function binu() {
-		easingsOn('div.easing-visibility', 'hide', easings[0]);
-		//$('#container img').fadeOut('fast');
-		$('#container img').attr('src', './images/progress.gif');
-		//$('#container img').fadeIn('slow');
-	}
-//-->
-</script>
+<script type='text/javascript' src='dwr/interface/Authenticate.js'></script>
+<script type='text/javascript' src='dwr/engine.js'></script>
+<script type='text/javascript' src='./resources/login.js'></script>
 </head>
 <body style="background: #376d9f;">
 <div id="main">
@@ -83,8 +41,8 @@
 <div id="center-main">
 <div id="center-sup">
 <div id="bannertop">
-<div id="container"><img align="left" src="./images/puppy.gif" style="display: none;"></img>
-<img align="left" src="./images/dog.gif" style="display: none;"></img></div>
+<div id="container"><img align="right" src="./images/dog.gif"
+	style="display: none;"></img></div>
 </div>
 </div>
 </div>
@@ -97,16 +55,16 @@
 <table class="login-container">
 	<tr>
 		<td>
-		<div class="easing-visibility"><span class="inputWrap"
-			style="display: inline;"> <input placeholder="user name" /> </span></div>
+		<div class="easing-visibility"><span class="inputWrap"> <input
+			id="username" placeholder="user name" /> </span></div>
 		</td>
 		<td>
-		<div class="easing-visibility"><span class="inputWrap"
-			style="display: inline;"> <input placeholder="password" /> </span></div>
+		<div class="easing-visibility"><span class="inputWrap"> <input
+			type="password" id="password" placeholder="password" /> </span></div>
 		</td>
 		<td>
-		<div class="easing-visibility"><a href="#" class="button"
-			onclick="binu();">login</a></div>
+		<div class="easing-visibility"><a href="javascript:login()"
+			id = "login-button" class="button">login</a></div>
 		</td>
 	</tr>
 </table>
@@ -129,8 +87,7 @@
 	<li><a href="http://jigsaw.w3.org/css-validator/check/referer">CSS</a></li>
 
 </ul>
-<p>All Rights Reserved. Designed By : <a href="http://www.np.com/"
-	class="template">np</a></p>
+<p>All Rights Reserved. 2010 <a href="http://www.stoman.com/" class="template">Stoman</a></p>
 
 </div>
 </div>
