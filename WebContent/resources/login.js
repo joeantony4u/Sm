@@ -18,14 +18,14 @@ $.fn.reverse = [].reverse;
 			setTimeout(function() {
 				$de.animate({
 					height : visibility
-				}, 200, easing);
-			}, 200 * (i + 1));
+				}, 50, easing);
+			}, 50 * (i + 1));
 		});
 	}
 	
 	function repaintImage(selector, withURL, callback) {
-		$(selector).fadeOut('slow', function() {
-			$(this).attr('src', withURL).fadeIn('slow', callback);
+		$(selector).fadeOut('fast', function() {
+			$(this).attr('src', withURL).fadeIn('fast', callback);
 		});
 	}
 
