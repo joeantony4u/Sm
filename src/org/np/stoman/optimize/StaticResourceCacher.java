@@ -37,8 +37,6 @@ public class StaticResourceCacher implements Filter {
 	@SuppressWarnings("unchecked")
 	public void doFilter(ServletRequest request, ServletResponse response,
 			FilterChain chain) throws IOException, ServletException {
-		// TODO Auto-generated method stub
-		// place your code here
 
 		HttpServletResponse res = (HttpServletResponse) response;
 		// set the provided HTTP response parameters

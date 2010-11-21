@@ -1,9 +1,9 @@
 var chart;
-function plotCommonChart() {
+function plotCommonChart(type) {
 	chart = new Highcharts.Chart({
 		chart : {
 			renderTo : 'chart-container',
-			defaultSeriesType : 'bar',
+			defaultSeriesType : type,
 			height : 346,
 			width : 876 
 		},

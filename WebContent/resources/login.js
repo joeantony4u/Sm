@@ -46,7 +46,8 @@ $.fn.reverse = [].reverse;
 				repaintImage('#container img', './images/dog.gif', function() {	});
 				$('#container img').remove();
 				$('<div/>').attr('id', 'chart-container').appendTo($('#container'));
-				plotCommonChart();
+				$('<button/>').click(function() { plotCommonChart('line');  }).appendTo('#container');
+				plotCommonChart( 'bar' );
 			}
 		});
 	}
