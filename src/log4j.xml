@@ -12,7 +12,7 @@
   <appender name="dwrLogFile" class="org.apache.log4j.FileAppender">
      <param name="File" value="d:/stoman/log/dwrAccess.log"/>
      <param name="Append" value="true"/>
-     <param name="Threshold" value="DEBUG"/>
+     <param name="Threshold" value="ERROR"/>
      <layout class="org.apache.log4j.PatternLayout">
        <param name="ConversionPattern" value="%d %-5p [%c] %m%n"/>
      </layout>	    
@@ -21,7 +21,7 @@
   <appender name="otherFile" class="org.apache.log4j.FileAppender">
      <param name="File" value="d:/stoman/log/other.log"/>
      <param name="Append" value="true"/>
-     <param name="Threshold" value="DEBUG"/>
+     <param name="Threshold" value="ERROR"/>
      <layout class="org.apache.log4j.PatternLayout">
        <param name="ConversionPattern" value="%d %-5p [%c] %m%n"/>
      </layout>	    
