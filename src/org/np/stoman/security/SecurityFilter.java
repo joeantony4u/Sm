@@ -48,14 +48,22 @@ public class SecurityFilter implements Filter {
 				for (String excludeURL : excludeURLs)
 					if (uri.endsWith(excludeURL))
 						break secureURI;
-				HttpServletResponse res = (HttpServletResponse) response;
-				String encodedURL = res.encodeURL("http://localhost/Sm");
-				encodedURL += encodedURL.contains("?") ? "" : "?";
-				res.sendRedirect(encodedURL + "&next=" + req.getRequestURL());
-				return;
+				if (!isSessionAlive(req, (HttpServletResponse) response))
+					return;
 			}
 		// pass the request along the filter chain
 		chain.doFilter(request, response);
+	}
+
+	private boolean isSessionAlive(HttpServletRequest req,
+			HttpServletResponse res) throws IOException {
+
+		if (req.getSession().getAttribute("subject") != null)
+			return true;
+		String encodedURL = res.encodeURL("http://localhost/Sm");
+		encodedURL += encodedURL.contains("?") ? "" : "?";
+		res.sendRedirect(encodedURL + "&next=" + req.getRequestURL());
+		return false;
 	}
 
 	/**

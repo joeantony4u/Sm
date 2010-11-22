@@ -10,12 +10,11 @@
 <script src="./resources/jquery-1.4.js"
 	type="text/javascript"></script> 
 <script src="./resources/jquery.easing.js" type="text/javascript"></script>
-<script type='text/javascript' src='dwr/interface/Authenticate.js'></script>
 <script type='text/javascript' src='dwr/engine.js'></script>
-<script type='text/javascript' src='./resources/login.js'></script>
+<script type='text/javascript' src='dwr/interface/Authenticate.js'></script>
 <script type='text/javascript' src='./resources/highcharts.js'></script>
 <script type='text/javascript' src='./resources/common-chart.js'></script>
-
+<script type='text/javascript' src='./resources/login.js'></script>
 </head>
 <body style="background: #376d9f;">
 <div id="main">

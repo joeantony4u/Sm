@@ -6,9 +6,19 @@ var easings = [ 'easeInQuad', 'easeOutQuad', 'easeInCubic', 'easeOutCubic',
 $.fn.reverse = [].reverse;
 
 	$(document).ready(function() {
-		easingsOn('div.easing-visibility', 'show', easings[1]);
+		//alert('ccallinf');
+		Authenticate.getAuth(function(auth) {
+			//alert(auth);
+			if(auth) {
+				showDashboard();
+			} else {
+				easingsOn('div.easing-visibility', 'show', easings[1]);
+				$('#container img').fadeIn(3000);
+			}
+		});
+/*		easingsOn('div.easing-visibility', 'show', easings[1]);
 		$('#container img').fadeIn(3000);
-	});
+*/	});
 
 	function easingsOn(selector, visibility, easing) {
 		var elements = (visibility == 'show') ? $(selector) : $(selector)
@@ -41,36 +51,44 @@ $.fn.reverse = [].reverse;
 					easingsOn('div.easing-visibility', 'show', easings[1]);
 					$('#login-button').html('relogin').addClass('button-err');
 				});
-				//TODO: Forward to next page
 			} else {
-				repaintImage('#container img', './images/dog.gif', function() {	});
-				$('#container img').remove();
-				//TODO:cleanup after this part
-				$('<div/>').attr('id', 'chart-container').appendTo($('#container'));
-				$('<div/>').addClass('chart-options').attr('id', 'chart-options-container').appendTo($('#center'));
-				
-				var chartparent = $('#chart-options-container');
-				addChartOptions([
-				                 {
-				                	 src : './images/column-chart.png',
-				                	 type : 'column',
-				                	 parent : chartparent
-				                 }, {
-				                	 src : './images/chart-line.png',
-				                	 type : 'line',
-				                	 parent : chartparent
-				                 },{
-				                	 src : './images/chart-line.png',
-				                	 type : 'bar',
-				                	 parent : chartparent
-				                 }, {
-				                	 src : './images/chart-pie.png',
-				                	 type : 'pie',
-				                	 parent : chartparent
-				                 }]);
-				plotCommonChart( 'bar' );
+				showDashboard();
 			}
 		});
+	}
+
+	//TODO: Security against geeks opening this source at client agents?
+	function showDashboard() {
+		repaintImage('#container img', './images/dog.gif', function() {	});
+		$('#container img').remove();
+		//TODO:cleanup after this part
+		$('<div/>').attr('id', 'chart-container').appendTo($('#container'));
+		$('<div/>').addClass('chart-options').attr('id', 'chart-options-container').appendTo($('#center'));
+		
+		var chartparent = $('#chart-options-container');
+		addChartOptions([
+		                 {
+		                	 src : './images/column-chart.png',
+		                	 type : 'column',
+		                	 parent : chartparent
+		                 }, {
+		                	 src : './images/chart-line.png',
+		                	 type : 'line',
+		                	 parent : chartparent
+		                 },{
+		                	 src : './images/chart-bar.png',
+		                	 type : 'bar',
+		                	 parent : chartparent
+		                 }, {
+		                	 src : './images/chart-area.png',
+		                	 type : 'area',
+		                	 parent : chartparent
+		                 }, {
+		                	 src : './images/chart-pie.png',
+		                	 type : 'pie',
+		                	 parent : chartparent
+		                 }]);
+		plotCommonChart( 'bar' );
 	}
 	
 	function addChartOptions(options) {

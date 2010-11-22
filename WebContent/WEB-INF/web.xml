@@ -41,11 +41,14 @@
     <filter-class>org.np.stoman.security.SecurityFilter</filter-class>
     <init-param>
     	<param-name>excludeURLs</param-name>
-    	<param-value>.login.dwr,.png,.gif,.js,.css</param-value>
+    	<param-value>.login.dwr,.png,.gif,.js,.css,__System.pageLoaded.dwr,getAuth.dwr</param-value>
     </init-param>
   </filter>
   <filter-mapping>
     <filter-name>SecurityFilter</filter-name>
     <url-pattern>*</url-pattern>
   </filter-mapping>
+  <session-config>
+  	<session-timeout>1</session-timeout>
+  </session-config>
 </web-app>

@@ -2,13 +2,12 @@ package irritate;
 
 import org.apache.directory.ldap.client.api.LdapConnection;
 import org.apache.directory.ldap.client.api.message.SearchResponse;
+import org.apache.directory.ldap.client.api.message.SearchResultEntry;
 import org.apache.directory.shared.ldap.cursor.Cursor;
+import org.apache.directory.shared.ldap.entry.client.ClientEntry;
 import org.apache.directory.shared.ldap.filter.SearchScope;
-import org.apache.log4j.Logger;
 
 public class LDAPClient {
-
-	private static Logger logger = Logger.getLogger(LDAPClient.class);
 
 	private static LdapConnection lc;
 
@@ -18,31 +17,31 @@ public class LDAPClient {
 		try {
 			lc.bind("uid=admin,ou=system", "secret");
 		} catch (Exception e) {
-			logger.error("Exception in Initializing LDAP: " + e.getMessage());
 		}
 	}
 
 	public static void close() {
-		try {
-			lc.unBind();
-			lc.close();
-		} catch (Exception e) {
-			logger.error("LDAP closing failed due to: " + e.getMessage());
-		}
 
 	}
 
-	public boolean authenticate(String un, String pw) {
+	public static void main(String[] args) {
 		try {
 			Cursor<SearchResponse> cursor = lc.search("ou=ad,o=jb",
 					// "(userPassword={SHA}FDHR9jFFnZj60xUUI+KbjeP+L7k=)",
-					"&(cn=" + un + ")(userPassword=" + pw + ")",
-					SearchScope.ONELEVEL, "cn");
-			return cursor.next();
+					"(&(cn=cuser)(userPassword=st0man))", SearchScope.ONELEVEL,
+					"cn", "sn");
+			while (cursor.next()) {
+				System.out.println(((ClientEntry) ((SearchResultEntry) cursor
+						.get()).getEntry()).get("sn"));
+			}
+
 		} catch (Exception e) {
-			logger.error("User Credentials failed for attemped username: " + un);
-			logger.error(e.getStackTrace().toString());
-			return false;
+		} finally {
+			try {
+				lc.unBind();
+				lc.close();
+			} catch (Exception e) {
+			}
 		}
 	}
 }
