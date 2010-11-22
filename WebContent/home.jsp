@@ -2,12 +2,11 @@
 <!-- saved from url=(0078)file:///D:/Gears/Programmer/HTML%205/MetaLab/np%20%20%20METATAB.htm -->
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 
 <title>Login | STOMAN</title>
 <link href="./resources/style.css" rel="stylesheet" type="text/css"
-	media="all">
-        
+	media="all"/>
 <script src="./resources/jquery-1.4.js"
 	type="text/javascript"></script> 
 <script src="./resources/jquery.easing.js" type="text/javascript"></script>
@@ -16,6 +15,7 @@
 <script type='text/javascript' src='./resources/login.js'></script>
 <script type='text/javascript' src='./resources/highcharts.js'></script>
 <script type='text/javascript' src='./resources/common-chart.js'></script>
+
 </head>
 <body style="background: #376d9f;">
 <div id="main">
@@ -66,7 +66,7 @@
 
 
 <div id="footer">
-<p><font size="1px">From the minds of Joe & Binu and with the help of internet.</font></p>
+<p><font size="1px">From the minds of Joe & Binu with the help of internet.</font></p>
 
 </div>
 </div>

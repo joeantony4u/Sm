@@ -62,3 +62,8 @@ function plotCommonChart(type) {
 		} ]
 	});
 }
+
+function changeChart() {
+	
+} 
+

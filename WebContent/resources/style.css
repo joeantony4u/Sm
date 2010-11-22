@@ -1099,3 +1099,18 @@ a.button:active {
 	opacity:.50;
 	filter:alpha(opacity=50);
 }
+
+.chart-options {
+	position: absolute;
+	z-index: 1;
+	width: 50%;
+	padding-top: 400px;
+	margin-left: 25%;
+	text-align: center;
+}
+
+.chart-option-icon {
+	height: 40px;
+	width: 40px;
+	cursor: pointer;
+}

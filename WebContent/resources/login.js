@@ -45,9 +45,39 @@ $.fn.reverse = [].reverse;
 			} else {
 				repaintImage('#container img', './images/dog.gif', function() {	});
 				$('#container img').remove();
+				//TODO:cleanup after this part
 				$('<div/>').attr('id', 'chart-container').appendTo($('#container'));
-				$('<button/>').click(function() { plotCommonChart('line');  }).appendTo('#container');
+				$('<div/>').addClass('chart-options').attr('id', 'chart-options-container').appendTo($('#center'));
+				
+				var chartparent = $('#chart-options-container');
+				addChartOptions([
+				                 {
+				                	 src : './images/column-chart.png',
+				                	 type : 'column',
+				                	 parent : chartparent
+				                 }, {
+				                	 src : './images/chart-line.png',
+				                	 type : 'line',
+				                	 parent : chartparent
+				                 },{
+				                	 src : './images/chart-line.png',
+				                	 type : 'bar',
+				                	 parent : chartparent
+				                 }, {
+				                	 src : './images/chart-pie.png',
+				                	 type : 'pie',
+				                	 parent : chartparent
+				                 }]);
 				plotCommonChart( 'bar' );
 			}
+		});
+	}
+	
+	function addChartOptions(options) {
+		$.each(options, function(i, map) {
+			$('<img/>').attr('src', map.src)
+			.attr('charttype', map.type)
+			.addClass('chart-option-icon')
+			.click(function() { plotCommonChart($(this).attr('charttype'));  }).appendTo(map.parent);
 		});
 	}
