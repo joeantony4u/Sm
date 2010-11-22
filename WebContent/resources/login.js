@@ -88,7 +88,10 @@ $.fn.reverse = [].reverse;
 		                	 type : 'pie',
 		                	 parent : chartparent
 		                 }]);
-		plotCommonChart( 'bar' );
+		var sPref = readCookie('sm-dash-chart');
+		sPref = (sPref == null ? 'column' : sPref);
+		plotCommonChart( sPref );
+		writeCookie('sm-dash-chart', sPref, 1);
 	}
 	
 	function addChartOptions(options) {
@@ -96,6 +99,9 @@ $.fn.reverse = [].reverse;
 			$('<img/>').attr('src', map.src)
 			.attr('charttype', map.type)
 			.addClass('chart-option-icon')
-			.click(function() { plotCommonChart($(this).attr('charttype'));  }).appendTo(map.parent);
+			.click(function() { 
+				plotCommonChart($(this).attr('charttype'));
+				writeCookie('sm-dash-chart', $(this).attr('charttype'), 1);
+			}).appendTo(map.parent);
 		});
 	}

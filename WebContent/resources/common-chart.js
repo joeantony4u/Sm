@@ -1,5 +1,6 @@
 var chart;
 function plotCommonChart(type) {
+	
 	chart = new Highcharts.Chart({
 		chart : {
 			renderTo : 'chart-container',
@@ -63,7 +64,6 @@ function plotCommonChart(type) {
 	});
 }
 
-function changeChart() {
-	
-} 
+
+
 

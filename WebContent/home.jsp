@@ -15,6 +15,7 @@
 <script type='text/javascript' src='./resources/highcharts.js'></script>
 <script type='text/javascript' src='./resources/common-chart.js'></script>
 <script type='text/javascript' src='./resources/login.js'></script>
+<script type='text/javascript' src='./resources/cookie.js'></script>
 </head>
 <body style="background: #376d9f;">
 <div id="main">
@@ -50,22 +51,22 @@
 	<tr>
 		<td>
 		<div class="easing-visibility"><span class="inputWrap"> <input
-			id="username" placeholder="user name" /> </span></div>
+			id="username" tabindex="1"/> </span></div>
 		</td>
 		<td>
 		<div class="easing-visibility"><span class="inputWrap"> <input
-			type="password" id="password" placeholder="password" /> </span></div>
+			type="password" id="password" tabindex="2"/> </span></div>
 		</td>
 		<td>
 		<div class="easing-visibility"><a href="javascript:preLogin()"
-			id = "login-button" class="button">login</a></div>
+			id = "login-button" class="button" tabindex="3">login</a></div>
 		</td>
 	</tr>
 </table>
 
 
 <div id="footer">
-<p><font size="1px">From the minds of Joe & Binu with the help of internet.</font></p>
+<p><font size="1px">From the minds of Joe &amp; Binu with the help of internet.</font></p>
 
 </div>
 </div>
