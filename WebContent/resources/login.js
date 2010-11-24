@@ -4,9 +4,15 @@ var easings = [ 'easeInQuad', 'easeOutQuad', 'easeInCubic', 'easeOutCubic',
     			'easeInCirc', 'easeOutCirc', 'easeInElastic', 'easeOutElastic',
     			'easeInBack', 'easeOutBack', 'easeInBounce', 'easeOutBounce' ];
 $.fn.reverse = [].reverse;
-
+var asyncScripts = ['./resources/highcharts.js', './resources/common-chart.js', 
+                    './resources/jquery.easing.js', './resources/cookie.js'];
 	$(document).ready(function() {
 		//alert('ccallinf');
+		var head = $('head');
+		$.each(asyncScripts, function(i) {
+			$('<script/>').attr('src', this).appendTo(head);
+		});
+		
 		Authenticate.getAuth(function(auth) {
 			//alert(auth);
 			if(auth) {
@@ -16,9 +22,7 @@ $.fn.reverse = [].reverse;
 				$('#container img').fadeIn(3000);
 			}
 		});
-/*		easingsOn('div.easing-visibility', 'show', easings[1]);
-		$('#container img').fadeIn(3000);
-*/	});
+	});
 
 	function easingsOn(selector, visibility, easing) {
 		var elements = (visibility == 'show') ? $(selector) : $(selector)

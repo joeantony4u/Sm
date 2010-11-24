@@ -33,7 +33,7 @@ a
 	width:100%;
 	float:left;
 	background:url(../images/top-bg.png) repeat-x;
-	padding-bottom:36px;
+	/*padding-bottom:36px;*/
 }
 #head-main
 {
@@ -50,7 +50,7 @@ a
 	width:166px;
 	height:22px;
 	float:left;
-	margin-top:47px;
+	margin-top:27px;
 }
 #head-sup h1 a.logo
 {
@@ -62,7 +62,7 @@ ul#menu
 {
 	width:360px;
 	float:right;
-	margin-top:36px;
+	margin-top:20px;
 }
 ul#menu li
 {
