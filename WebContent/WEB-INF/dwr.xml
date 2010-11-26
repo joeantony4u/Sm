@@ -15,5 +15,16 @@
 				return (Authenticate) ProxyProvider.getProxy(Authenticate.class, new AuthenticateImpl());
     		</param>
 		</create>
+		<create creator="script" javascript="MenuBuilder">
+			<param name="class" value="org.np.stoman.ajax.interfaze.MenuBuilder" />
+			<param name="language" value="beanshell" />
+			<!-- TODO: Move to scriptPath -->
+			<param name="script">
+				import org.np.stoman.proxy.ProxyProvider;
+				import org.np.stoman.ajax.interfaze.MenuBuilder;
+				import org.np.stoman.ajax.interfaze.impl.MenuBuilderImpl;
+				return (MenuBuilder) ProxyProvider.getProxy(MenuBuilder.class, new MenuBuilderImpl());
+    		</param>
+		</create>
 	</allow>
 </dwr>

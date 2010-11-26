@@ -67,7 +67,7 @@ ul#menu
 ul#menu li
 {
 	width:auto;
-	float:left;
+	float:right;
 	list-style:none;
 	margin-left:38px;
 }
@@ -647,8 +647,11 @@ ul#blog li p
 {
 	width:100%;
 	float:left;
-	background:#376d9f;
+	background:rgb(81, 135, 186);
 	margin-top:80px;
+	position: absolute;
+  	bottom: 0px;
+  	padding-top: 0;	
 }
 #btmtext-home
 {
@@ -1115,3 +1118,6 @@ a.button:active {
 	cursor: pointer;
 }
 
+.body {
+	background:url(../images/bannerbg.png) repeat-x repeat-y;
+}

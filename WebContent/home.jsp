@@ -23,10 +23,7 @@
 <div id="head-sup">
 <h1><a href="index.htm" class=""></a></h1>
 <ul id="menu">
-	<li><a href="index.htm">About</a></li>
-	<li><a href="services.htm">Services</a></li>
-	<li><a href="services.htm">Blog</a></li>
-	<li><a href="services.htm">Contact</a></li>
+	
 </ul>
 </div>
 </div>

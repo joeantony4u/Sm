@@ -5,7 +5,8 @@ var easings = [ 'easeInQuad', 'easeOutQuad', 'easeInCubic', 'easeOutCubic',
     			'easeInBack', 'easeOutBack', 'easeInBounce', 'easeOutBounce' ];
 $.fn.reverse = [].reverse;
 var asyncScripts = ['./resources/highcharts.js', './resources/common-chart.js', 
-                    './resources/jquery.easing.js', './resources/cookie.js'];
+                    './resources/jquery.easing.js', './resources/cookie.js',
+                    'dwr/interface/MenuBuilder.js'];
 	$(document).ready(function() {
 		//alert('ccallinf');
 		var head = $('head');
@@ -96,6 +97,7 @@ var asyncScripts = ['./resources/highcharts.js', './resources/common-chart.js',
 		sPref = (sPref == null ? 'column' : sPref);
 		plotCommonChart( sPref );
 		writeCookie('sm-dash-chart', sPref, 1);
+		buildMenu();
 	}
 	
 	function addChartOptions(options) {
@@ -107,5 +109,14 @@ var asyncScripts = ['./resources/highcharts.js', './resources/common-chart.js',
 				plotCommonChart($(this).attr('charttype'));
 				writeCookie('sm-dash-chart', $(this).attr('charttype'), 1);
 			}).appendTo(map.parent);
+		});
+	}
+	
+	function buildMenu() {
+		//TODO: Remove duplication in services.htm
+		MenuBuilder.build(function(items) {
+			$.each(items, function(key, value) {
+				$('<a/>').html(key).attr('href', value).appendTo($('<li/>').appendTo('#menu'));
+			});
 		});
 	}

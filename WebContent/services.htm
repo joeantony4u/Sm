@@ -4,34 +4,27 @@
 
 <title>np | METATAB</title>
 <link href="./resources/style.css" rel="stylesheet" type="text/css" media="all">
+<script src="./resources/jquery-1.4.js"	type="text/javascript"></script>
+<script type='text/javascript' src='dwr/engine.js'></script>
+<script type='text/javascript' src='dwr/interface/MenuBuilder.js'></script>
 
-
-<script src="./resources/jquery-1.1.3.1.pack.js" type="text/javascript"></script>
-<script src="./resources/jquery.history_remote.pack.js" type="text/javascript"></script>
-<script src="./resources/jquery.tabs.pack.js" type="text/javascript"></script>
 <script type="text/javascript">
-            $(function() {
-                $('#container-4').tabs({ fxFade: true, fxSpeed: 'fast' });
+	MenuBuilder.build(function(items) {
+		$.each(items, function(key, value) {
+			$('<a/>').html(key).attr('href', value).appendTo($('<li/>').appendTo('#menu'));
+		});
+	});
+</script>
 
-            });
-        </script>
-<link href="./resources/jquery.tabs.css" rel="stylesheet" type="text/css">
-<!--[if lte IE 7]>
-        <link rel="stylesheet" href="jquery.tabs-ie.css" type="text/css" media="projection, screen">
-        <![endif]-->
 </head>
 
-<body>
+<body style="background: rgb(81, 135, 186);">
 <div id="main">
 <div id="head">
  <div id="head-main">
   <div id="head-sup">
    <h1><a href="index.htm" class="logo"></a></h1>
    <ul id="menu">
-   <li><a href="services.htm">About</a></li>
-   <li><a href="services.htm" class="active">Services</a></li>
-   <li><a href="services.htm">Blog</a></li>
-   <li><a href="services.htm">Contact</a></li>
    </ul>
    </div>
  </div>
@@ -41,102 +34,17 @@
 <div id="center-sup"><h3>&nbsp;</h3></div>
  </div>
 </div>
-<div id="centermid">
- <div id="centermid-main">
-  <div id="centermid-sup">
-   <div id="centermid-suplft">
-   <h5 class="nomar">Our Services</h5>
-   <h4>Pliquam convallis sem sit ipsum venenatis </h4>
-   <p class="btmpara"> Dellentesque a nibh dui. Aliquam convallis sem sit amet sapien tincidunt egestas. Mauris semper elit in dui volutpat nec varius ligula lacinia. Etiam ac sapien at nisi porta tincidunt. Suspendisse non ullamcorper ipsum. Fusce dapibus magna eu nunc porta lacinia. Quisque at elit sem. Sed at sem id neque cursus euismod.</p>
-    <img src="./resources/img2.png" alt="" class="abt">
 
-    <p class="btmpara"><a href="http://demo.np.com/web-templates/9629/services.html#" class="more">MORE...</a>    </p>
-    <h4>Bliquam convallis sem sit ipsum venenatis </h4>
-   <p class="btmpara"> Kellentesque a nibh dui. Aliquam convallis sem sit amet sapien tincidunt egestas. Mauris semper elit in dui volutpat nec varius ligula lacinia. Etiam ac sapien at nisi porta tincidunt. Suspendisse non ullamcorper ipsum. Fusce dapibus magna eu nunc porta lacinia. Quisque at elit sem. Sed at sem id neque cursus euismod.</p>
 
-   <img src="./resources/img4.png" alt="" class="abt">
-    <p class="btmpara"><a href="http://demo.np.com/web-templates/9629/services.html#" class="more">MORE...</a>    </p>
-
-   <h4>Eliquam convallis sem sit ipsum venenatis </h4>
-   <p class="btmpara"> Vellentesque a nibh dui. Aliquam convallis sem sit amet sapien tincidunt egestas. Mauris semper elit in dui volutpat nec varius ligula lacinia. Etiam ac sapien at nisi porta tincidunt. Suspendisse non ullamcorper ipsum. Fusce dapibus magna eu nunc porta lacinia. Quisque at elit sem. Sed at sem id neque cursus euismod.</p>
-    <img src="./resources/img3.png" alt="" class="abt">
-
-    <p class="btmpara"><a href="http://demo.np.com/web-templates/9629/services.html#" class="more">MORE...</a>    </p>
-   </div>
-    <div id="centermid-suprht">
-    <h4>Latest News</h4>
-    <ul id="blog">
-    <li><h5><a href="http://demo.np.com/web-templates/9629/services.html#">Integer ac lacus in lectus semper blandit.</a></h5><p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Donec lorem mauris, vehicula non gravida eget, accumsan et diam.</p></li>
-     <li><h5><a href="http://demo.np.com/web-templates/9629/services.html#">Integer ac lacus in lectus semper blandit.</a></h5><p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Donec lorem mauris, vehicula non gravida eget, accumsan et diam.</p></li>
-     <li><h5><a href="http://demo.np.com/web-templates/9629/services.html#">Integer ac lacus in lectus semper blandit.</a></h5><p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Donec lorem mauris, vehicula non gravida eget, accumsan et diam.</p></li>
-    </ul>
-      <h4 class="mar">Featured Products</h4>
-      <p>Curabitur sit amet metus at ipsum venenatis ornare eget nec mauris. Nulla nec arcu sed nisi egestas porta at ac libero. 		</p>
-       <h3>List Of Services</h3>
-       <ul class="list martop">
-    <li><a href="http://demo.np.com/web-templates/9629/services.html#">Curabitur sit amet metus at ipsum.</a></li>
-    <li><a href="http://demo.np.com/web-templates/9629/services.html#">Nulla nec arcu sed nisi egestas. </a></li>
-    <li><a href="http://demo.np.com/web-templates/9629/services.html#">Pellentesque a nibh duiamet sapien. </a></li>
-    <li><a href="http://demo.np.com/web-templates/9629/services.html#">Aliquam convallis sem sit  tincidunt. </a></li>
-    <li><a href="http://demo.np.com/web-templates/9629/services.html#">Mauris semper elit in du lacinia. </a></li>
-    <li><a href="http://demo.np.com/web-templates/9629/services.html#">Etiam ac sapien at nisi porta tincidunt. </a></li>
-    <li><a href="http://demo.np.com/web-templates/9629/services.html#">Suspendisse non ullamcorper ipsum. </a></li>
-    <li><a href="http://demo.np.com/web-templates/9629/services.html#">Aliquam convallis sem sit  tincidunt. </a></li>
-    <li><a href="http://demo.np.com/web-templates/9629/services.html#">Mauris semper elit in du lacinia. </a></li>
-    </ul>
-    </div>
-  </div>
- </div>
-</div>
 <div id="btmtext">
- <div id="btmtext-main">
-  <div id="btmtext-sup">
-   <div id="btmtext-suplft">
-   <h4>Our Supporters</h4>
-   <ul id="list2">
-   <li><a href="http://demo.np.com/web-templates/9629/services.html#">Curabitur sit amet metus at ipsum.</a></li>
-   <li><a href="http://demo.np.com/web-templates/9629/services.html#">Nulla nec arcu sed nisi egestas. </a></li>
-   <li><a href="http://demo.np.com/web-templates/9629/services.html#">Pellentesque a nibh duiamet sapien. </a></li>
-   <li><a href="http://demo.np.com/web-templates/9629/services.html#">Aliquam convallis sem sit  tincidunt. </a></li>
-   <li><a href="http://demo.np.com/web-templates/9629/services.html#">Mauris semper elit in du lacinia. </a></li>
-   <li><a href="http://demo.np.com/web-templates/9629/services.html#">Etiam ac sapien at nisi porta tincidunt. </a></li>
-   <li><a href="http://demo.np.com/web-templates/9629/services.html#">Suspendisse non ullamcorper ipsum. </a></li>
-   </ul>
-   </div>
-   <div id="btmtext-supmid">
-   <h4>Sponsor Inofrmation</h4>
-   <p>Nam ultricies tincidunt dui quis bibendum. Fusce sit amet massa sem. Nullam sed viverra lacus. Integer eros turpis, faucibus vitae facilisis a, commodo et enim. Quisque ultricies metus ut magna convallis aliquam. Nam quis felis id arcu porta feugiat. Donec commodo ante eu lacus tincidunt ut hendrerit erat accumsan. Etiam et arcu sed nulla lobortis venenatis vel non turpis. Cras felis nisl, iaculis et mattis sed, vehicula eget nisl. Curabitur vitae metus arcu. Nulla lectus erat, imperdiet vitae scelerisque at, tempus a purus. Proin tempor, neque ut scelerisque adipiscing,</p>
+<div id="btmtext-main">
+<div id="footer">
+<p><font size="1px">From the minds of Joe &amp; Binu with the help of internet.</font></p>
 
-   </div>
-   <div id="btmtext-suprht">
-   <h4>Follow Us</h4>
-   <img src="./resources/followus-img.png" alt="">
-   <h4 class="moremar">News Letter</h4>
-   <input name="Name" type="text" value="Email-Id" class="ser1" onfocus="if(this.value==&#39;Email-Id&#39;)this.value=&#39;&#39;" onblur="if(this.value==&#39;&#39;)this.value=&#39;Email-Id&#39; ">
-    <input name="button" type="submit" class="btn" value="">
-   </div>
-   <div id="footer">
-   <ul id="nav">
-   <li><a href="index.htm">Home</a></li>
-   <li class="space">|</li>
-   <li><a href="services.htm">About</a></li>
-     <li class="space">|</li>
-   <li><a href="services.htm">Services</a></li>
-     <li class="space">|</li>
-   <li><a href="services.htm">Products</a></li>
-     <li class="space">|</li>
-   <li><a href="services.htm">Contact</a></li>
-     <li class="space">|</li>
-   <li><a href="http://validator.w3.org/check?uri=referer">XHTML</a></li>
-     <li class="space">|</li>
-   <li><a href="http://jigsaw.w3.org/css-validator/check/referer">CSS</a></li>
-
-   </ul>
-   <p>All Rights Reserved. Designed By : <a href="http://www.np.com/" class="template">np</a></p>
-   </div>
-  </div>
- </div>
 </div>
+</div>
+</div>
+
 </div>
 
 
