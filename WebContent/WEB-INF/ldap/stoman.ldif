@@ -16,7 +16,7 @@ objectClass: simpleSecurityObject
 objectClass: top
 cn: au
 sn: admin
-userPassword:: YXU=
+userPassword:: YXU=YXU=YXU=YXU=YXU=
 
 dn: ou=menu,o=jb
 objectClass: organizationalUnit
@@ -63,7 +63,7 @@ objectClass: simpleSecurityObject
 objectClass: top
 cn: du
 sn: dataOp
-userPassword:: ZHU=
+userPassword:: ZHU=ZHU=ZHU=ZHU=ZHU=
 
 dn: ou=addUser,ou=administration,ou=menu,o=jb
 objectClass: organizationalUnit

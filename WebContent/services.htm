@@ -8,24 +8,39 @@
 <script type='text/javascript' src='dwr/engine.js'></script>
 <script type='text/javascript' src='dwr/interface/MenuBuilder.js'></script>
 
-<script type="text/javascript">
+<script type="text/javascript"><!--
 	MenuBuilder.build(function(items) {
+		var parent = $('#menu');
 		$.each(items, function(key, value) {
-			$('<a/>').html(key.split('#')[0])
-			         //.attr('href', 'javascript:test(' +  '\'' + value + '\'' + ')')
-			         .attr('href', 'javascript:test(' + '\'' + key + '\', \'' + value + '\'' + ')')
-			         .attr('link', value)
-			         .attr('searchGuide', key.split('#')[1])
-			         //.click(function() { $(this).attr('searchGuide') })
-			         .appendTo($('<li/>').appendTo('#menu'));
+			buildDOMElement(key, value, 'buildSubMenu')
+				.appendTo(parent)
 		});
 	});
 
-	function test(key, value) {
-		alert('test aclle ' + key);
-			MenuBuilder.build($(val).attr('searchGuide'), function(items) {
-				alert(items);
+	function buildSubMenu(key, value) {
+		//alert('test aclle ' + key);
+		var parent = $('#submenu');
+		MenuBuilder.build(key, function(items) {
+			$.each(items, function(key, value) {
+				buildDOMElement(key, value, 'buildWorkground')
+					.appendTo(parent)
+					.find('a')
+					.addClass('small blue awesome');
 			});
+		});
+	}
+	
+	function buildWorkground() {
+		alert('bulding');
+	}
+	
+	function buildDOMElement(key, value, methodName) {
+		var menuName = key.split('#');
+		var li = $('<li/>');
+		$('<a/>').html(menuName[0])
+		         .attr('href', 'javascript:' + methodName + '(' + '\'' + menuName[1] + '\', \'' + value + '\'' + ')')
+		         .appendTo(li);
+		return li;
 	}
 </script>
 
@@ -44,7 +59,10 @@
 </div>
 <div id="center">
 <div id="center-main">
-<div id="center-sup"><h3>&nbsp;</h3></div>
+<div id="center-sup"><h3></h3>
+   <ul id="submenu">
+   </ul>
+</div>
  </div>
 </div>
 
