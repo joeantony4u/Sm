@@ -1,0 +1,133 @@
+version: 1
+
+dn: o=jb
+objectClass: organization
+objectClass: top
+o: jb
+
+dn: ou=ad,o=jb
+objectClass: organizationalUnit
+objectClass: top
+ou: ad
+
+dn: cn=au,ou=ad,o=jb
+objectClass: person
+objectClass: simpleSecurityObject
+objectClass: top
+cn: au
+sn: admin
+userPassword:: YXU=
+
+dn: ou=menu,o=jb
+objectClass: organizationalUnit
+objectClass: top
+ou: menu
+
+dn: ou=administration,ou=menu,o=jb
+objectClass: organizationalUnit
+objectClass: top
+ou: administration
+description: Administration
+l: admin
+searchGuide: ou=administration,ou=menu,o=jb
+
+dn: ou=purchseorder,ou=menu,o=jb
+objectClass: organizationalUnit
+objectClass: top
+ou: purchseorder
+description: Purchase Order
+l: dataOp
+l: admin
+searchGuide: ou=purchseorder,ou=menu,o=jb
+
+dn: ou=role,o=jb
+objectClass: organizationalUnit
+objectClass: top
+ou: role
+
+dn: ou=admin,ou=role,o=jb
+objectClass: organizationalUnit
+objectClass: top
+ou: admin
+description: Administrator
+
+dn: ou=dataOp,ou=role,o=jb
+objectClass: organizationalUnit
+objectClass: top
+ou: dataOp
+description: Data Operator
+
+dn: cn=du,ou=ad,o=jb
+objectClass: person
+objectClass: simpleSecurityObject
+objectClass: top
+cn: du
+sn: dataOp
+userPassword:: ZHU=
+
+dn: ou=addUser,ou=administration,ou=menu,o=jb
+objectClass: organizationalUnit
+objectClass: top
+ou: addUser
+description: Add User
+l: admin
+searchGuide: ou=addUser,ou=administration,ou=menu,o=jb
+
+dn: ou=addVendor,ou=administration,ou=menu,o=jb
+objectClass: organizationalUnit
+objectClass: top
+ou: addVendor
+description: Add Vendor
+l: admin
+searchGuide: ou=addVendor,ou=administration,ou=menu,o=jb
+
+dn: ou=addMaterial,ou=administration,ou=menu,o=jb
+objectClass: organizationalUnit
+objectClass: top
+ou: addMaterial
+description: Add Material
+l: admin
+searchGuide: ou=addMaterial,ou=administration,ou=menu,o=jb
+
+dn: ou=rankVendor,ou=administration,ou=menu,o=jb
+objectClass: organizationalUnit
+objectClass: top
+ou: rankVendor
+description: Rank Vendor
+l: admin
+searchGuide: ou=rankVendor,ou=administration,ou=menu,o=jb
+
+dn: ou=makePurchase,ou=purchseorder,ou=menu,o=jb
+objectClass: organizationalUnit
+objectClass: top
+ou: makePurchase
+description: Make Purchase
+l: admin
+searchGuide: ou=makePurchase,ou=purchseorder,ou=menu,o=jb
+
+dn: ou=viewPurchase,ou=purchseorder,ou=menu,o=jb
+objectClass: organizationalUnit
+objectClass: top
+ou: viewPurchase
+description: View Purchase
+l: admin
+l: dataOp
+searchGuide: ou=viewPurchase,ou=purchseorder,ou=menu,o=jb
+
+dn: ou=editPurchase,ou=purchseorder,ou=menu,o=jb
+objectClass: organizationalUnit
+objectClass: top
+ou: editPurchase
+description: Edit Purchase
+l: admin
+searchGuide: ou=editPurchase,ou=purchseorder,ou=menu,o=jb
+
+dn: ou=searchPurchase,ou=purchseorder,ou=menu,o=jb
+objectClass: organizationalUnit
+objectClass: top
+ou: searchPurchase
+description: Search Purchase Order
+l: dataOp
+l: admin
+searchGuide: ou=searchPurchase,ou=purchseorder,ou=menu,o=jb
+
