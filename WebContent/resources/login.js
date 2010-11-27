@@ -97,7 +97,7 @@ var asyncScripts = ['./resources/highcharts.js', './resources/common-chart.js',
 		sPref = (sPref == null ? 'column' : sPref);
 		plotCommonChart( sPref );
 		writeCookie('sm-dash-chart', sPref, 1);
-		buildMenu();
+		$('<a/>').html("Workspace").attr('href', "services.htm").appendTo($('<li/>').appendTo('#menu'));
 	}
 	
 	function addChartOptions(options) {
@@ -109,14 +109,5 @@ var asyncScripts = ['./resources/highcharts.js', './resources/common-chart.js',
 				plotCommonChart($(this).attr('charttype'));
 				writeCookie('sm-dash-chart', $(this).attr('charttype'), 1);
 			}).appendTo(map.parent);
-		});
-	}
-	
-	function buildMenu() {
-		//TODO: Remove duplication in services.htm
-		MenuBuilder.build(function(items) {
-			$.each(items, function(key, value) {
-				$('<a/>').html(key).attr('href', value).appendTo($('<li/>').appendTo('#menu'));
-			});
 		});
 	}

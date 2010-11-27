@@ -11,9 +11,22 @@
 <script type="text/javascript">
 	MenuBuilder.build(function(items) {
 		$.each(items, function(key, value) {
-			$('<a/>').html(key).attr('href', value).appendTo($('<li/>').appendTo('#menu'));
+			$('<a/>').html(key.split('#')[0])
+			         //.attr('href', 'javascript:test(' +  '\'' + value + '\'' + ')')
+			         .attr('href', 'javascript:test(' + '\'' + key + '\', \'' + value + '\'' + ')')
+			         .attr('link', value)
+			         .attr('searchGuide', key.split('#')[1])
+			         //.click(function() { $(this).attr('searchGuide') })
+			         .appendTo($('<li/>').appendTo('#menu'));
 		});
 	});
+
+	function test(key, value) {
+		alert('test aclle ' + key);
+			MenuBuilder.build($(val).attr('searchGuide'), function(items) {
+				alert(items);
+			});
+	}
 </script>
 
 </head>

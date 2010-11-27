@@ -3,6 +3,8 @@ package org.np.stoman.security;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.naming.directory.InvalidAttributeValueException;
+
 import org.apache.directory.ldap.client.api.LdapConnection;
 import org.apache.directory.ldap.client.api.message.SearchResponse;
 import org.apache.directory.ldap.client.api.message.SearchResultEntry;
@@ -53,6 +55,17 @@ public class LDAPAccessor {
 		logger.debug("User Credentials status for attemped username: " + un
 				+ " is " + (ce != null ? "Success" : "Failure"));
 		return ce;
+	}
+
+	public List<ClientEntry> buildMenu(String dn, ClientEntry ce) {
+		List<ClientEntry> entries = new ArrayList<ClientEntry>();
+		try {
+			entries = search(dn, "(l=" + ce.get("sn").getString() + ")",
+					SearchScope.ONELEVEL, "*");
+		} catch (InvalidAttributeValueException e) {
+			e.printStackTrace();
+		}
+		return entries;
 	}
 
 	private static List<ClientEntry> search(final String dn,
