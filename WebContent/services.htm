@@ -8,32 +8,67 @@
 <script type='text/javascript' src='dwr/engine.js'></script>
 <script type='text/javascript' src='dwr/interface/MenuBuilder.js'></script>
 
-<script type="text/javascript"><!--
+<script type="text/javascript">
+
+var myStuffs = false;
+
 	MenuBuilder.build(function(items) {
 		var parent = $('#menu');
 		$.each(items, function(key, value) {
-			buildDOMElement(key, value, 'buildSubMenu')
+			getDOMElement(key, value, 'buildStuffs')
 				.appendTo(parent)
 		});
 	});
+	
+	function getDOMElement(key, value, methodName) {
+		var menuName = key.split('#');
+		var li = $('<li/>');
+		$('<a/>').html(menuName[0])
+		         .attr('href', 'javascript:' + methodName + '(' + '\'' + menuName[1] + '\', \'' + value + '\'' + ')')
+		         .appendTo(li);
+		return li;
+	}
+	
+	function buildStuffs(key, value) {
+		//<iframe id="searchStuffs" src="" class="stuff-frame" frameborder="0" allowtransparency="true"></iframe>
+		//$('#searchStuffs').attr('src', value);
+		if(myStuffs)
+			return;
+		
+		$('<iframe/>', {  
+		    id: 'myStuffs', 
+		    frameborder: '0',
+		    allowtransparency: 'true',
+		    css: {
+		    	height: '100%',
+				width: '100%',
+				border: '0',
+		    },
+		    src: value,
+		}).appendTo($('#wg-container'));
+		
+		myStuffs = true;
+	}
 
+	// May not be used methods follow
 	function buildSubMenu(key, value) {
 		//alert('test aclle ' + key);
 		var parent = $('#submenu');
+		parent.children().detach();
 		MenuBuilder.build(key, function(items) {
 			$.each(items, function(key, value) {
 				buildDOMElement(key, value, 'buildWorkground')
 					.appendTo(parent)
 					.find('a')
-					.addClass('small blue awesome');
+					.addClass('small yellow awesome');
 			});
 		});
 	}
 	
-	function buildWorkground() {
+	function buildWorkground(key, value) {
 		alert('bulding');
 	}
-	
+
 	function buildDOMElement(key, value, methodName) {
 		var menuName = key.split('#');
 		var li = $('<li/>');
@@ -42,6 +77,7 @@
 		         .appendTo(li);
 		return li;
 	}
+
 </script>
 
 </head>
@@ -59,17 +95,23 @@
 </div>
 <div id="center">
 <div id="center-main">
-<div id="center-sup"><h3></h3>
+<div id="center-sup">
    <ul id="submenu">
    </ul>
 </div>
  </div>
+ 
 </div>
 
+<div id="work-ground" class="workground shadow">
+	<div style="width: 100%; height: 100%;" id="wg-container">
+		
+	</div>
+</div>
 
 <div id="btmtext">
 <div id="btmtext-main">
-<div id="footer">
+<div id="footer-workspace">
 <p><font size="1px">From the minds of Joe &amp; Binu with the help of internet.</font></p>
 
 </div>

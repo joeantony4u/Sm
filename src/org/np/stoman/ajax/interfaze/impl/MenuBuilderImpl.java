@@ -22,8 +22,10 @@ public class MenuBuilderImpl extends BaseImpl implements MenuBuilder {
 		Map<String, String> map = new LinkedHashMap<String, String>();
 		for (ClientEntry c : ldap.buildMenu(mDN, ce))
 			try {
+				String address = c.get("registeredAddress") == null ? "" : c
+						.get("registeredAddress").getString();
 				map.put(c.get("description").getString() + "#"
-						+ c.get("searchGuide").getString(), "");
+						+ c.get("searchGuide").getString(), address);
 			} catch (InvalidAttributeValueException e) {
 				e.printStackTrace();
 			}

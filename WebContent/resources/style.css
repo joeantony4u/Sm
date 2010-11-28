@@ -1,6 +1,14 @@
+html {
+	height: 100%;
+	width: 100%;
+}
+	
 body {
 	margin: 0px;
 	padding: 0px;
+	
+	height: 100%;
+	width: 100%;
 }
 
 * {
@@ -16,6 +24,8 @@ a {
 #main {
 	width: 100%;
 	float: left;
+	
+	height: 100%;
 }
 
 #wrap {
@@ -49,7 +59,7 @@ a {
 	width: 166px;
 	height: 22px;
 	float: left;
-	margin-top: 27px;
+	margin-top: 7px; /*27*/
 }
 
 #head-sup h1 a.logo {
@@ -61,7 +71,7 @@ a {
 ul#menu {
 	width: 360px;
 	float: right;
-	margin-top: 20px;
+	margin-top: 2px; /*20*/
 }
 
 ul#menu li {
@@ -625,7 +635,7 @@ ul#blog li p {
 	width: 100%;
 	float: left;
 	background: rgb(81, 135, 186);
-	margin-top: 80px;
+	margin-top: 0px; /*80px*/
 	position: absolute;
 	bottom: 0px;
 	padding-top: 0;
@@ -769,6 +779,12 @@ ul#list2 li a:hover {
 	background: url(../images/footerline.png) no-repeat;
 }
 
+#footer-workspace {
+	width: 950px;
+	float: left;
+	margin-top: 0px;
+}
+
 ul#nav {
 	width: 100%;
 	float: left;
@@ -810,6 +826,19 @@ ul#nav li a {
 }
 
 #footer p a.template {
+	color: #d6dee6;
+}
+
+#footer-workspace p {
+	width: 100%;
+	float: left;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	color: #d6dee6;
+	margin-top: 10px;
+}
+
+#footer-workspace p a.template {
 	color: #d6dee6;
 }
 
@@ -1103,6 +1132,28 @@ a.button:active {
 	background: url(../images/bannerbg.png) repeat-x repeat-y;
 }
 
+.awesome1 {
+	background: #222 url(../images/alert-overlay.png) repeat-x;
+	display: inline-block;
+	padding: 5px 10px 6px;
+	color: #fff;
+	text-decoration: none;
+	font-weight: bold;
+	font-family: "Trebuchet MS";
+	line-height: 1;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	-moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5); 
+	-webkit-box-shadow : 0 1px 3px rgba( 0, 0, 0, 0.5); 
+	text-shadow : 0 -1px 1px rgba( 0, 0, 0,	0.25); 
+	border-bottom : 1px solid rgba( 0, 0, 0, 0.25);
+	position: relative;
+	cursor: pointer;
+	-webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+	text-shadow: 0 -1px 1px rgba(0, 0, 0, 0.25);
+	border-bottom: 1px solid rgba(0, 0, 0, 0.25);
+}
+
 .awesome {
 	background: #222 url(../images/alert-overlay.png) repeat-x;
 	display: inline-block;
@@ -1114,14 +1165,9 @@ a.button:active {
 	line-height: 1;
 	-moz-border-radius: 5px;
 	-webkit-border-radius: 5px;
-	-moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5); -webkit-box-shadow : 0
-	1px 3px rgba( 0, 0, 0, 0.5); text-shadow : 0 -1px 1px rgba( 0, 0, 0,
-	0.25); border-bottom : 1px solid rgba( 0, 0, 0, 0.25);
+	border-bottom : 1px solid rgba( 0, 0, 0, 0.25);
 	position: relative;
 	cursor: pointer;
-	-webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
-	text-shadow: 0 -1px 1px rgba(0, 0, 0, 0.25);
-	border-bottom: 1px solid rgba(0, 0, 0, 0.25);
 }
 
 .small.awesome {
@@ -1234,7 +1280,7 @@ a.button:active {
 
 ul#submenu {
 	float: right;
-	margin-top: 20px;
+	margin-top: 5px;
 	width: auto;
 }
 
@@ -1242,5 +1288,24 @@ ul#submenu li {
 	width: auto;
 	float: right;
 	list-style: none;
-	margin-left: 25px;
+	margin-left: 10px;
+}
+
+.workground {
+	margin-top: -5px;
+	width: 100%;
+	float: left;
+	height: 93%;
+	
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	border-bottom : 1px solid rgba( 0, 0, 0, 0.25);
+	position: relative;
+}
+
+.shadow {
+	-moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5); 
+	-webkit-box-shadow : 0 1px 3px rgba( 0, 0, 0, 0.5); 
+	text-shadow : 0 -1px 1px rgba( 0, 0, 0,	0.25); 
+	
 }

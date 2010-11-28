@@ -1,0 +1,16 @@
+<div class="text"><a href="javascript: vendor();">Vendor</a> 
+		| <a href="javascript: material();">Material</a></div>
+<div class="text">
+		<iframe id="searchCriteria" src="demoparts/vendorSearch.html" 
+			allowtransparency="true" 
+			frameborder="0" width="100%" marginwidth="0"></iframe>
+</div>
+
+<script>
+	function material() {
+		document.getElementById('searchCriteria').src = "demoparts/materialSearch.html";
+	}
+	function vendor() {
+		document.getElementById('searchCriteria').src = "demoparts/vendorSearch.html";
+	}
+</script>

@@ -10,13 +10,18 @@ objectClass: organizationalUnit
 objectClass: top
 ou: ad
 
+dn: ou=role,o=jb
+objectClass: organizationalUnit
+objectClass: top
+ou: role
+
 dn: cn=au,ou=ad,o=jb
 objectClass: person
 objectClass: simpleSecurityObject
 objectClass: top
 cn: au
 sn: admin
-userPassword:: YXU=YXU=YXU=YXU=YXU=
+userPassword:: YWRtaW4xYWRtaW4=
 
 dn: ou=menu,o=jb
 objectClass: organizationalUnit
@@ -28,7 +33,7 @@ objectClass: organizationalUnit
 objectClass: top
 ou: administration
 description: Administration
-l: admin
+l: admin-r
 searchGuide: ou=administration,ou=menu,o=jb
 
 dn: ou=purchseorder,ou=menu,o=jb
@@ -36,14 +41,9 @@ objectClass: organizationalUnit
 objectClass: top
 ou: purchseorder
 description: Purchase Order
-l: dataOp
-l: admin
+l: admin-r
+l: dataOp-r
 searchGuide: ou=purchseorder,ou=menu,o=jb
-
-dn: ou=role,o=jb
-objectClass: organizationalUnit
-objectClass: top
-ou: role
 
 dn: ou=admin,ou=role,o=jb
 objectClass: organizationalUnit
@@ -63,7 +63,7 @@ objectClass: simpleSecurityObject
 objectClass: top
 cn: du
 sn: dataOp
-userPassword:: ZHU=ZHU=ZHU=ZHU=ZHU=
+userPassword:: ZGF0YTFkYXRh
 
 dn: ou=addUser,ou=administration,ou=menu,o=jb
 objectClass: organizationalUnit
@@ -130,4 +130,14 @@ description: Search Purchase Order
 l: dataOp
 l: admin
 searchGuide: ou=searchPurchase,ou=purchseorder,ou=menu,o=jb
+
+dn: ou=mystuffs,ou=menu,o=jb
+objectClass: organizationalUnit
+objectClass: top
+ou: mystuffs
+description: My Stuffs
+l: admin
+l: dataOp
+registeredAddress: demo.html
+searchGuide: ou=mystuffs,ou=menu,o=jb
 

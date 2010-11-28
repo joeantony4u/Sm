@@ -1,0 +1,96 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<link rel="shortcut icon" type="image/ico" href="http://www.datatables.net/media/images/favicon.ico" />
+		<title>My Stuffs | STOMAN</title>
+		<style type="text/css" title="currentStyle">
+			@import "../resources/demo_table_jui.css";
+			@import "../resources/jquery-ui-1.8.4.custom.css";
+			
+			body {
+				font-size: 3.5mm;
+				font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+			}
+		</style>
+		<script type="text/javascript" language="javascript" src="../resources/jquery-1.4.js"></script>
+		<script type="text/javascript" language="javascript" src="../resources/jquery.dataTables.js"></script>
+		<script type="text/javascript" language="javascript" src="../resources/ajaxSearch.js"></script>
+		
+		<script type="text/javascript" charset="utf-8">
+		var oTable;
+			$(document).ready(function() {
+				oTable = $('#example').dataTable({
+					"bJQueryUI": true,
+					"sPaginationType": "full_numbers",
+					"bScrollInfinite": true,
+					"bScrollCollapse": true,
+					"sScrollY": "200px",
+					"aoColumns": [
+								{ "sTitle": "Engine" },
+								{ "sTitle": "Browser" },
+								{ "sTitle": "Platform" },
+								{ "sTitle": "Version", "sClass": "center" },
+								{
+									"sTitle": "Grade",
+									"sClass": "center",
+									"fnRender": function(obj) {
+										var sReturn = obj.aData[ obj.iDataColumn ];
+										if ( sReturn == "A" ) {
+											sReturn = "<b>A</b>";
+										}
+										return sReturn;
+									}
+								}
+							],
+				});
+			});
+
+			function fnClickAddRow() {
+				//oTable.fnDestroy();
+				//$('#example').children().remove();
+				//bi();
+				
+			}
+			
+			function bi() {
+				oTable =  $('#example').dataTable({
+					"bJQueryUI": true,
+					"sPaginationType": "full_numbers",
+					"bScrollInfinite": true,
+					"bScrollCollapse": true,
+					"sScrollY": "200px",
+					"aoColumns": [
+								{ "sTitle": "Browser" },
+								{ "sTitle": "Platform" },
+								{ "sTitle": "Version", "sClass": "center" },
+								{
+									"sTitle": "Grade",
+									"sClass": "center",
+									"fnRender": function(obj) {
+										var sReturn = obj.aData[ obj.iDataColumn ];
+										if ( sReturn == "A" ) {
+											sReturn = "<b>A</b>";
+										}
+										return sReturn;
+									}
+								}
+							],
+				});
+			}
+			
+		</script>
+	</head>
+	<body id="dt_example" style="background-color:transparent">
+		<div id="container">
+			<div class="demo_jui">
+<div id="test">
+<table cellpadding="0" cellspacing="0" border="0" class="display" id="example">
+
+</table>
+
+</div>
+<button onclick="javascript:fnClickAddRow()"></button>
+</div>
+</body>
+</html>
