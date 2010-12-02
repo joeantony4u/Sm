@@ -383,7 +383,7 @@
     voice.each(function(){
       if($(this).hasClass("sel")) return;
       $(this).find(".settingsBtn").click();
-    })
+    });
   };
 
   $.fn.closePanel=function(){

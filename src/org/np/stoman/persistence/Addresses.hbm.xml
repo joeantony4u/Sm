@@ -6,7 +6,7 @@
     <class name="org.np.stoman.persistence.Addresses" table="addresses" catalog="stoman">
         <id name="addressId" type="int">
             <column name="address_id" />
-            <generator class="native" />
+            <generator class="increment" />
         </id>
         <property name="streetName1" type="string">
             <column name="street_name_1" length="45" not-null="true" />

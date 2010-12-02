@@ -9,6 +9,7 @@
 <script src="./resources/jquery-1.4.js"	type="text/javascript"></script>
 <script type='text/javascript' src='dwr/engine.js'></script>
 <script type='text/javascript' src='dwr/interface/Authenticate.js'></script>
+<script type='text/javascript' src='./resources/common.js'></script>
 <script type='text/javascript' src='./resources/login.js'></script>
 
 <!-- <script type='text/javascript' src='./resources/highcharts.js'></script>

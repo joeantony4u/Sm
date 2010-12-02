@@ -25,8 +25,8 @@
 }
 
 .extruder.open .content{
-  -moz-box-shadow:#999 2px 1px 5px;
-  -webkit-box-shadow:#999 2px 1px 5px;
+  /*-moz-box-shadow:#999 2px 1px 5px;
+  -webkit-box-shadow:#999 2px 1px 5px;*/ /*new*/
 }
 
 
@@ -52,7 +52,7 @@
   padding:0 5px 5px 5px;
   height:30px;
   width:180px;
-  background:#000;
+  background: #222 url(../images/alert-overlay.png) repeat-x;
   -moz-border-radius:0 0 10px 10px;
   -webkit-border-bottom-left-radius:10px;
   -webkit-border-bottom-right-radius:10px;
@@ -82,7 +82,7 @@
   padding:0 5px 5px 5px;
   height:30px;
   width:180px;
-  background:#000;
+  background: #222 url(../images/alert-overlay.png) repeat-x;
   -moz-border-radius:10px 10px 0 0;
   -webkit-border-top-left-radius:10px;
   -webkit-border-top-right-radius:10px;
@@ -131,7 +131,7 @@
 
 
 .extruder.left .ext_wrapper{
-  height:100%;
+  /*height:100%;*/
 }
 
 .extruder.left .footer{
@@ -223,9 +223,10 @@
     color:white;
     padding:5px;
     padding-left:10px;
-    height:27px;
+    height:20px;
     border-bottom:1px solid #333;
-    background:url("../elements/extruder_blank.png") no-repeat bottom left;
+    /*background:url("../elements/extruder_blank.png") repeat bottom left;*/
+    background: #222 url(../images/alert-overlay.png) repeat-x;
     text-shadow:#333 2px 2px 2px;
   }
   .extruder .voice:last-child{
@@ -236,20 +237,33 @@
    cursor:default;
   }
 .extruder .text{
-    background:#222;
+    /*background:#222;*/ /*new*/
+    background: rgb(81, 135, 186);
     font:14px/16px Arial, Helvetica, sans-serif;
     color:gray;
     padding:10px;
-    border-bottom:1px solid #333;
-  text-shadow:#000 2px 2px 2px;
+    /*border-bottom:1px solid #333;*/ /*new*/
+  	text-shadow:#000 2px 2px 2px;
   }
 
+.extruder .form{
+    /*background:#222;*/ /*new*/
+    /*background: white;*/
+    background: #222 url(../images/alert-overlay.png) repeat-x;
+    background-color: rgb(229, 229, 229);
+    font:14px/16px Arial, Helvetica, sans-serif;
+    color:gray;
+    padding:10px;
+    /*border-bottom:1px solid #333;*/ /*new*/
+  	text-shadow:#000 2px 2px 2px;
+  }
+  
   .extruder .voice.hover{
-    background:url("../elements/extruder_voiceHover.png") no-repeat top;
+    /*background:url("../elements/extruder_voiceHover.png") no-repeat top;*/
   }
 
   .extruder .voice.sel{
-    background:url("../elements/extruder_voiceHover.png") no-repeat top;
+    /*background:url("../elements/extruder_voiceHover.png") no-repeat top;*/
   }
 
   .extruder .voice img{
@@ -261,7 +275,6 @@
     display:block;
     height:30px;
     color:white;
-    padding-top:0px;
     text-decoration:none;
   }
 
@@ -269,7 +282,6 @@
     display:block;
     height:30px;
     color: #d0cfcf;
-    padding-top:0px;
     text-decoration:none;
   }
 
@@ -297,7 +309,7 @@
   }
 
   .extruder .voice.sel{
-    background: url("../elements/extruder_voiceHover.png") no-repeat top;
+    /*background: url("../elements/extruder_voiceHover.png") no-repeat top;*/
   }
 
 

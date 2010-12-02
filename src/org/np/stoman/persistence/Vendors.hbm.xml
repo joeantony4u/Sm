@@ -8,7 +8,7 @@
             <column name="vendor_id" />
             <generator class="increment" />
         </id>
-        <many-to-one name="addresses" class="org.np.stoman.persistence.Addresses" fetch="select">
+        <many-to-one name="addresses" class="org.np.stoman.persistence.Addresses" fetch="select" cascade="save-update">
             <column name="address_id" />
         </many-to-one>
         <property name="name" type="string">

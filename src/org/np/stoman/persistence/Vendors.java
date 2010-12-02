@@ -32,7 +32,7 @@ public class Vendors implements java.io.Serializable {
 		this.vendorId = vendorId;
 		this.addresses = addresses;
 		this.name = name;
-		
+
 	}
 
 	public int getVendorId() {
@@ -44,6 +44,8 @@ public class Vendors implements java.io.Serializable {
 	}
 
 	public Addresses getAddresses() {
+		if (addresses == null)
+			addresses = new Addresses();
 		return this.addresses;
 	}
 
@@ -58,5 +60,5 @@ public class Vendors implements java.io.Serializable {
 	public void setName(String name) {
 		this.name = name;
 	}
-	
+
 }

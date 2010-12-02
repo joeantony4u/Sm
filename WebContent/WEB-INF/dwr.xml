@@ -26,5 +26,17 @@
 				return (MenuBuilder) ProxyProvider.getProxy(MenuBuilder.class, new MenuBuilderImpl());
     		</param>
 		</create>
+		<create creator="script" javascript="Vendor">
+			<param name="class" value="org.np.stoman.ajax.interfaze.Vendor" />
+			<param name="language" value="beanshell" />
+			<!-- TODO: Move to scriptPath -->
+			<param name="script">
+				import org.np.stoman.proxy.ProxyProvider;
+				import org.np.stoman.ajax.interfaze.Vendor;
+				import org.np.stoman.ajax.interfaze.impl.VendorImpl;
+				return (Vendor) ProxyProvider.getProxy(Vendor.class, new VendorImpl());
+    		</param>
+		</create>
+		
 	</allow>
 </dwr>

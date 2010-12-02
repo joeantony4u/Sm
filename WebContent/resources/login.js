@@ -1,9 +1,3 @@
-var easings = [ 'easeInQuad', 'easeOutQuad', 'easeInCubic', 'easeOutCubic',
-    			'easeInQuart', 'easeOutQuart', 'easeInQuint', 'easeOutQuint',
-    			'easeInSine', 'easeOutSine', 'easeInExpo', 'easeOutExpo',
-    			'easeInCirc', 'easeOutCirc', 'easeInElastic', 'easeOutElastic',
-    			'easeInBack', 'easeOutBack', 'easeInBounce', 'easeOutBounce' ];
-$.fn.reverse = [].reverse;
 var asyncScripts = ['./resources/highcharts.js', './resources/common-chart.js', 
                     './resources/jquery.easing.js', './resources/cookie.js',
                     'dwr/interface/MenuBuilder.js'];
@@ -25,19 +19,6 @@ var asyncScripts = ['./resources/highcharts.js', './resources/common-chart.js',
 		});
 	});
 
-	function easingsOn(selector, visibility, easing) {
-		var elements = (visibility == 'show') ? $(selector) : $(selector)
-				.reverse();
-		elements.each(function(i) {
-			var $de = $(this);
-			setTimeout(function() {
-				$de.animate({
-					height : visibility
-				}, 50, easing);
-			}, 50 * (i + 1));
-		});
-	}
-	
 	function repaintImage(selector, withURL, callback) {
 		$(selector).fadeOut('fast', function() {
 			$(this).attr('src', withURL).fadeIn('fast', callback);

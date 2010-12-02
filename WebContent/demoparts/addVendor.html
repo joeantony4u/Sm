@@ -1,0 +1,94 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Add Vendor | STOMAN</title>
+<link href="../resources/uniform.default.css" rel="stylesheet" type="text/css" media="all">
+<link href="../resources/uniform.aristo.css" rel="stylesheet" type="text/css" media="all">
+<link href="../resources/style.css" rel="stylesheet" type="text/css" media="all">
+<script src="../resources/jquery-1.4.js"	type="text/javascript"></script>
+<script src="../resources/jquery.uniform.min.js"	type="text/javascript"></script>
+<script type='text/javascript' src='../dwr/engine.js'></script>
+<script type='text/javascript' src='../dwr/util.js'></script>
+<script type='text/javascript' src='../dwr/interface/Vendor.js'></script>
+<script type='text/javascript' src='../resources/common.js'></script>
+
+<script type="text/javascript">
+	$(document).ready(function(){
+		uniform();
+	});
+	
+	function create() {
+		var page = $('#add-vendor'); 
+		easingsOn(page.find('a'), 'hide', easings[0]);
+		page.addClass('transparency-20');
+		Vendor.create(dwr.util.getValues('add-vendor'), function(stat) {
+			page.removeClass('transparency-20');
+			easingsOn(page.find('a'), 'show', easings[1])
+			if(stat.substr(0, "E:".length) === "E:") {
+				$('#create').removeClass().addClass('red awesome');
+								
+			} else if(stat.substr(0, "S:".length) === "S:") {
+				fresh('add-vendor');
+				$('#create').removeClass().addClass('green awesome');
+			}
+		});
+	}
+</script>
+
+</head>
+<body >
+<form id="add-vendor">
+<table width="100%" style="padding-top: 20px;">
+	<tr>
+		<td><label for="name" name="name_lbl">Name</label></td>
+		<td><input name="name" class="text"/></td>
+		<td></td>
+		<td></td>
+	</tr>
+	<tr>
+		<td><label for="addresses.streetName1" name="streetName1_lbl">Plot No. &amp; Name </label></td>
+		<td><input name="addresses.streetName1" class="text"/></td>
+		<td><label for="addresses.streetName2" name="streetName2_lbl">Street</label></td>
+		<td><input name="addresses.streetName2" class="text"/></td>
+	</tr>
+	<tr>
+		<td><label for="addresses.area" name="area_lbl">Area</label></td>
+		<td><input name="addresses.area" class="text"/></td>
+		<td><label for="addresses.city" name="city_lbl">City</label></td>
+		<td><input name="addresses.city" class="text"/></td>
+	</tr>
+	<tr>
+		<td><label for="addresses.zip" name="zip_lbl">Pincode</label></td>
+		<td><input name="addresses.zip" class="text"/></td>
+		<td><label for="addresses.state" name="state_lbl">State</label></td>
+		<td><input name="addresses.state" class="text"/></td>
+	</tr>
+	<tr>
+		<td><label for="addresses.country" name="country_lbl">Country</label></td>
+		<td><input name="addresses.country" class="text"/></td>
+		<td><label for="addresses.xxx" name="name_lbl">XXX</label></td>
+		<td><input name="addresses.xxx" class="text"/></td>
+	</tr>
+	<tr>
+		<td><label for="addresses.phone" name="phone_lbl">Phone</label></td>
+		<td><input name="addresses.phone" class="text"/></td>
+		<td><label for="addresses.mobile" name="mobile_lbl">Mobile</label></td>
+		<td><input name="addresses.mobile" class="text"/></td>
+	</tr>
+	<tr>
+		<td><label for="addresses.fax" name="fax_lbl">Fax</label></td>
+		<td><input name="addresses.fax" class="text"/></td>
+		<td><label for="addresses.email" name="email_lbl">email</label></td>
+		<td><input name="addresses.email" class="text"/></td>
+	</tr>
+	<tr>
+		<td colspan="4" align="center" style="padding-top: 20px;">
+			<a id="create" class="awesome yellow" onclick="javascript: create();">Save</a>
+			<a class="awesome yellow" onclick="javascript: fresh('add-vendor');">Clear</a>
+		</td>
+	</tr>	
+</table>
+</form>
+</body>
+</html>
