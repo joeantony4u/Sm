@@ -45,7 +45,7 @@ var asyncScripts = ['./resources/highcharts.js', './resources/common-chart.js',
 
 	//TODO: Security against geeks opening this source at client agents?
 	function showDashboard() {
-		repaintImage('#container img', './images/dog.gif', function() {	});
+		repaintImage('#container img', './images/Bulldozer.png', function() {	});
 		$('#container img').remove();
 		//TODO:cleanup after this part
 		$('<div/>').attr('id', 'chart-container').appendTo($('#container'));

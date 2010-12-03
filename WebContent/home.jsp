@@ -33,8 +33,8 @@
 <div id="center-main">
 <div id="center-sup">
 <div id="bannertop">
-<div id="container"><img align="right" src="./images/dog.gif"
-	style="display: none;"></img></div>
+<div id="container"><img align="left" src="./images/Bulldozer.png"
+	style="display: none; padding-top: 135px; padding-left: 50px;"></img></div>
 </div>
 </div>
 </div>
