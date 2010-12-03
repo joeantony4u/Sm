@@ -1,0 +1,50 @@
+
+var firstTime = true;
+   var oTable, oSettings, oHeader;
+   var oLoadParams = {
+       iDataStart: 0,
+       iDataLength: 100,
+       iLock: false
+   };
+
+   function fnAddAjaxData()
+   {
+       oLoadParams.iLock = true;
+  
+       $.getJSON(
+           oTable.fnSettings().sAjaxSource +
+           "?iStart="+ oLoadParams.iDataStart +
+           "&iLength="+ oLoadParams.iDataLength,
+           function(json) {
+               //    json.aaData = json.dsLogList; // this assignmenet is needed because the plugin requires a variable named aaData
+               oTable.fnAddData(json.aaData);
+               oLoadParams.iDataStart = oLoadParams.iDataStart + json.aaData.length;
+               oLoadParams.iLock = false;
+           }
+           );
+   }
+
+
+   oTable = $('#logsTable').dataTable( {
+       "sDom": 'lfr<"scroller"t>ip',
+       "bPaginate" : false,
+       "sAjaxSource" :"showNextConsoleData",
+       "bAutoWidth" : false,
+      
+   } );
+   oHeader = new FixedHeader( oTable );
+   oSettings = oTable.fnSettings();
+   fnAddAjaxData();
+
+   $('div.scroller').scroll( function() {
+       if (!oLoadParams.iLock)
+       {
+           if ( $(this).scrollTop() + $(this).height() >
+               $(oSettings.nTable).height() - 100 )
+               {
+               fnAddAjaxData();
+               $('div.scroller').focus();
+           }
+       }
+   } );
+

@@ -37,6 +37,17 @@
 				return (Vendor) ProxyProvider.getProxy(Vendor.class, new VendorImpl());
     		</param>
 		</create>
+		<create creator="script" javascript="Material">
+			<param name="class" value="org.np.stoman.ajax.interfaze.Material" />
+			<param name="language" value="beanshell" />
+			<!-- TODO: Move to scriptPath -->
+			<param name="script">
+				import org.np.stoman.proxy.ProxyProvider;
+				import org.np.stoman.ajax.interfaze.Material;
+				import org.np.stoman.ajax.interfaze.impl.MaterialImpl;
+				return (Material) ProxyProvider.getProxy(Material.class, new MaterialImpl());
+    		</param>
+		</create>
 		
 	</allow>
 </dwr>

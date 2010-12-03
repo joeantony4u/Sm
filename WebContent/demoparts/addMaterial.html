@@ -3,8 +3,72 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Add Material | STOMAN</title>
+<link href="../resources/uniform.default.css" rel="stylesheet"
+	type="text/css" media="all">
+<link href="../resources/uniform.aristo.css" rel="stylesheet"
+	type="text/css" media="all">
+<link href="../resources/style.css" rel="stylesheet" type="text/css"
+	media="all">
+<script src="../resources/jquery-1.4.js" type="text/javascript"></script>
+<script src="../resources/jquery.uniform.min.js" type="text/javascript"></script>
+<script type='text/javascript' src='../dwr/engine.js'></script>
+<script type='text/javascript' src='../dwr/util.js'></script>
+<script type='text/javascript' src='../dwr/interface/Material.js'></script>
+<script type='text/javascript' src='../resources/common.js'></script>
+
+<script type="text/javascript">
+	$(document).ready(function(){
+		uniform();
+	});
+	
+	function create() {
+		var page = $('#add-material'); 
+		easingsOn(page.find('a'), 'hide', easings[0]);
+		page.addClass('transparency-20');
+		Material.create(dwr.util.getValues('add-material'), function(stat) {
+			page.removeClass('transparency-20');
+			easingsOn(page.find('a'), 'show', easings[1])
+			if(stat.substr(0, "E:".length) === "E:") {
+				$('#create').removeClass().addClass('red awesome');
+								
+			} else if(stat.substr(0, "S:".length) === "S:") {
+				fresh('add-material');
+				$('#create').removeClass().addClass('green awesome');
+			}
+		});
+	}
+</script>
+
 </head>
 <body>
+<form id="add-material">
+<table width="100%" style="padding-top: 20px;">
+	<tr>
+		<td><label for="name" name="name_lbl">Name</label></td>
+		<td><input name="name" class="text" /></td>
+		<td></td>
+		<td></td>
+	</tr>
+	<tr>
+		<td><label for="sensitivity" name="sensitivity_lbl">Sensitivity</label></td>
+		<td><input name="sensitivity" class="text" /></td>
+		<td></td>
+		<td></td>
+	</tr>
+	<tr>
+		<td><label for="importance" name="importance_lbl">Importance</label></td>
+		<td><input name="importance" class="text" /></td>
+		<td></td>
+		<td></td>
+	</tr>
+	<tr>
+		<td colspan="4" align="center" style="padding-top: 20px;"><a
+			id="create" class="awesome yellow" onclick="javascript: create();">Save</a>
+		<a class="awesome yellow" onclick="javascript: fresh('add-material');">Clear</a>
+		</td>
+	</tr>
+</table>
+</form>
 
 </body>
 </html>
