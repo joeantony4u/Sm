@@ -48,6 +48,17 @@
 				return (Material) ProxyProvider.getProxy(Material.class, new MaterialImpl());
     		</param>
 		</create>
+		<create creator="script" javascript="AutoComplete">
+			<param name="class" value="org.np.stoman.ajax.interfaze.AutoComplete" />
+			<param name="language" value="beanshell" />
+			<!-- TODO: Move to scriptPath -->
+			<param name="script">
+				import org.np.stoman.proxy.ProxyProvider;
+				import org.np.stoman.ajax.interfaze.AutoComplete;
+				import org.np.stoman.ajax.interfaze.impl.AutoCompleteImpl;
+				return (AutoComplete) ProxyProvider.getProxy(AutoComplete.class, new AutoCompleteImpl());
+    		</param>
+		</create>
 		
 	</allow>
 </dwr>

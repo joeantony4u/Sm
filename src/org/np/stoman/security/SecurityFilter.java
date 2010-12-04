@@ -42,7 +42,6 @@ public class SecurityFilter implements Filter {
 
 		HttpServletRequest req = (HttpServletRequest) request;
 		String uri = req.getRequestURI();
-
 		if (!(req.getContextPath() + "/").equalsIgnoreCase(uri))
 			secureURI: {
 				for (String excludeURL : excludeURLs)

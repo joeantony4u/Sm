@@ -1,13 +1,10 @@
 package irritate;
 
-import org.apache.commons.beanutils.BeanUtils;
-
 public class Test {
 
 	public static void main(String[] args) {
 		try {
-			BeanUtils.createCache();
-			throw new Exception();
+			System.out.println(System.getProperty("line.separator"));
 		} catch (Exception e) {
 			System.out.println("excep");
 			return;

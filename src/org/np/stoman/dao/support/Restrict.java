@@ -11,7 +11,7 @@ public enum Restrict {
 
 	EQ("EQ"), NOTEQ("NOTEQ"), GE("GE"), LE("LE"), BETWEEN("BETWEEN"), GT("GT"), LT(
 			"LT"), IN("IN"), NOTIN("NOTIN"), AND("AND"), OR("OR"), NULL("NULL"), NOTNULL(
-			"NOTNULL");
+			"NOTNULL"), LIKE("LIKE");
 
 	Restrict(String type) {
 		this.type = type;
@@ -80,6 +80,10 @@ public enum Restrict {
 		case NOTNULL:
 			for (Object[] value : values)
 				criterions.add(Restrictions.isNotNull((String) value[0]));
+			break;
+		case LIKE:
+			for (Object[] value : values)
+				criterions.add(Restrictions.like((String) value[0], value[1]));
 			break;
 
 		}

@@ -1295,7 +1295,7 @@ ul#submenu li {
 	margin-top: -5px;
 	width: 100%;
 	float: left;
-	height: 97%;
+	height: 96%;
 	
 	-moz-border-radius: 5px;
 	-webkit-border-radius: 5px;
@@ -1324,4 +1324,8 @@ label {
 .transparency-20 {
 	opacity:0.2;
 	filter:alpha(opacity=20)
+}
+
+.no-border {
+	border: 0px;
 }
