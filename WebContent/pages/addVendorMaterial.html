@@ -10,16 +10,17 @@
 <script type='text/javascript' src='../resources/jquery.autocomplete.js'></script>
 <script>
 	$(document).ready(function() {
-		$('#vendor-name').autocomplete('../auto/complete', { 
+		$('#vendor_name').autocomplete('../auto/complete', { 
 			matchContains: true,
 			mustMatch: 1,
 			cacheLength: 10,
+			maxItemsToShow: 9,
 			extraParams: { method: 'vendorNames' }
 		});
 	});
 </script>
 </head>
 <body>
-<input id="vendor-name" type="text">
+<input id="vendor_name" type="text">
 </body>
 </html>

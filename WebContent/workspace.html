@@ -10,9 +10,64 @@
   <script type="text/javascript" src="./resources/mbContainer.js"></script>
   <link href="./resources/style.css" rel="stylesheet" type="text/css" media="all">
   <script type="text/javascript">
-	function iconize(id) {
+
+  // Used to Initialize an IFrames inside a Container
+  // onRestore. So, it is important to make this Singleton.
+  var IFrameInit = (function() {
+	    var instance = null;
+		var iFrames = {};
+	    function Constructor() {
+	    	// get the container id and  write all the fields
+	    	// passed by the user in a object against a field
+	    	// in iFrames
+	        this.writeData = function(container, fields) {
+	        	var id = container.attr('id');
+	            if(typeof iFrames[id] == 'undefined'
+	            		|| iFrames[id] == null) {
+	            	iFrames[id] = {};
+	            }
+	        	$.each(fields, function(key, value){
+	        		iFrames[id][key] = value;
+	        	});
+	        } 
+	        
+	    	// read all the fields that are found against the
+	    	// id of the container passed
+	        this.readData = function(container) {
+	        	var id = container.attr('id');
+	        	// Clone it before passing the date to the
+	        	// requester and empty the data stote for that
+	        	// container. 
+	        	var iFrame = jQuery.extend(true, {}, iFrames[id]);
+	        	iFrames[id] = {};
+	        	return iFrame;
+	        };
+	    }
+
+	    return new function() {
+	        this.getInstance = function() {
+	            if (instance == null) {
+	                instance = new Constructor();
+	                instance.constructor = null;
+	            }
+	            return instance;
+	        }
+	    }
+	})();
+
+	function showContainer(id) {
+		var id = $('#' + id);
+		id.mb_iconize();
+		//if(id.mb_getState('iconized'))
+			//id.mb_iconize();
+		if(id.mb_getState('iconized'))
+			setTimeout(function() { id.mb_iconize(); }, 500);
+	}
+  
+	function iconizeContainer(id) {
 		$('#' + id).mb_iconize();
-	}    
+	}   
+	
   </script>
   <script type="text/javascript">
     $(function(){
@@ -45,8 +100,15 @@
         dockedIconDim:45,
         onCreate:function(o){initDock(o,"dock")},
         onClose:function(o){close(o)},
-        onRestore:function(o){restore(o)},
-        onIconize:function(o){iconize(o)},
+        onRestore:function(o){
+        	restore(o); 
+        	//alert($(o.find('iframe')[0].contentWindow.document.body).find('#vendor_name')[0]);
+        	$.each(IFrameInit.getInstance().readData(o), function(id, value) {
+        		$(o.find('iframe')[0].contentWindow.document.body)
+        			.find('#' + id).val(value);	        	
+        	});
+		},
+        onIconize:function(o){iconize(o) },
         effectDuration:300
       });
     });
@@ -181,7 +243,7 @@
   <div id="avm" class="containerPlus draggable resizable {buttons:'m,i', icon:'alert.png', skin:'white', width:'500',iconized:'true', dock:'dock', title:'Create Vendor Material'}" style="position:fixed;top:180px;left:480px">
     <div class="evidence">
     </div>
-   	<iframe id="add-vendor-container" src="pages/addVendorMaterial.html" 
+   	<iframe id="add-vendor-material-container" src="pages/addVendorMaterial.html" 
 		allowtransparency="true" 
 		frameborder="0" width="100%" height="250px"></iframe>
   </div>

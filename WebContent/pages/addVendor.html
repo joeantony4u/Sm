@@ -50,8 +50,13 @@ var infoBar;
 				.html('Add Material')
 				.appendTo(infoBar.append("."))
 				.click(function() {
-					parent.iconize('av');
-					parent.iconize('avm');
+					infoBar.hide();
+					parent.iconizeContainer('av');
+					parent.IFrameInit.getInstance().writeData($(parent.document).find('#avm'), 
+							{
+								vendor_name: stat.split(':')[1]
+							});
+					parent.showContainer('avm');
 				});
 			}
 			setTimeout(function() { infoBar.hide('slow'); }, 5000);

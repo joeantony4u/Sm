@@ -120,7 +120,7 @@ ul#menu li a:hover,ul#menu li a.active {
 	height: 342px;
 	padding: 22px 19px;
 	margin: 20px 0 21px 31px;
-	background: url(../images/banner.png) no-repeat;
+	/*background: url(../images/banner.png) no-repeat;*/
 }
 
 .banner {
