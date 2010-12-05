@@ -8,8 +8,8 @@ var easings = [ 'easeInQuad', 'easeOutQuad', 'easeInCubic', 'easeOutCubic',
     			'easeInBack', 'easeOutBack', 'easeInBounce', 'easeOutBounce' ];
 	
 function easingsOn(selector, visibility, easing) {
-		var elements = (visibility == 'show') ? $(selector) : $(selector)
-				.reverse();
+		var elements = (visibility == 'show') ? $(selector) : ($(selector)
+				.reverse());
 		elements.each(function(i) {
 			var $de = $(this);
 			setTimeout(function() {
@@ -19,6 +19,18 @@ function easingsOn(selector, visibility, easing) {
 			}, 50 * (i + 1));
 		});
 }
+
+function changeDisplay(selector, visibility) {
+	var elements = (visibility == 'inline' || visibility == 'block') ? $(selector) : ($(selector)
+			.reverse());
+	elements.each(function(i) {
+		var $de = $(this);
+		setTimeout(function() {
+			$de.css('display', visibility);
+		}, 50 * (i + 1));
+	});
+}
+
 
 function uniform() {
 	$("select, input:text, input:checkbox, input:radio, input:file").uniform();

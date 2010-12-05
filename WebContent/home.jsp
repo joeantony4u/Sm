@@ -48,21 +48,21 @@
 	<tr>
 		<td>
 		<div class="easing-visibility"><span class="inputWrap"> <input
-			id="username" tabindex="1"/> </span></div>
+			id="username" tabindex="1" style="padding-top: 9px;"/> </span></div>
 		</td>
 		<td>
 		<div class="easing-visibility"><span class="inputWrap"> <input
-			type="password" id="password" tabindex="2"/> </span></div>
+			type="password" id="password" tabindex="2" style="padding-top: 9px;"/> </span></div>
 		</td>
 		<td>
-		<div class="easing-visibility"><a href="javascript:preLogin()"
+		<div class="easing-visibility"><a href="javascript:authenticate()"
 			id = "login-button" class="button" tabindex="3">login</a></div>
 		</td>
 	</tr>
 </table>
 
 
-<div id="footer">
+<div id="footer" align="center">
 <p><font size="1px">From the minds of Joe &amp; Binu with the help of internet.</font></p>
 
 </div>

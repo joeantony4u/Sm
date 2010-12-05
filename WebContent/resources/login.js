@@ -2,19 +2,16 @@ var asyncScripts = ['./resources/highcharts.js', './resources/common-chart.js',
                     './resources/jquery.easing.js', './resources/cookie.js',
                     'dwr/interface/MenuBuilder.js'];
 	$(document).ready(function() {
-		//alert('ccallinf');
 		var head = $('head');
 		$.each(asyncScripts, function(i) {
 			$('<script/>').attr('src', this).appendTo(head);
 		});
 		
 		Authenticate.getAuth(function(auth) {
-			//alert(auth);
 			if(auth) {
 				showDashboard();
 			} else {
-				easingsOn('div.easing-visibility', 'show', easings[1]);
-				$('#container img').fadeIn(3000);
+				$('#container img').fadeIn(1);
 			}
 		});
 	});
@@ -25,18 +22,12 @@ var asyncScripts = ['./resources/highcharts.js', './resources/common-chart.js',
 		});
 	}
 
-	function preLogin() {
-		easingsOn('div.easing-visibility', 'hide', easings[0]);
-		repaintImage('#container img', './images/progress.gif', authenticate);
-	}
-	
 	function authenticate() {
+		changeDisplay('.easing-visibility', 'none');
 		Authenticate.login($('#username').val(), $('#password').val(), function(res) {
 			if(res == 'failure') {
-				repaintImage('#container img', './images/puppy.gif', function() {
-					easingsOn('div.easing-visibility', 'show', easings[1]);
-					$('#login-button').html('relogin').addClass('button-err');
-				});
+				$('#login-button').html('relogin').addClass('button-err');
+				changeDisplay('.easing-visibility', 'inline');
 			} else {
 				showDashboard();
 			}
@@ -45,7 +36,6 @@ var asyncScripts = ['./resources/highcharts.js', './resources/common-chart.js',
 
 	//TODO: Security against geeks opening this source at client agents?
 	function showDashboard() {
-		repaintImage('#container img', './images/Bulldozer.png', function() {	});
 		$('#container img').remove();
 		//TODO:cleanup after this part
 		$('<div/>').attr('id', 'chart-container').appendTo($('#container'));

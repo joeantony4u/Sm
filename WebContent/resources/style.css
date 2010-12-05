@@ -776,7 +776,7 @@ ul#list2 li a:hover {
 	width: 950px;
 	float: left;
 	margin-top: 36px;
-	background: url(../images/footerline.png) no-repeat;
+	/*background: url(../images/footerline.png) no-repeat;*/
 }
 
 #footer-workspace {
@@ -1055,6 +1055,8 @@ a.button {
 	padding: 4px 0 0;
 	height: 39px;
 	line-height: 32px;
+	*line-height: -1px;
+	_line-height: -1px;
 	/*margin-left: 50px;
 	margin-top: 260px;*/
 	text-align: center;
@@ -1100,7 +1102,7 @@ a.button:active {
 /* End of External styles */
 .easing-visibility {
 	position: relative;
-	display: none;
+	display: block;
 }
 
 .login-container {
