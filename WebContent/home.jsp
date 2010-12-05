@@ -63,7 +63,7 @@
 
 
 <div id="footer" align="center">
-<p><font size="1px">From the minds of Joe &amp; Binu with the help of internet.</font></p>
+<p><font size="1px" color="#C8C6C2">STOMAN. From the minds of Joe &amp; Binu with the help of internet.</font></p>
 
 </div>
 </div>

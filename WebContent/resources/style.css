@@ -41,7 +41,8 @@ a {
 #head {
 	width: 100%;
 	float: left;
-	background: url(../images/top-bg.png) repeat-x;
+	background-color: rgb(81, 135, 186);
+	/*background: url(../images/top-bg.png) repeat-x;*/
 	/*padding-bottom:36px;*/
 }
 
@@ -1330,4 +1331,8 @@ label {
 
 .no-border {
 	border: 0px;
+}
+
+table td {
+	padding: 2px;
 }

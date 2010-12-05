@@ -9,32 +9,29 @@
 	type="text/css" media="all">
 <link href="../resources/style.css" rel="stylesheet" type="text/css"
 	media="all">
+
 <script src="../resources/jquery-1.4.js" type="text/javascript"></script>
 <script src="../resources/jquery.uniform.min.js" type="text/javascript"></script>
+<script type='text/javascript' src='../resources/common.js'></script>
 <script type='text/javascript' src='../dwr/engine.js'></script>
 <script type='text/javascript' src='../dwr/util.js'></script>
 <script type='text/javascript' src='../dwr/interface/Material.js'></script>
-<script type='text/javascript' src='../resources/common.js'></script>
 
 <script type="text/javascript">
 	$(document).ready(function(){
-		uniform();
+		pageInit('am');
 	});
 	
 	function create() {
 		var page = $('#add-material'); 
-		easingsOn(page.find('a'), 'hide', easings[0]);
+		page.find('a').hide();
 		page.addClass('transparency-20');
 		Material.create(dwr.util.getValues('add-material'), function(stat) {
 			page.removeClass('transparency-20');
-			easingsOn(page.find('a'), 'show', easings[1])
-			if(stat.substr(0, "E:".length) === "E:") {
-				$('#create').removeClass().addClass('red awesome');
-								
-			} else if(stat.substr(0, "S:".length) === "S:") {
-				fresh('add-material');
-				$('#create').removeClass().addClass('green awesome');
-			}
+			page.find('a').show();
+			var cn = detectAndDoClassName(stat);
+			var type = detectAndDoType(stat, 'Material Created.', 'add-material');
+			acknowledge(cn, stat, type);
 		});
 	}
 </script>
@@ -51,20 +48,20 @@
 	</tr>
 	<tr>
 		<td><label for="sensitivity" name="sensitivity_lbl">Sensitivity</label></td>
-		<td><input name="sensitivity" class="text" /></td>
-		<td></td>
-		<td></td>
+		<td><input type="radio" name="sensitivity" value="1" checked="checked"/><label>Weaker</label></td>
+		<td><input type="radio" name="sensitivity" value="2"/><label>Weak</label></td>
+		<td><input type="radio" name="sensitivity" value="3"/><label>Strong</label></td>
 	</tr>
 	<tr>
 		<td><label for="importance" name="importance_lbl">Importance</label></td>
-		<td><input name="importance" class="text" /></td>
-		<td></td>
-		<td></td>
+		<td><input type="radio" name="importance" value="1" checked="checked"/><label>High</label></td>
+		<td><input type="radio" name="importance" value="2"/><label>Medium</label></td>
+		<td><input type="radio" name="importance" value="3"/><label>Low</label></td>
 	</tr>
 	<tr>
 		<td colspan="4" align="center" style="padding-top: 20px;"><a
-			id="create" class="awesome yellow" onclick="javascript: create();">Save</a>
-		<a class="awesome yellow" onclick="javascript: fresh('add-material');">Clear</a>
+			id="create" class="awesome green" onclick="javascript: create();">Create</a>
+		<a class="awesome green" onclick="javascript: fresh('add-material');">Clear</a>
 		</td>
 	</tr>
 </table>

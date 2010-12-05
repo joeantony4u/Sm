@@ -17,13 +17,16 @@
 <script type="text/javascript" src="../resources/jquery-ui-1.8.6.custom.min.js"></script>
 <script type="text/javascript" src="../resources/jquery.metadata.js"></script>
 
+<style type="text/css">
+	body {
+		margin: 0;
+	}
+</style>
 
 <script type="text/javascript">
-var infoBar;
 
 	$(document).ready(function(){
-		uniform();
-		infoBar = $(parent.document).find('#av .evidence').hide();
+		pageInit('av');
 	});
 
 	function create() {
@@ -33,18 +36,9 @@ var infoBar;
 		Vendor.create(dwr.util.getValues('add-vendor'), function(stat) {
 			page.removeClass('transparency-20');
 			page.find('a').show();
-			var cn, type;
-			if(stat.substr(0, "E:".length) === "E:") {
-				type = "Error.";
-				cn = "red"
-			} else if(stat.substr(0, "S:".length) === "S:") {
-				fresh('add-vendor');
-				type = "Vendor Created.";
-				cn = "blue";
-			}
-			$('<a class="awesome no-border"/>').addClass(cn).html(stat.split(':')[1])
-			.appendTo(infoBar.html(type));
-			infoBar.show('slow');
+			var cn = detectAndDoClassName(stat);
+			var type = detectAndDoType(stat, 'Vendor Created.', 'add-vendor');
+			acknowledge(cn, stat, type);
 			if(type != "Error.") {
 				$('<a class="awesome no-border magenta"/>')
 				.html('Add Material')
@@ -59,7 +53,6 @@ var infoBar;
 					parent.showContainer('avm');
 				});
 			}
-			setTimeout(function() { infoBar.hide('slow'); }, 5000);
 		});
 	}
 </script>
@@ -112,7 +105,7 @@ var infoBar;
 	</tr>
 	<tr>
 		<td colspan="4" align="center" style="padding-top: 20px;">
-			<a id="create" class="awesome green" onclick="javascript: create();">Save</a>
+			<a id="create" class="awesome green" onclick="javascript: create();">Create</a>
 			<a class="awesome green" onclick="javascript: fresh('add-vendor');">Clear</a>
 		</td>
 	</tr>	

@@ -40,3 +40,45 @@ function uniform() {
 function fresh(id) {
 	$('#' + id)[0].reset();
 }
+
+var infoBar;
+function pageInit(id) {
+	uniform();
+	infoBar = $(parent.document).find('#' + id+  ' .evidence').hide();
+}
+
+function acknowledge(cn, stat, type) {
+	$('<a class="awesome no-border"/>').addClass(cn).html(stat.split(':')[1])
+	.appendTo(infoBar.html(type));
+	infoBar.show('slow');
+	setTimeout(function() { infoBar.hide('slow'); }, 5000);
+}
+
+function detectAndDoClassName(stat, pageId) {
+	if(isError(stat)) { 
+		return "red";				
+	} else if(isSuccess(stat)) {
+		if(pageId)
+			fresh(pageId);
+		return "blue";		
+	}
+	
+}
+
+function detectAndDoType(stat, info, pageId) {
+	if(isError(stat)) {
+		return "Error.";
+	} else if(isSuccess(stat)) {
+		if(pageId)
+			fresh(pageId);
+		return info ? info : "Success.";
+	}
+}
+
+function isError(stat) {
+	return stat.substr(0, "E:".length) === "E:";
+}
+
+function isSuccess(stat) {
+	return stat.substr(0, "S:".length) === "S:";
+}
