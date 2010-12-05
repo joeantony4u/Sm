@@ -33,8 +33,13 @@
 <div id="center-main">
 <div id="center-sup">
 <div id="bannertop">
-<div id="container"><img align="left" src="./images/Bulldozer.png"
-	style="display: none; padding-top: 135px; padding-left: 50px;"></img></div>
+<div id="container">
+	<img align="left" src="./images/Bulldozer.png"
+	style="display: none; padding-top: 135px; padding-left: 100px;"></img>
+	<img src="./images/caption.png" 
+	style="display: none; padding-top: 280px; padding-left: 50px;"/>
+	
+</div>
 </div>
 </div>
 </div>
