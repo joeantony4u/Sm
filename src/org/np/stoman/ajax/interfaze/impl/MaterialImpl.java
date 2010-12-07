@@ -2,6 +2,8 @@ package org.np.stoman.ajax.interfaze.impl;
 
 import static org.np.stoman.dao.support.HibernateSupport.getHibernateSupport;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 import org.apache.commons.beanutils.BeanUtils;
@@ -19,5 +21,17 @@ public class MaterialImpl extends BaseImpl implements Material {
 		BeanUtils.populate(material, params);
 		getHibernateSupport().save(material);
 		return SUCCESS + material.getName();
+	}
+
+	@Override
+	public List<String> getMaterials() {
+		List<Materials> lst = getHibernateSupport().get(Materials.class);
+		List<String> auto = new ArrayList<String>();
+		if (null != lst) {
+			for (Materials material : lst) {
+				auto.add(material.getName());
+			}
+		}
+		return auto;
 	}
 }

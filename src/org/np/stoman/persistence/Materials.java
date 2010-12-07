@@ -13,24 +13,24 @@ public class Materials implements java.io.Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 7481348609711418886L;
-	private int materialId;
+	private Integer materialId;
 	private String name;
-	private int sensitivity;
-	private int importance;
+	private Integer sensitivity;
+	private Integer importance;
 
 	public Materials() {
 	}
 
-	public Materials(int materialId, String name, int sensitivity,
-			int importance) {
+	public Materials(Integer materialId, String name, Integer sensitivity,
+			Integer importance) {
 		this.materialId = materialId;
 		this.name = name;
 		this.sensitivity = sensitivity;
 		this.importance = importance;
 	}
 
-	public Materials(int materialId, String name, int sensitivity,
-			int importance,
+	public Materials(Integer materialId, String name, Integer sensitivity,
+			Integer importance,
 			Set<VendorMaterialArchives> vendorMaterialArchiveses,
 			Set<VendorMaterials> vendorMaterialses) {
 		this.materialId = materialId;
@@ -40,11 +40,11 @@ public class Materials implements java.io.Serializable {
 
 	}
 
-	public int getMaterialId() {
+	public Integer getMaterialId() {
 		return this.materialId;
 	}
 
-	public void setMaterialId(int materialId) {
+	public void setMaterialId(Integer materialId) {
 		this.materialId = materialId;
 	}
 
@@ -56,19 +56,19 @@ public class Materials implements java.io.Serializable {
 		this.name = name;
 	}
 
-	public int getSensitivity() {
+	public Integer getSensitivity() {
 		return this.sensitivity;
 	}
 
-	public void setSensitivity(int sensitivity) {
+	public void setSensitivity(Integer sensitivity) {
 		this.sensitivity = sensitivity;
 	}
 
-	public int getImportance() {
+	public Integer getImportance() {
 		return this.importance;
 	}
 
-	public void setImportance(int importance) {
+	public void setImportance(Integer importance) {
 		this.importance = importance;
 	}
 

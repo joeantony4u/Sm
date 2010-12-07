@@ -1,0 +1,101 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Add Material | STOMAN</title>
+<link href="../resources/uniform.default.css" rel="stylesheet"
+	type="text/css" media="all">
+<link href="../resources/uniform.aristo.css" rel="stylesheet"
+	type="text/css" media="all">
+<link href="../resources/style.css" rel="stylesheet" type="text/css"
+	media="all">
+<link href="../resources/jquery.autocomplete.css" rel="stylesheet" type="text/css" media="all">
+<script src="../resources/jquery-1.4.js" type="text/javascript"></script>
+<script src="../resources/jquery.uniform.min.js" type="text/javascript"></script>
+<script type='text/javascript' src='../dwr/engine.js'></script>
+<script type='text/javascript' src='../dwr/util.js'></script>
+<script type='text/javascript' src='../dwr/interface/Material.js'></script>
+<script type='text/javascript' src='../resources/common.js'></script>
+<script type='text/javascript' src='../resources/jquery.autocomplete.js'></script>
+
+<script type="text/javascript">
+	$(document).ready(function(){
+		pageInit('cpo');
+		$('#material').autocomplete('../auto/complete', { 
+			matchContains: true,
+			mustMatch: 1,
+			cacheLength: 10,
+			maxItemsToShow: 9,
+			extraParams: { method: 'getMaterials' }
+		});
+		
+		//fetchMaterials();
+	});
+
+	function fetchMaterials(){
+        Material.getMaterials(function(map){
+            if(null!=map){
+            	var select = $('#select');
+      		  	var options = select.attr('options');
+            	$.each(map, function(key, value) { 
+            		  options[options.length] = new Option(value, key);
+            		});
+            }
+        });
+	}
+	
+	function create() {
+		var page = $('#add-material'); 
+		page.find('a').hide();
+		page.addClass('transparency-20');
+		Material.create(dwr.util.getValues('add-material'), function(stat) {
+			page.removeClass('transparency-20');
+			page.find('a').show();
+			var cn = detectAndDoClassName(stat);
+			var type = detectAndDoType(stat, 'create-purchaseorder');
+			acknowledge(cn, stat, type);
+		});
+	}
+
+	function generate() {
+		alert(dwr.util.getValues('create-purchaseorder').toString());
+		alert(document.getElementsByTagName("brick")[0].innerHTML);
+	}
+
+	function createOrder() {
+		$('#order-clone').clone().appendTo($('#orders'));
+	}
+	function deleteOrder(obj) {
+		$(obj.parentNode.parentNode).remove();
+	}
+	
+</script>
+
+</head>
+<body >
+<form id="create-purchaseorder">
+<table width="100%" style="padding-top: 20px;">
+<tbody id="orders">	
+	<tr id="order-clone">
+		<td><label name="name_lbl">Material</label></td>
+		<td><input name="" id="material" class="text" onkeypress="$(this.parentNode.nextSibling.nextSibling.nextSibling).find('input').attr('name', $(this).val())"/>
+		</td>
+		<td><label name="quantity_lbl">Quantity</label></td>
+		<td><input name="dummy" class="text"/></td>
+		<td><button type="button" class="awesome blue" onclick="createOrder();"/>add</td>
+		<td><button type="button" class="awesome red" onclick="deleteOrder(this);"/>remove</td>
+	</tr>
+</tbody>	
+</table>
+<table>
+	<tr>
+		<td colspan="4" align="center" style="padding-top: 20px;"><a
+			id="create" class="awesome green" onclick="generate();">Generate</a>
+		<a class="awesome green" onclick="#">Clear</a>
+		</td>
+	</tr>
+</table>
+</form>
+
+</body>
+</html>
