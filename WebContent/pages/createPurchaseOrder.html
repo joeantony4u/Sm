@@ -23,7 +23,6 @@
 		pageInit('cpo');
 		$('#material').autocomplete('../auto/complete', { 
 			matchContains: true,
-			mustMatch: 1,
 			cacheLength: 10,
 			maxItemsToShow: 9,
 			extraParams: { method: 'getMaterials' }
@@ -37,7 +36,7 @@
             if(null!=map){
             	var select = $('#select');
       		  	var options = select.attr('options');
-            	$.each(map, function(key, value) { 
+            		$.each(map, function(key, value) { 
             		  options[options.length] = new Option(value, key);
             		});
             }
@@ -90,8 +89,8 @@
 <table>
 	<tr>
 		<td colspan="4" align="center" style="padding-top: 20px;"><a
-			id="create" class="awesome green" onclick="generate();">Generate</a>
-		<a class="awesome green" onclick="#">Clear</a>
+			id="create" class="awesome green" href="#" onclick="generate();">Generate</a>
+		<a class="awesome green" href="#" onclick="fresh('create-purchaseorder')">Clear</a>
 		</td>
 	</tr>
 </table>
