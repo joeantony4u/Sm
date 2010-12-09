@@ -18,17 +18,30 @@ var myStuffs = false;
 			getDOMElement(key, value, 'buildStuffs')
 				.appendTo(parent); 
 		});
+		parent.find('li a').click(); //FIXME: Works for only one menu item
 	});
 	
-	function getDOMElement(key, value, methodName) {
+/*	function getDOMElement(key, value, methodName) {
 		var menuName = key.split('#');
 		var li = $('<li/>');
 		$('<a/>').html(menuName[0])
 		         .attr('href', 'javascript:' + methodName + '(' + '\'' + menuName[1] + '\', \'' + value + '\'' + ')')
 		         .appendTo(li);
 		return li;
+	}*/
+
+	function getDOMElement(key, value, methodName) {
+		var menuName = key.split('#');
+		var li = $('<li/>');
+		$('<a/>').html(menuName[0])
+		         .attr('href', '#')
+		         .appendTo(li)
+		         .click(function() {
+		        	 buildStuffs(menuName[1], value);
+		         });
+		return li;
 	}
-	
+
 	function buildStuffs(key, value) {
 		//<iframe id="searchStuffs" src="" class="stuff-frame" frameborder="0" allowtransparency="true"></iframe>
 		//$('#searchStuffs').attr('src', value);
@@ -43,6 +56,7 @@ var myStuffs = false;
 		    	height: '100%',
 				width: '100%',
 				border: '0',
+				
 		    },
 		    src: value,
 		}).appendTo($('#wg-container'));
