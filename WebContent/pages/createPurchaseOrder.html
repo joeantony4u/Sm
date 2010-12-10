@@ -55,8 +55,17 @@
 	}
 
 	function generate() {
-		alert(dwr.util.getValues('create-purchaseorder').toString());
-		alert(document.getElementsByTagName("brick")[0].innerHTML);
+		var obj = {};
+		$('#orders tr').not('#header').each(function(i, tr) {
+			//alert(i);
+			//alert(tr);
+			var material = $(tr).find('#material');
+			var quantity = $(tr).find('#quantity');
+			if(material.val().trim() != '')
+				obj[material.val()] = obj[material.val()] 
+						? obj[material.val()] + parseInt(quantity.val())
+						: parseInt(quantity.val());
+		});
 	}
 
 	function createOrder() {
@@ -81,16 +90,16 @@
 <form id="create-purchaseorder">
 <table width="100%" style="padding-top: 20px;">
 <tbody id="orders">
-	<tr>
+	<tr id="header">
 		<td align="center"><label name="name_lbl">Material</label></td>
 		<td align="center"><label name="quantity_lbl">Quantity</label></td>
 		<td></td>
 		<td id="remove-clone" style="display: none;"><label onclick="deleteOrder(this);" class="remove">-</label></td>
 	</tr>
 	<tr id="order-clone">
-		<td><input name="" id="material" class="text" onkeypress="$(this.parentNode.nextSibling.nextSibling.nextSibling).find('input').attr('name', $(this).val())"/>
+		<td><input id="material" class="text" onkeypress="$(this.parentNode.nextSibling.nextSibling.nextSibling).find('input').attr('name', $(this).val())"/>
 		</td>
-		<td><input name="dummy" class="text"/></td>
+		<td><input id="quantity" class="text"/></td>
 		<td id="cntrl"><label onclick="createOrder();" class="add">+</label></td>
 		<td></td>
 	</tr>
