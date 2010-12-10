@@ -216,8 +216,9 @@
       bottom:0;
       display:block;
       width:100%;
-      height:100px;
-      background: #333333 url("./elements/bgnds/screenBgnd.gif");
+      /*height:100px;*/
+      /*background: #333333 url("./elements/bgnds/screenBgnd.gif");*/
+      background-color: transparent;
       padding-left:200px;
       -moz-box-sizing:border-box;
       -webkit-box-sizing:border-box;
@@ -259,6 +260,14 @@
 		frameborder="0" width="100%" height="160px"></iframe>
   </div>
 
+  <div id="avm" class="containerPlus draggable resizable {buttons:'m,i', icon:'vendor-material.png', skin:'white', width:'500',iconized:'true', dock:'dock', title:'Vendor - Material Mapping', iSrc: 'pages/addVendorMaterial.html'}" style="position:fixed;top:30px;left:610px">
+    <div class="evidence" align="center">
+    </div>
+   	<iframe id="add-vendor-material-container" src="pages/d.html" 
+		allowtransparency="true" 
+		frameborder="0" width="100%" height="250px"></iframe>
+  </div>
+  
   <div id="cpo" class="containerPlus draggable resizable {buttons:'m,i', icon:'purchase_order.png', skin:'white', width:'400',iconized:'true', dock:'dock', title:'Craft a Purchase Order', iSrc:'pages/createPurchaseOrder.html'}" style="position:fixed;top:230px;left:300px">
     <div class="evidence" align="center">
     </div>
@@ -267,13 +276,7 @@
 		frameborder="0" width="100%" height="150px" ></iframe>
   </div>
 
-  <div id="avm" class="containerPlus draggable resizable {buttons:'m,i', icon:'vendor-material.png', skin:'white', width:'500',iconized:'true', dock:'dock', title:'Vendor - Material Mapping', iSrc: 'pages/addVendorMaterial.html'}" style="position:fixed;top:30px;left:610px">
-    <div class="evidence" align="center">
-    </div>
-   	<iframe id="add-vendor-material-container" src="pages/d.html" 
-		allowtransparency="true" 
-		frameborder="0" width="100%" height="250px"></iframe>
-  </div>
+
  
   <div id="dock"></div>
   <button id="open" onclick="$('.containerPlus').mb_open(); $(this).fadeOut();" style="display:none;">open closed containers </button>
