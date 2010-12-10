@@ -24,11 +24,9 @@
 	
 	function create() {
 		var page = $('#add-material'); 
-		page.find('a').hide();
-		page.addClass('transparency-20');
+		preAjax(page);
 		Material.create(dwr.util.getValues('add-material'), function(stat) {
-			page.removeClass('transparency-20');
-			page.find('a').show();
+			postAjax(page);
 			var cn = detectAndDoClassName(stat);
 			var type = detectAndDoType(stat, 'Material Created.', 'add-material');
 			acknowledge(cn, stat, type);

@@ -45,11 +45,9 @@
 	
 	function create() {
 		var page = $('#add-material'); 
-		page.find('a').hide();
-		page.addClass('transparency-20');
+		preAjax(page);
 		Material.create(dwr.util.getValues('add-material'), function(stat) {
-			page.removeClass('transparency-20');
-			page.find('a').show();
+			postAjax(page);
 			var cn = detectAndDoClassName(stat);
 			var type = detectAndDoType(stat, 'create-purchaseorder');
 			acknowledge(cn, stat, type);
@@ -62,10 +60,18 @@
 	}
 
 	function createOrder() {
-		$('#order-clone').clone().appendTo($('#orders'));
+		var order = $('#order-clone');
+		var nOrder = order.clone().appendTo($('#orders'));
+		order.removeAttr('id');
+		order.find('#cntrl label').remove();
+		$('#remove-clone label').clone()
+			.removeAttr('id')
+			.appendTo(order.find('#cntrl')).css('display', 'inline');
+		parent.setIframeHeight('create-purchase-order');
 	}
 	function deleteOrder(obj) {
 		$(obj.parentNode.parentNode).remove();
+		parent.setIframeHeight('create-purchase-order');
 	}
 	
 </script>
@@ -74,19 +80,23 @@
 <body >
 <form id="create-purchaseorder">
 <table width="100%" style="padding-top: 20px;">
-<tbody id="orders">	
+<tbody id="orders">
+	<tr>
+		<td align="center"><label name="name_lbl">Material</label></td>
+		<td align="center"><label name="quantity_lbl">Quantity</label></td>
+		<td></td>
+		<td id="remove-clone" style="display: none;"><label onclick="deleteOrder(this);" class="remove">-</label></td>
+	</tr>
 	<tr id="order-clone">
-		<td><label name="name_lbl">Material</label></td>
 		<td><input name="" id="material" class="text" onkeypress="$(this.parentNode.nextSibling.nextSibling.nextSibling).find('input').attr('name', $(this).val())"/>
 		</td>
-		<td><label name="quantity_lbl">Quantity</label></td>
 		<td><input name="dummy" class="text"/></td>
-		<td><label class="awesome blue" onclick="createOrder();">+</label></td>
-		<td><label class="awesome red" onclick="deleteOrder(this);">-</label></td>
+		<td id="cntrl"><label onclick="createOrder();" class="add">+</label></td>
+		<td></td>
 	</tr>
 </tbody>	
 </table>
-<table>
+<table width="100%">
 	<tr>
 		<td colspan="4" align="center" style="padding-top: 20px;"><a
 			id="create" class="awesome green" href="#" onclick="generate();">Generate</a>

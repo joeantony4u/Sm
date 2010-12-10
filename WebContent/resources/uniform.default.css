@@ -53,14 +53,15 @@ textarea.uniform {
   font-weight: normal;
   padding: 3px;
   color: #777;
-  border-top: solid 1px #aaa;
-  border-left: solid 1px #aaa;
+  border-top: none; /*solid 1px #aaa;*/
+  border-left: none; /*solid 1px #aaa;*/
   border-bottom: solid 1px #ccc;
-  border-right: solid 1px #ccc;
+  border-right: none; /*solid 1px #aaa;*/
   -webkit-border-radius: 3px;
   -moz-border-radius: 3px;
   border-radius: 3px;
   outline: 0;
+  background-color: transparent;
 }
 
 input.text:focus,

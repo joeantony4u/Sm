@@ -1318,6 +1318,20 @@ label {
 	font-size: 12px;
 }
 
+label.add {
+	font-size: 25px;
+	font-weight: bold;
+	color: #749a02;
+	cursor: pointer;
+}
+
+label.remove {
+	font-size: 30px;
+	font-weight: bold;
+	color: #872300;
+	cursor: pointer;
+}
+
 .transparency-10 {
 	opacity:0.1;
 	filter:alpha(opacity=10)

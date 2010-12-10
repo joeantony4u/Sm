@@ -31,11 +31,9 @@
 
 	function create() {
 		var page = $('#add-vendor'); 
-		page.find('a').hide();
-		page.addClass('transparency-20');
+		preAjax(page);
 		Vendor.create(dwr.util.getValues('add-vendor'), function(stat) {
-			page.removeClass('transparency-20');
-			page.find('a').show();
+			postAjax(page);
 			var cn = detectAndDoClassName(stat);
 			var type = detectAndDoType(stat, 'Vendor Created.', 'add-vendor');
 			acknowledge(cn, stat, type);

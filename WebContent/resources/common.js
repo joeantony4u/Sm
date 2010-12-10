@@ -82,3 +82,14 @@ function isError(stat) {
 function isSuccess(stat) {
 	return stat.substr(0, "S:".length) === "S:";
 }
+
+function preAjax(page) {
+	page.find('a').hide();
+	page.addClass('transparency-20');
+}
+
+function postAjax(page) {
+	page.removeClass('transparency-20');
+	page.find('a').show();
+}
+
