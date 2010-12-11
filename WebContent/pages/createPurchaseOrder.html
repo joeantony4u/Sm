@@ -31,6 +31,15 @@
 		//fetchMaterials();
 	});
 
+	function auto(sel) { //TODO remove duplicates
+		$(sel).autocomplete('../auto/complete', { 
+			matchContains: true,
+			cacheLength: 10,
+			maxItemsToShow: 9,
+			extraParams: { method: 'getMaterials' }
+		});
+	}
+	
 	function fetchMaterials(){
         Material.getMaterials(function(map){
             if(null!=map){
@@ -72,6 +81,7 @@
 		var order = $('#order-clone');
 		var nOrder = order.clone().appendTo($('#orders'));
 		order.removeAttr('id');
+		auto(nOrder.find('#material'));
 		order.find('#cntrl label').remove();
 		$('#remove-clone label').clone()
 			.removeAttr('id')
