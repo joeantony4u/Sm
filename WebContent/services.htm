@@ -9,6 +9,9 @@
 <script type='text/javascript' src='dwr/interface/MenuBuilder.js'></script>
 
 <script type="text/javascript">
+var onJQueryLoad = function() {
+	loadAsyncScripts(['./resources/jquery-ui-1.8.6.custom.min.js']);	
+};
 
 var myStuffs = false;
 
@@ -21,15 +24,6 @@ var myStuffs = false;
 		parent.find('li a').click(); //FIXME: Works for only one menu item
 	});
 	
-/*	function getDOMElement(key, value, methodName) {
-		var menuName = key.split('#');
-		var li = $('<li/>');
-		$('<a/>').html(menuName[0])
-		         .attr('href', 'javascript:' + methodName + '(' + '\'' + menuName[1] + '\', \'' + value + '\'' + ')')
-		         .appendTo(li);
-		return li;
-	}*/
-
 	function getDOMElement(key, value, methodName) {
 		var menuName = key.split('#');
 		var li = $('<li/>');

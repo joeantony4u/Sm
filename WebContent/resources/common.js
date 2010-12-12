@@ -93,3 +93,11 @@ function postAjax(page) {
 	page.find('a').show();
 }
 
+function auto(sel) { //TODO remove duplicates
+	$(sel).autocomplete('../auto/complete', { 
+		matchContains: true,
+		cacheLength: 10,
+		maxItemsToShow: 9,
+		extraParams: { method: 'getMaterials' }
+	});
+}

@@ -6,27 +6,77 @@
 <link href="../resources/uniform.default.css" rel="stylesheet" type="text/css" media="all">
 <link href="../resources/uniform.aristo.css" rel="stylesheet" type="text/css" media="all">
 <link href="../resources/jquery.autocomplete.css" rel="stylesheet" type="text/css" media="all">
+<link href="../resources/style.css" rel="stylesheet" type="text/css"
+	media="all">
 <script type='text/javascript' src='../dwr/engine.js'></script>
 <script type='text/javascript' src='../dwr/util.js'></script>
 <script src="../resources/jquery-1.4.js"	type="text/javascript"></script>
 <script type='text/javascript' src='../resources/jquery.autocomplete.js'></script>
 <script src="../resources/jquery.uniform.min.js"	type="text/javascript"></script>
+<script type='text/javascript' src='../resources/common.js'></script>
 <script>
 	$(document).ready(function() {
 		$('#vendor_name').autocomplete('../auto/complete', { 
 			matchContains: true,
 			mustMatch: 1,
 			cacheLength: 10,
-			maxItemsToShow: 9,
-			delay: 50,
+			maxItemsToShow: 3,
+			delay: 1,
 			extraParams: { method: 'vendorNames' }
 		});
-		
+		auto($('#material'));
 		uniform();
 	});
+
+	function createVMaterial() {
+		var material = $('#material-clone');
+		var nMaterial = material.clone().appendTo($('#materials'));
+		material.removeAttr('id');
+		auto(nMaterial.find('#material'));
+		nMaterial.find('#material').val('');
+		nMaterial.find('#vendor_name').remove();
+		material.find('#cntrl label').remove();
+		$('#remove-clone label').clone()
+			.removeAttr('id')
+			.appendTo(material.find('#cntrl')).css('display', 'inline');
+		parent.setIframeHeight('add-vendor-material-container');
+	}
+
+	function deleteVMaterial(obj) {
+		$(obj.parentNode.parentNode).remove();
+		parent.setIframeHeight('add-vendor-material-container');
+	}
+	
+	
 </script>
 </head>
-<body>
-<input id="vendor_name" type="text" class="text">
+<body >
+<form id="vendor-material">
+<table width="100%" style="padding-top: 20px;">
+<tbody id="materials">
+	<tr id="header">
+		<td align="center"><label name="name_lbl">Vendor</label></td>
+		<td align="center"><label name="quantity_lbl">Material</label></td>
+		<td></td>
+		<td id="remove-clone" style="display: none;"><label onclick="deleteVMaterial(this);" class="remove">-</label></td>
+	</tr>
+	<tr id="material-clone">
+		<td><input id="vendor_name" class="text" />
+		</td>
+		<td><input id="material" class="text"/></td>
+		<td id="cntrl"><label onclick="createVMaterial();" class="add">+</label></td>
+		<td></td>
+	</tr>
+</tbody>	
+</table>
+<table width="100%">
+	<tr>
+		<td colspan="4" align="center" style="padding-top: 20px;"><a
+			id="create" class="awesome green" href="#" onclick="generate();">Map them!</a>
+		<a class="awesome green" href="#" onclick="fresh('vendor-material')">Clear</a>
+		</td>
+	</tr>
+</table>
+</form>
 </body>
 </html>

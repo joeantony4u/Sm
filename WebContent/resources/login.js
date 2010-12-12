@@ -1,12 +1,8 @@
 var asyncScripts = ['./resources/highcharts.js', './resources/common-chart.js', 
-                    './resources/jquery.easing.js', './resources/cookie.js',
-                    'dwr/interface/MenuBuilder.js'];
+                    './resources/cookie.js', 'dwr/interface/MenuBuilder.js'];
 	$(document).ready(function() {
+		loadAsyncScripts(asyncScripts);
 		var head = $('head');
-		$.each(asyncScripts, function(i) {
-			$('<script/>').attr('src', this).appendTo(head);
-		});
-		
 		Authenticate.getAuth(function(auth) {
 			if(auth) {
 				showDashboard();
@@ -16,18 +12,14 @@ var asyncScripts = ['./resources/highcharts.js', './resources/common-chart.js',
 		});
 	});
 
-	function repaintImage(selector, withURL, callback) {
-		$(selector).fadeOut('fast', function() {
-			$(this).attr('src', withURL).fadeIn('fast', callback);
-		});
-	}
-
 	function authenticate() {
-		changeDisplay('.easing-visibility', 'none');
+		var page = $('#login-form');
+		preAjax(page);
 		Authenticate.login($('#username').val(), $('#password').val(), function(res) {
 			if(res == 'failure') {
 				$('#login-button').html('relogin').addClass('button-err');
-				changeDisplay('.easing-visibility', 'inline');
+				$('#username').focus();
+				postAjax(page);
 			} else {
 				showDashboard();
 			}
@@ -37,6 +29,7 @@ var asyncScripts = ['./resources/highcharts.js', './resources/common-chart.js',
 	//TODO: Security against geeks opening this source at client agents?
 	function showDashboard() {
 		$('#container img').remove();
+		$('#login-form').remove();
 		//TODO:cleanup after this part
 		$('<div/>').attr('id', 'chart-container').appendTo($('#container'));
 		$('<div/>').addClass('chart-options').attr('id', 'chart-options-container').appendTo($('#center'));

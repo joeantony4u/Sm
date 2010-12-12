@@ -808,3 +808,50 @@
   };
 
 })(jQuery);
+
+
+$(function(){
+
+    function initDock(o,docID){
+      var opt= o.get(0).options;
+      var docEl=$("<span>").attr("id",o.attr("id")+"_dock").css({width:opt.dockedIconDim+5,display:"inline-block"});
+      var icon= $("<img>").attr("src",opt.elementsPath+"icons/"+(o.attr("icon")?o.attr("icon"):"restore.png")).css({opacity:.4,width:opt.dockedIconDim,height:opt.dockedIconDim, cursor:"pointer"});
+      icon.click(function(){o.mb_iconize()});
+      docEl.append(icon);
+      $("#"+docID).append(docEl);
+      o.attr("dock",o.attr("id")+"_dock");
+    }
+
+    function iconize(o){
+      $("#"+o.attr("dock")).find("img:first").hide();
+    }
+    function restore(o){
+      $("#"+o.attr("dock")).find("img:first").show();
+    }
+    function close(o){
+      $("#"+o.attr("dock")).find("img:first").hide();
+      $("#open").fadeIn();
+    }
+
+
+    $(".containerPlus").buildContainers({
+      containment:"document",
+      elementsPath:"./elements/",
+      dockedIconDim:45,
+      onCreate:function(o){initDock(o,"dock")},
+      onClose:function(o){close(o)},
+      onRestore:function(o){
+      	restore(o); 
+      	var iframe = o.find('iframe'); 
+      	if(iframe.attr('src') == 'pages/d.html')
+      		iframe.attr('src', o.metadata().iSrc);
+      	//alert($(o.find('iframe')[0].contentWindow.document.body).find('#vendor_name')[0]);
+      	$.each(IFrameInit.getInstance().readData(o), function(id, value) {
+      		$(o.find('iframe')[0].contentWindow.document.body)
+      			.find('#' + id).val(value);	        	
+      	});
+		},
+      onIconize:function(o){iconize(o) },
+      effectDuration:300
+    });
+  });

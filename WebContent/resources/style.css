@@ -1339,7 +1339,7 @@ label.remove {
 
 .transparency-20 {
 	opacity:0.2;
-	filter:alpha(opacity=20)
+	filter:alpha(opacity=20);
 }
 
 .no-border {

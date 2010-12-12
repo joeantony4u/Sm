@@ -31,15 +31,6 @@
 		//fetchMaterials();
 	});
 
-	function auto(sel) { //TODO remove duplicates
-		$(sel).autocomplete('../auto/complete', { 
-			matchContains: true,
-			cacheLength: 10,
-			maxItemsToShow: 9,
-			extraParams: { method: 'getMaterials' }
-		});
-	}
-	
 	function fetchMaterials(){
         Material.getMaterials(function(map){
             if(null!=map){
@@ -82,12 +73,15 @@
 		var nOrder = order.clone().appendTo($('#orders'));
 		order.removeAttr('id');
 		auto(nOrder.find('#material'));
+		nOrder.find('#material').val('');
+		nOrder.find('#quantity').val('');
 		order.find('#cntrl label').remove();
 		$('#remove-clone label').clone()
 			.removeAttr('id')
 			.appendTo(order.find('#cntrl')).css('display', 'inline');
 		parent.setIframeHeight('create-purchase-order');
 	}
+	
 	function deleteOrder(obj) {
 		$(obj.parentNode.parentNode).remove();
 		parent.setIframeHeight('create-purchase-order');

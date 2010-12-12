@@ -3,14 +3,31 @@
 <head>
   <title>Workspace | STOMAN</title>
   <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
-  <link rel="stylesheet" type="text/css" href="./css/mbContainer.css" title="style"  media="screen"/>
-  <script type="text/javascript" src="./resources/jquery-1.4.js"></script>
-  <script type="text/javascript" src="./resources/jquery-ui-1.8.6.custom.min.js"></script>
-  <script type="text/javascript" src="./resources/jquery.metadata.js"></script>
-  <script type="text/javascript" src="./resources/mbContainer.js"></script>
   <link href="./resources/style.css" rel="stylesheet" type="text/css" media="all">
+  <link rel="stylesheet" type="text/css" href="./css/mbContainer.css" title="style"  media="screen"/>
   <script type="text/javascript">
+  loadAsyncScripts(['./resources/jquery-1.4.js']);
 
+  var onJQueryLoad = function() {
+	  loadAsyncScripts(['./resources/jquery.metadata.js', './resources/jquery-ui-1.8.6.custom.min.js']);
+  }
+  
+  var onJQueryUILoad = function() {
+	  loadAsyncScripts(['./resources/mbContainer.js']);
+  }
+  
+  function loadAsyncScripts(asyncScripts) {
+		var head = document.getElementsByTagName("head")[0];
+		for(as in asyncScripts) {
+			var script = document.createElement("script");
+			script.setAttribute("src", asyncScripts[as]);
+			head.appendChild(script);
+		}
+	}
+
+  window.onload = function() {
+	  document.getElementsByTagName('body')[0].focus();
+  }
   // Used to Initialize an IFrames inside a Container
   // onRestore. So, it is important to make this Singleton.
   var IFrameInit = (function() {
@@ -93,152 +110,13 @@
 	function getElement(id) {
 		return $('#' + id);
 	}
-  </script>
-  <script type="text/javascript">
-    $(function(){
-
-      function initDock(o,docID){
-        var opt= o.get(0).options;
-        var docEl=$("<span>").attr("id",o.attr("id")+"_dock").css({width:opt.dockedIconDim+5,display:"inline-block"});
-        var icon= $("<img>").attr("src",opt.elementsPath+"icons/"+(o.attr("icon")?o.attr("icon"):"restore.png")).css({opacity:.4,width:opt.dockedIconDim,height:opt.dockedIconDim, cursor:"pointer"});
-        icon.click(function(){o.mb_iconize()});
-        docEl.append(icon);
-        $("#"+docID).append(docEl);
-        o.attr("dock",o.attr("id")+"_dock");
-      }
-
-      function iconize(o){
-        $("#"+o.attr("dock")).find("img:first").hide();
-      }
-      function restore(o){
-        $("#"+o.attr("dock")).find("img:first").show();
-      }
-      function close(o){
-        $("#"+o.attr("dock")).find("img:first").hide();
-        $("#open").fadeIn();
-      }
-
-
-      $(".containerPlus").buildContainers({
-        containment:"document",
-        elementsPath:"./elements/",
-        dockedIconDim:45,
-        onCreate:function(o){initDock(o,"dock")},
-        onClose:function(o){close(o)},
-        onRestore:function(o){
-        	restore(o); 
-        	var iframe = o.find('iframe'); 
-        	if(iframe.attr('src') == 'pages/d.html')
-        		iframe.attr('src', o.metadata().iSrc);
-        	//alert($(o.find('iframe')[0].contentWindow.document.body).find('#vendor_name')[0]);
-        	$.each(IFrameInit.getInstance().readData(o), function(id, value) {
-        		$(o.find('iframe')[0].contentWindow.document.body)
-        			.find('#' + id).val(value);	        	
-        	});
-		},
-        onIconize:function(o){iconize(o) },
-        effectDuration:300
-      });
-    });
 
   </script>
-  <style type="text/css">
-
-    body{
-      /*background:#ff9900 url("./elements/bgnds/body_light.png");*/
-      height: 50%;
-    }
-
-    a{
-      color:white;
-      text-decoration:none;
-      font-style:italic;
-    }
-    a:hover{
-      color:black;
-      text-decoration:underline;
-      font-style:italic;
-    }
-
-    .wrapper{
-      font-family:Arial, Helvetica, sans-serif;
-      margin-top:100px;
-      margin-left:50px;
-    }
-
-    .wrapper h1{
-      font-family:Arial, Helvetica, sans-serif;
-      font-size:26px;
-    }
-
-    .evidence{
-      color:gray;
-      padding:10px;
-      margin-right:5px;
-      margin-top:5px;
-      -moz-border-radius:10px;
-      -webkit-border-radius:10px;
-    }
-
-    #actions button{
-      padding:4px;
-      display:inline-block;
-      cursor:pointer;
-      font:12px/14px Arial, Helvetica, sans-serif;
-      color:#666;
-      border:1px solid #999;
-      background-color:#eee;
-      -moz-border-radius:10px;
-      -webkit-border-radius:10px;
-      -moz-box-shadow:#999 2px 0px 3px;
-      -webkit-box-shadow:#999 2px 0px 3px;
-      margin-bottom:4px;
-    }
-
-    :focus {
-      outline: 0;
-    }
-
-    #actions button:hover{
-      color:#aaa;
-      background-color:#000;
-    }
-
-    #clickHere{
-      position:absolute;
-      bottom:160px;
-      left:250px;
-    }
-
-    #dock{
-      left:0;
-      position:absolute;
-      bottom:0;
-      display:block;
-      width:100%;
-      /*height:100px;*/
-      /*background: #333333 url("./elements/bgnds/screenBgnd.gif");*/
-      background-color: transparent;
-      padding-left:200px;
-      -moz-box-sizing:border-box;
-      -webkit-box-sizing:border-box;
-      box-sizing:border-box;
-    }
-
-    #dock span{
-      margin-top:-30px;
-    }
-
-    #dock img{
-      padding-right:10px;
-    }
-    #open{position:absolute; bottom:40px;left:100px;}
-
-  </style>
 </head>
-<body>
+<body onkeypress="alert('press');">
+<form id="ws-form" >
 <div class="wrapper">
-  <h1><img align="left" src="./images/dracot-stoman.png"></img></h1>
+  <h1></h1>
   <p></p>
   <br>
   <br>
@@ -260,12 +138,12 @@
 		frameborder="0" width="100%" height="160px"></iframe>
   </div>
 
-  <div id="avm" class="containerPlus draggable resizable {buttons:'m,i', icon:'vendor-material.png', skin:'white', width:'500',iconized:'true', dock:'dock', title:'Vendor - Material Mapping', iSrc: 'pages/addVendorMaterial.html'}" style="position:fixed;top:130px;left:640px">
+  <div id="avm" class="containerPlus draggable resizable {buttons:'m,i', icon:'vendor-material.png', skin:'white', width:'400',iconized:'true', dock:'dock', title:'Vendor - Material Mapping', iSrc: 'pages/addVendorMaterial.html'}" style="position:fixed;top:130px;left:640px">
     <div class="evidence" align="center">
     </div>
    	<iframe id="add-vendor-material-container" src="pages/d.html" 
 		allowtransparency="true" 
-		frameborder="0" width="100%" height="250px"></iframe>
+		frameborder="0" width="100%" height="150px"></iframe>
   </div>
   
   <div id="cpo" class="containerPlus draggable resizable {buttons:'m,i', icon:'purchase_order.png', skin:'white', width:'400',iconized:'true', dock:'dock', title:'Craft a Purchase Order', iSrc:'pages/createPurchaseOrder.html'}" style="position:fixed;top:160px;left:670px">
@@ -281,6 +159,7 @@
   <div id="dock"></div>
   <button id="open" onclick="$('.containerPlus').mb_open(); $(this).fadeOut();" style="display:none;">open closed containers </button>
 </div>
+</form>
 </body>
 </html>
  
