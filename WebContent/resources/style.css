@@ -41,7 +41,8 @@ a {
 #head {
 	width: 100%;
 	float: left;
-	background-color: rgb(81, 135, 186);
+	background-color: #273433;
+	/*background-color: rgb(81, 135, 186);*/
 	/*background: url(../images/top-bg.png) repeat-x;*/
 	/*padding-bottom:36px;*/
 }
@@ -97,7 +98,7 @@ ul#menu li a:hover,ul#menu li a.active {
 #center {
 	width: 100%;
 	float: left;
-	background: url(../images/bannerbg.png) repeat-x;
+	/*background: url(../images/bannerbg.png) repeat-x;*/
 }
 
 #center-main {
@@ -645,7 +646,7 @@ ul#blog li p {
 #btmtext-home {
 	width: 100%;
 	float: left;
-	background: #376d9f;
+	background: #273433;
 	position: absolute;
 	bottom: 0px;
 	padding-top: 0;
@@ -1107,7 +1108,7 @@ a.button:active {
 }
 
 .login-container {
-	margin-left: 220px;
+	margin-left: 125px;
 	_margin-left: 0px;
 }
 
@@ -1349,3 +1350,40 @@ label.remove {
 table td {
 	padding: 2px;
 }
+
+.login-text {
+	border: none;
+	background: transparent;
+	color: #C8C6C2;
+	font-family: Helvetica, sans-serif;
+	font-size: 40px;
+	font-weight: bold;
+	width: 250px;
+}
+
+fieldset {
+	border: none;
+}
+
+fieldset legend {
+	color: #C8C6C2;	
+	font-family: Helvetica, sans-serif;
+	font-size: 10px;
+	font-weight: normal;
+}
+
+.login-button {
+	color: #C8C6C2;
+	font-family: Helvetica, sans-serif;
+	font-size: 20px;
+	font-weight: bold;
+}
+
+.login-button:hover {
+	text-decoration: overline;
+}
+
+.login-button:focus {
+	text-decoration: overline;
+}
+

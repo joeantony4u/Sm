@@ -27,7 +27,7 @@ function loadAsyncScripts(asyncScripts) {
 }
 </script>
 </head>
-<body style="background: #376d9f;"> <!-- 376d9f -->
+<body style="background: #273433;"> <!-- 376d9f -->
 <div id="main">
 <div id="head">
 <div id="head-main">
@@ -58,22 +58,30 @@ function loadAsyncScripts(asyncScripts) {
 <div id="btmtext-home">
 <div id="btmtext-main">
 
-<form id="login-form">
-<table class="login-container">
+<form id="login-form" class="login-container" >
+<table>
+<tbody >
 	<tr>
 		<td>
-		<span class="inputWrap"> <input
-			id="username" tabindex="1" style="padding-top: 9px;" onfocus="this.select()"/> </span>
+		<fieldset>
+			<legend onclick="document.getElementById('username').focus();">User { code }</legend>
+			<input class="login-text" id="username" tabindex="1" style="padding-top: 9px;" onfocus="this.select()"/>
+		</fieldset>
+			
 		</td>
-		<td>
-		<span class="inputWrap"> <input
-			type="password" id="password" tabindex="2" style="padding-top: 9px;" onfocus="this.select()"/> </span>
+		<td style="padding-left: 50px;">
+		<fieldset>
+			<legend onclick="document.getElementById('password').focus();">Pass { code }</legend>
+			<input class="login-text"
+				type="password" id="password" tabindex="2" style="padding-top: 9px;" onfocus="this.select()"/>
+		</fieldset>
 		</td>
-		<td>
-		<div class="cntrl"><a href="javascript:authenticate()"
-			id = "login-button" class="button" tabindex="3">login</a></div>
+		<td valign="middle" style="padding-left: 50px;">
+			<a href="javascript:authenticate()"
+				id = "login-button" class="login-button" tabindex="3">LOGIN</a>
 		</td>
 	</tr>
+</tbody>
 </table>
 </form>
 

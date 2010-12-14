@@ -17,7 +17,7 @@ var asyncScripts = ['./resources/highcharts.js', './resources/common-chart.js',
 		preAjax(page);
 		Authenticate.login($('#username').val(), $('#password').val(), function(res) {
 			if(res == 'failure') {
-				$('#login-button').html('relogin').addClass('button-err');
+				$('#login-button').html('<font color="red">re-</font>LOGIN');
 				$('#username').focus();
 				postAjax(page);
 			} else {
