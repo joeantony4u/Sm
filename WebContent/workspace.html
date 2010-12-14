@@ -27,7 +27,11 @@
 
   window.onload = function() {
 	  document.getElementsByTagName('body')[0].focus();
+	  parent.document.onkeydown = openContainer; 
   }
+  
+  document.onkeydown = openContainer;
+  
   // Used to Initialize an IFrames inside a Container
   // onRestore. So, it is important to make this Singleton.
   var IFrameInit = (function() {
@@ -111,18 +115,19 @@
 		return $('#' + id);
 	}
 
-	function openContainer(event) {
-		$('#keypressevent').val(event.keyCode + " " + event.altKey); 
-		if(event.keyCode == 49 && event.altKey)
+	function openContainer(e) {
+		if(!e) e = window.event; 
+		$('#keypressevent').val(e.keyCode + " " + e.altKey); 
+		if(e.keyCode == 49 && e.altKey)
 			iconizeContainer('av');
 	}
 
   </script>
 </head>
-<body onkeydown="openContainer(event);">
-<form id="ws-form" >
+<body>
+<form id="ws-form">
 <div class="wrapper">
-  <h1></h1>
+  <h1 align="right">kjdvbfj</h1>
   <p></p>
   <br>
   <br>

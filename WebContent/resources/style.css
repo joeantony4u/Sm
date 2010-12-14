@@ -88,11 +88,11 @@ ul#menu li a,ul#menu li a.active {
 	float: left;
 	font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
 	font-size: 16px;
-	color: #1c2d3e;
+	color: #C8C6C2;
 }
 
 ul#menu li a:hover,ul#menu li a.active {
-	border-bottom: #5187ba solid 2px;
+	border-bottom: #C8C6C2 solid 2px;
 }
 
 #center {
@@ -1380,10 +1380,10 @@ fieldset legend {
 }
 
 .login-button:hover {
-	text-decoration: overline;
+	text-decoration: underline;
 }
 
 .login-button:focus {
-	text-decoration: overline;
+	text-decoration: underline;
 }
 
