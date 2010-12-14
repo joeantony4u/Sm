@@ -65,7 +65,8 @@ function loadAsyncScripts(asyncScripts) {
 		<td>
 		<fieldset>
 			<legend onclick="document.getElementById('username').focus();">User { code }</legend>
-			<input type="text" class="login-text" id="username" tabindex="1" style="padding-top: 9px;" onfocus="this.select()"/>
+			<input type="text" class="login-text" spellcheck="false" 
+			 id="username" tabindex="1" style="padding-top: 9px;" onfocus="this.select()"/>
 		</fieldset>
 			
 		</td>
