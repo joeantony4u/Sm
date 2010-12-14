@@ -1387,3 +1387,6 @@ fieldset legend {
 	text-decoration: underline;
 }
 
+input[type="text"], input[type="password"], textarea, select { 
+    outline: none;
+}
