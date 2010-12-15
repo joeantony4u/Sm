@@ -6,14 +6,14 @@
 
 <title>Login | STOMAN</title>
 <link href="./resources/style.css" rel="stylesheet" type="text/css"	media="all"/>
+<script src="dwr/engine.js"	type="text/javascript"></script>
 <script src="dwr/interface/Authenticate.js"	type="text/javascript"></script>
-
 <script type="text/javascript">
 var onJQueryLoad = function() {
 	loadAsyncScripts(['./resources/common.js', './resources/login.js']);	
 };
 window.onload = function() {
-	loadAsyncScripts(['./resources/jquery-1.4.js', 'dwr/engine.js']);
+	loadAsyncScripts(['./resources/jquery-1.4.js']);
 	document.getElementById('username').focus();
 };
 
