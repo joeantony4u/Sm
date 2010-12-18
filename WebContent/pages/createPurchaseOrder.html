@@ -87,6 +87,10 @@
 		parent.setIframeHeight('create-purchase-order');
 	}
 	
+	var ii = 0;
+	function testOrders(n) {
+		$('<div/>').html('test' + ii++).css('float', 'left').insertBefore($(n));
+	}
 </script>
 
 </head>
@@ -101,11 +105,21 @@
 		<td id="remove-clone" style="display: none;"><label onclick="deleteOrder(this);" class="remove">-</label></td>
 	</tr>
 	<tr id="order-clone">
-		<td><input id="material" class="text" onkeypress="$(this.parentNode.nextSibling.nextSibling.nextSibling).find('input').attr('name', $(this).val())"/>
+		<td><input id="material1" class="text" onkeypress="$(this.parentNode.nextSibling.nextSibling.nextSibling).find('input').attr('name', $(this).val())"/>
 		</td>
 		<td><input id="quantity" class="text"/></td>
-		<td id="cntrl"><label onclick="createOrder();" class="add">+</label></td>
+		<td id="cntrl"><label onclick="createOrder(this);" class="add">+</label></td>
 		<td></td>
+	</tr>
+	<tr id="test-orders">
+		<td colspan="4">
+		<div onclick="testOrders(this)" style="float: left;">+</div>
+		</td>
+	</tr>
+	<tr id="test-orders">
+		<td colspan="4">
+			<div><span>100</span> </span><span><input type="text" class="text" id="material"/></span></div>
+		</td>
 	</tr>
 </tbody>	
 </table>

@@ -27,7 +27,7 @@
 
   window.onload = function() {
 	  document.getElementsByTagName('body')[0].focus();
-	  parent.document.onkeydown = openContainer; 
+	  parent.document.onkeydown = openContainer;
   }
   
   document.onkeydown = openContainer;
@@ -117,52 +117,60 @@
 
 	function openContainer(e) {
 		if(!e) e = window.event; 
-		$('#keypressevent').val(e.keyCode + " " + e.altKey); 
+		//$('#keypressevent').val(e.keyCode + " " + e.altKey); 
 		if(e.keyCode == 49 && e.altKey)
 			iconizeContainer('av');
 	}
+	
+	function widgetTop() {
+		return (parent.document.body.clientHeight - 620) / 2 + 'px';
+	}
+
+	function widgetLeft() {
+		return (document.body.clientWidth - 800) / 2 + 'px';
+	}
 
   </script>
+
 </head>
 <body>
 <form id="ws-form">
 <div class="wrapper">
-  <h1 align="right">kjdvbfj</h1>
+  <h1 align="right"></h1>
   <p></p>
   <br>
   <br>
   <br>
-  <input id="keypressevent"></input>
-  <div id="av" class="containerPlus draggable resizable {buttons:'m,i', icon:'vendor.png', skin:'white', width:'500',iconized:'true', dock:'dock', title:'Partnering a Vendor', iSrc: 'pages/addVendor.html'}" style="position:fixed;top:130px;left:100px">
+  <div id="av" class="containerPlus draggable resizable {buttons:'m,i', icon:'vendor.png', skin:'white', width:'800',iconized:'true', dock:'dock', title:'Partnering a Vendor', iSrc: 'pages/addVendor.html'}" style="position:fixed;">
     <div class="evidence" align="center">
     </div>
    	<iframe id="add-vendor-container" src="pages/d.html" 
 		allowtransparency="true" 
-		frameborder="0" width="100%" height="275px;" ></iframe>
+		frameborder="0" width="100%" height="550px;" ></iframe>
   </div>
 
-  <div id="am" class="containerPlus draggable resizable {buttons:'m,i', icon:'material.png', skin:'white', width:'500',iconized:'true', dock:'dock', title:'Build Raw Material', iSrc:'pages/addMaterial.html'}" style="position:fixed;top:160px;left:130px">
+  <div id="am" class="containerPlus draggable resizable {buttons:'m,i', icon:'material.png', skin:'white', width:'800',iconized:'true', dock:'dock', title:'Build Raw Material', iSrc:'pages/addMaterial.html'}" style="position:fixed;">
     <div class="evidence" align="center">
     </div>
    	<iframe id="add-material-container" src="pages/d.html" 
 		allowtransparency="true" 
-		frameborder="0" width="100%" height="160px"></iframe>
+		frameborder="0" width="100%" height="550px"></iframe>
   </div>
 
-  <div id="avm" class="containerPlus draggable resizable {buttons:'m,i', icon:'vendor-material.png', skin:'white', width:'400',iconized:'true', dock:'dock', title:'Vendor - Material Mapping', iSrc: 'pages/addVendorMaterial.html'}" style="position:fixed;top:130px;left:640px">
+  <div id="avm" class="containerPlus draggable resizable {buttons:'m,i', icon:'vendor-material.png', skin:'white', width:'800',iconized:'true', dock:'dock', title:'Vendor - Material Mapping', iSrc: 'pages/addVendorMaterial.html'}" style="position:fixed;">
     <div class="evidence" align="center">
     </div>
    	<iframe id="add-vendor-material-container" src="pages/d.html" 
 		allowtransparency="true" 
-		frameborder="0" width="100%" height="150px"></iframe>
+		frameborder="0" width="100%" height="550px"></iframe>
   </div>
   
-  <div id="cpo" class="containerPlus draggable resizable {buttons:'m,i', icon:'purchase_order.png', skin:'white', width:'400',iconized:'true', dock:'dock', title:'Craft a Purchase Order', iSrc:'pages/createPurchaseOrder.html'}" style="position:fixed;top:160px;left:670px">
+  <div id="cpo" class="containerPlus draggable resizable {buttons:'m,i', icon:'purchase_order.png', skin:'white', width:'800',iconized:'true', dock:'dock', title:'Craft a Purchase Order', iSrc:'pages/createPurchaseOrder.html'}" style="position:fixed;" >
     <div class="evidence" align="center">
     </div>
    	<iframe id="create-purchase-order" src="pages/d.html" 
 		allowtransparency="true" 
-		frameborder="0" width="100%" height="150px" ></iframe>
+		frameborder="0" width="100%" height="550px" ></iframe>
   </div>
 
 

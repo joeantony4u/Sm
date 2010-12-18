@@ -850,6 +850,8 @@ $(function(){
       		$(o.find('iframe')[0].contentWindow.document.body)
       			.find('#' + id).val(value);	        	
       	});
+		o.css('left', widgetLeft());
+		o.css('top', widgetTop());
 		},
       onIconize:function(o){iconize(o) },
       effectDuration:300
