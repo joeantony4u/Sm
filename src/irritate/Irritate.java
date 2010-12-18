@@ -10,12 +10,15 @@ import static org.np.stoman.dao.support.Restrict.NULL;
 import java.lang.reflect.Proxy;
 import java.util.List;
 
+import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.criterion.Restrictions;
 import org.np.stoman.bo.TransactionHandler;
 import org.np.stoman.bo.TransactionTest;
 import org.np.stoman.bo.TransactionTestInterface;
 import org.np.stoman.dao.conf.HibernateUtil;
+import org.np.stoman.persistence.VendorMaterials;
 import org.np.stoman.persistence.Vendors;
 
 public class Irritate {
@@ -71,12 +74,24 @@ public class Irritate {
 		return tti.addVendor(b);
 	}
 
-	public static void main(String[] args) {
+	public static void main3(String[] args) {
 		TransactionTestInterface tti = (TransactionTestInterface) Proxy
 				.newProxyInstance(Thread.currentThread()
 						.getContextClassLoader(),
 						new Class<?>[] { TransactionTestInterface.class },
 						new TransactionHandler(new TransactionTest()));
 		// tti.addVendor();
+	}
+
+	public static void main(String[] args) {
+		Session s = HibernateUtil.openSession();
+		getHibernateSupport().setSession(s);
+		Criteria c = s.createCriteria(VendorMaterials.class).createAlias(
+				"vendors", "v").createCriteria("materials");
+		c.add(Restrictions.eq("name", "brick"));
+		c.add(Restrictions.eq("sensitivity", 1));
+		c.add(Restrictions.eq("v.name", "vendor1"));
+		List<VendorMaterials> vms = c.list();
+		System.out.println(vms.get(0).getMaterials().getName());
 	}
 }

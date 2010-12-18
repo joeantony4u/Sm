@@ -59,6 +59,17 @@
 				return (AutoComplete) ProxyProvider.getProxy(AutoComplete.class, new AutoCompleteImpl());
     		</param>
 		</create>
+		<create creator="script" javascript="PurchaseOrder">
+			<param name="class" value="org.np.stoman.ajax.interfaze.PurchaseOrder" />
+			<param name="language" value="beanshell" />
+			<!-- TODO: Move to scriptPath -->
+			<param name="script">
+				import org.np.stoman.proxy.ProxyProvider;
+				import org.np.stoman.ajax.interfaze.PurchaseOrder;
+				import org.np.stoman.ajax.interfaze.impl.PurchaseOrderImpl;
+				return (PurchaseOrder) ProxyProvider.getProxy(PurchaseOrder.class, new PurchaseOrderImpl());
+    		</param>
+		</create>
 		
 	</allow>
 </dwr>

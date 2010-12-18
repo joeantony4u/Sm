@@ -56,16 +56,15 @@
 
 	function generate() {
 		var obj = {};
-		$('#orders tr').not('#header').each(function(i, tr) {
-			//alert(i);
-			//alert(tr);
+		$('#oo td').each(function(i, tr) {
 			var material = $(tr).find('#material');
-			var quantity = $(tr).find('#quantity');
+			var quantity = $(tr).find('#qty');
 			if(material.val().trim() != '')
 				obj[material.val()] = obj[material.val()] 
 						? obj[material.val()] + parseInt(quantity.val())
 						: parseInt(quantity.val());
 		});
+		PurchaseOrder.generate();
 	}
 
 	function createOrder() {
@@ -116,9 +115,20 @@
 		<div onclick="testOrders(this)" style="float: left;">+</div>
 		</td>
 	</tr>
-	<tr id="test-orders">
+	<tr id="oo">
 		<td colspan="4">
-			<div><span>100</span> </span><span><input type="text" class="text" id="material"/></span></div>
+			<div>
+					<input id="qty" type="text" class="text" style="border-bottom: none; font-size: 30px; height: 50px; width:100px;"/>
+					<div>units</div>
+					<div><input id="material" type="text" class="text" style="border-bottom: none; font-size: 20px; height: 20px; width:100px;"/></div>
+			</div>
+		</td>
+		<td colspan="4">
+			<div>
+					<input id="qty" type="text" class="text" style="border-bottom: none; font-size: 30px; height: 50px; width:100px;"/>
+					<div>units</div>
+					<div><input id="material" type="text" class="text" style="border-bottom: none; font-size: 20px; height: 20px; width:100px;"/></div>
+			</div>
 		</td>
 	</tr>
 </tbody>	
