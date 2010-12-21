@@ -19,7 +19,7 @@ public enum Restrict {
 
 	private String type;
 
-	@SuppressWarnings("unchecked")
+	@SuppressWarnings("rawtypes")
 	public List<Criterion> restrict(Object[]... values) {
 
 		List<Criterion> criterions = new ArrayList<Criterion>();
@@ -28,6 +28,7 @@ public enum Restrict {
 			for (Object[] value : values)
 				criterions.add(Restrictions.in((String) value[0],
 						(Collection) value[1]));
+
 			break;
 		case NOTIN:
 			for (Object[] value : values)

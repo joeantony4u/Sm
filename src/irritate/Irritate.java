@@ -4,10 +4,13 @@ import static org.np.stoman.dao.support.FieldConstants.ADDRESS;
 import static org.np.stoman.dao.support.FieldConstants.NAME;
 import static org.np.stoman.dao.support.HibernateSupport.getHibernateSupport;
 import static org.np.stoman.dao.support.Order.DESC;
+import static org.np.stoman.dao.support.Restrict.EQ;
+import static org.np.stoman.dao.support.Restrict.IN;
 import static org.np.stoman.dao.support.Restrict.NOTEQ;
 import static org.np.stoman.dao.support.Restrict.NULL;
 
 import java.lang.reflect.Proxy;
+import java.util.Arrays;
 import java.util.List;
 
 import org.hibernate.Criteria;
@@ -18,6 +21,7 @@ import org.np.stoman.bo.TransactionHandler;
 import org.np.stoman.bo.TransactionTest;
 import org.np.stoman.bo.TransactionTestInterface;
 import org.np.stoman.dao.conf.HibernateUtil;
+import org.np.stoman.dao.support.CriteriaBuilder;
 import org.np.stoman.persistence.VendorMaterials;
 import org.np.stoman.persistence.Vendors;
 
@@ -83,15 +87,32 @@ public class Irritate {
 		// tti.addVendor();
 	}
 
+	public static void main5(String[] args) {
+		Session s = HibernateUtil.openSession();
+		getHibernateSupport().setSession(s);
+		Criteria c = s.createCriteria(VendorMaterials.class)
+				.createAlias("materials", "m").createAlias("vendors", "v")
+				.createAlias("v.addresses", "a");
+		// .createAlias("vendors.addresses", "a");
+		c.add(Restrictions.eq("a.state", "lovely"));
+		c.add(Restrictions.eq("m.name", "brick"));
+
+		List<VendorMaterials> vms = c.list();
+		System.out.println(vms.get(0).getMaterials().getName());
+	}
+
 	public static void main(String[] args) {
 		Session s = HibernateUtil.openSession();
 		getHibernateSupport().setSession(s);
-		Criteria c = s.createCriteria(VendorMaterials.class).createAlias(
-				"vendors", "v").createCriteria("materials");
-		c.add(Restrictions.eq("name", "brick"));
-		c.add(Restrictions.eq("sensitivity", 1));
-		c.add(Restrictions.eq("v.name", "vendor1"));
-		List<VendorMaterials> vms = c.list();
-		System.out.println(vms.get(0).getMaterials().getName());
+		CriteriaBuilder cb = new CriteriaBuilder(VendorMaterials.class);
+		List<VendorMaterials> vms = getHibernateSupport().get(
+				cb.getCriteria(),
+				EQ.restrict(new Object[] { cb.wrap("vendors.addresses.state"),
+						"lovely" }),
+				IN.restrict(new Object[] { cb.wrap("materials.name"),
+						Arrays.asList(new String[] { "brick" }) }));
+
+		for (VendorMaterials vm : vms)
+			System.out.println(vm.getVendors().getVendorId());
 	}
 }

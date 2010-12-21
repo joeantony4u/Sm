@@ -51,6 +51,12 @@ public class HibernateSupport {
 		return criteria.list();
 	}
 
+	@SuppressWarnings("unchecked")
+	public <T> List<T> get(Criteria criteria, List<Criterion>... criterions) {
+		addRestrictions(criteria, criterions);
+		return criteria.list();
+	}
+
 	private void addRestrictions(Criteria criteria, List<Criterion>[] criterions) {
 		for (List<Criterion> lcriterion : criterions)
 			for (Criterion criterion : lcriterion)
@@ -64,5 +70,9 @@ public class HibernateSupport {
 
 	public void setSession(Session session) {
 		this.session.set(session);
+	}
+
+	public Session getSession() {
+		return this.session.get();
 	}
 }

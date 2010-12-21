@@ -20,17 +20,18 @@ public class PurchaseOrderImpl extends BaseImpl implements PurchaseOrder {
 	public Map<Integer, List<Object>> generate(Map<String, Integer> map) {
 
 		for (String m : map.keySet()) {
-			List<VendorMaterials> vendorMaterialLst = getHibernateSupport()
-					.get(VendorMaterials.class,
-							EQ.restrict(new Object[] { "materials.name", m }));
+			List<VendorMaterials> vms = getHibernateSupport().get(
+					VendorMaterials.class,
+					EQ.restrict(new Object[] { "materials.name", m }));
 
 			List<Integer> vIds = new ArrayList<Integer>();
-			for (VendorMaterials vm : vendorMaterialLst)
+			for (VendorMaterials vm : vms)
 				vIds.add(vm.getVendors().getVendorId());
 
 			List<Ranks> ranks = getHibernateSupport().get(Ranks.class,
 					ASC.order(new String[] { "rank" }),
 					IN.restrict(new Object[] { "vendors.vendorId", vIds }));
+
 		}
 
 		return null;
