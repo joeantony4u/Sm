@@ -4,13 +4,10 @@ import static org.np.stoman.dao.support.FieldConstants.ADDRESS;
 import static org.np.stoman.dao.support.FieldConstants.NAME;
 import static org.np.stoman.dao.support.HibernateSupport.getHibernateSupport;
 import static org.np.stoman.dao.support.Order.DESC;
-import static org.np.stoman.dao.support.Restrict.EQ;
-import static org.np.stoman.dao.support.Restrict.IN;
 import static org.np.stoman.dao.support.Restrict.NOTEQ;
 import static org.np.stoman.dao.support.Restrict.NULL;
 
 import java.lang.reflect.Proxy;
-import java.util.Arrays;
 import java.util.List;
 
 import org.hibernate.Criteria;
@@ -104,13 +101,11 @@ public class Irritate {
 	public static void main(String[] args) {
 		Session s = HibernateUtil.openSession();
 		getHibernateSupport().setSession(s);
-		CriteriaBuilder cb = new CriteriaBuilder(VendorMaterials.class);
+		CriteriaBuilder cb = new CriteriaBuilder(VendorMaterials.class, 1, 1);
 		List<VendorMaterials> vms = getHibernateSupport().get(
 				cb.getCriteria(),
-				EQ.restrict(new Object[] { cb.wrap("vendors.addresses.state"),
-						"lovely" }),
-				IN.restrict(new Object[] { cb.wrap("materials.name"),
-						Arrays.asList(new String[] { "brick" }) }));
+				NOTEQ.restrict(new Object[] {
+						cb.wrap("vendors.addresses.state"), "lovely1" }));
 
 		for (VendorMaterials vm : vms)
 			System.out.println(vm.getVendors().getVendorId());

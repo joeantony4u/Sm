@@ -57,6 +57,33 @@ public class HibernateSupport {
 		return criteria.list();
 	}
 
+	@SuppressWarnings("unchecked")
+	public <T> List<T> get(Criteria criteria, List<Order> orders,
+			List<Criterion>... criterions) {
+		addRestrictions(criteria, criterions);
+		addOrders(criteria, orders);
+		return criteria.list();
+	}
+
+	@SuppressWarnings("unchecked")
+	public <T> List<T> get(Class<T> t, int pageNo, int pageSize,
+			List<Criterion>... criterions) {
+		Criteria criteria = session.get().createCriteria(t);
+		fetchControl(criteria, pageNo, pageSize);
+		addRestrictions(criteria, criterions);
+		return criteria.list();
+	}
+
+	@SuppressWarnings("unchecked")
+	public <T> List<T> get(Class<T> t, int pageNo, int pageSize,
+			List<Order> orders, List<Criterion>... criterions) {
+		Criteria criteria = session.get().createCriteria(t);
+		fetchControl(criteria, pageNo, pageSize);
+		addRestrictions(criteria, criterions);
+		addOrders(criteria, orders);
+		return criteria.list();
+	}
+
 	private void addRestrictions(Criteria criteria, List<Criterion>[] criterions) {
 		for (List<Criterion> lcriterion : criterions)
 			for (Criterion criterion : lcriterion)
@@ -66,6 +93,11 @@ public class HibernateSupport {
 	private void addOrders(Criteria criteria, List<Order> orders) {
 		for (Order order : orders)
 			criteria.addOrder(order);
+	}
+
+	private void fetchControl(Criteria criteria, int firstResult, int fetchSize) {
+		criteria.setFirstResult((firstResult - 1) * fetchSize);
+		criteria.setMaxResults(fetchSize);
 	}
 
 	public void setSession(Session session) {

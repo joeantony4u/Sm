@@ -18,6 +18,12 @@ public class CriteriaBuilder {
 		aliases = new HashMap<String, String>();
 	}
 
+	public CriteriaBuilder(Class<?> c, int pageNo, int pageSize) {
+		this(c);
+		criteria.setFirstResult((pageNo - 1) * pageSize);
+		criteria.setMaxResults(pageSize);
+	}
+
 	public String wrap1(String field) {
 		if (field.indexOf(".") < 0)
 			return field;
