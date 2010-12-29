@@ -60,7 +60,6 @@ textarea.uniform {
   -webkit-border-radius: 3px;
   -moz-border-radius: 3px;
   border-radius: 3px;
-  outline: 0;
   background-color: transparent;
 }
 
@@ -68,10 +67,10 @@ input.text:focus,
 input.email:focus,
 input.password:focus,
 textarea.uniform:focus {
-  -webkit-box-shadow: 0px 0px 4px rgba(0,0,0,0.3);
+/*  -webkit-box-shadow: 0px 0px 4px rgba(0,0,0,0.3);
   -moz-box-shadow: 0px 0px 4px rgba(0,0,0,0.3);
   box-shadow: 0px 0px 4px rgba(0,0,0,0.3);
-  border-color: #999;
+  border-color: #999;*/
 }
 
 /* SPRITES */
@@ -605,4 +604,20 @@ div.uploader input {
   height: 25px;
   border: none;
   cursor: default;
+}
+
+input.text.purchase-order-qty {
+	border-bottom: none; font-size: 25px; font-weight:bold; height: 30px; width:100px; text-align: right; color: white;
+}
+
+input.text.purchase-order-material {
+	border-bottom: none; font-size: 20px; height: 20px; width:100px; color: white;
+}
+
+.purchase-order {
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	-moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5); 
+	-webkit-box-shadow : 0 1px 3px rgba( 0, 0, 0, 0.5); 
+	background-color: #838b83;	
 }

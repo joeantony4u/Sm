@@ -241,7 +241,10 @@ jQuery.autocomplete = function(input, options) {
 		if (options.mustMatch) {
 			var v = $input.val();
 			if (v != input.lastSelected) {
-				selectItem(null);
+				if(options.handleMustMatch)
+					handleMustMatch(input);
+				else
+					selectItem(null);
 			}
 		}
 	};

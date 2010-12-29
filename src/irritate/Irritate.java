@@ -98,7 +98,7 @@ public class Irritate {
 		System.out.println(vms.get(0).getMaterials().getName());
 	}
 
-	public static void main(String[] args) {
+	public static void main6(String[] args) {
 		Session s = HibernateUtil.openSession();
 		getHibernateSupport().setSession(s);
 		CriteriaBuilder cb = new CriteriaBuilder(VendorMaterials.class, 1, 1);
@@ -109,5 +109,12 @@ public class Irritate {
 
 		for (VendorMaterials vm : vms)
 			System.out.println(vm.getVendors().getVendorId());
+	}
+
+	public static void main(String[] args) {
+		Session s = HibernateUtil.openSession();
+		getHibernateSupport().setSession(s);
+		Vendors v = getHibernateSupport().get(Vendors.class, 1);
+		System.out.println(v.getName());
 	}
 }

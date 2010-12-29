@@ -4,7 +4,9 @@
     "http://getahead.org/dwr/dwr30.dtd">
 <dwr>
 	<allow>
-		<convert converter="object" match="org.np.stoman.persistence.*"/>
+		<convert converter="object" match="org.np.stoman.persistence.*">
+			<param name="force" value="true"/>
+		</convert>
 		<create creator="script" javascript="Authenticate">
 			<param name="class" value="org.np.stoman.ajax.interfaze.Authenticate" />
 			<param name="language" value="beanshell" />

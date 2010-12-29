@@ -17,78 +17,76 @@
 <script type='text/javascript' src='../dwr/interface/Material.js'></script>
 <script type='text/javascript' src='../resources/common.js'></script>
 <script type='text/javascript' src='../resources/jquery.autocomplete.js'></script>
+<script type='text/javascript' src='../dwr/engine.js'></script>
+<script type='text/javascript' src='../dwr/util.js'></script>
+<script type='text/javascript' src='../dwr/interface/PurchaseOrder.js'></script>
+<script type='text/javascript' src='../resources/jconfirmaction.jquery.js'></script>
+
 
 <script type="text/javascript">
+var oInvalid = false;
 	$(document).ready(function(){
 		pageInit('cpo');
-		$('#material').autocomplete('../auto/complete', { 
+		$('a.shortbutton').click(buildPO).focus();
+	});
+
+	function buildPO() {
+		var po = $('#purchase-order')
+		.clone()
+		.removeAttr('id')
+		.css('display', 'inline')
+		.insertBefore($('#cntrl'));
+		po.find('#material').autocomplete('../auto/complete', { 
 			matchContains: true,
 			cacheLength: 10,
 			maxItemsToShow: 9,
+			delay: 1,	
+			mustMatch: 1,
+			handleMustMatch: 1,
 			extraParams: { method: 'getMaterials' }
-		});
-		
-		//fetchMaterials();
-	});
-
-	function fetchMaterials(){
-        Material.getMaterials(function(map){
-            if(null!=map){
-            	var select = $('#select');
-      		  	var options = select.attr('options');
-            		$.each(map, function(key, value) { 
-            		  options[options.length] = new Option(value, key);
-            		});
-            }
-        });
+		}).blur(generate);
+		po.find('#qty').focus().blur(generate);
+		po.find('#newMaterial').jConfirmAction({question : "Material not found!", yesAnswer : "Add", cancelAnswer : "Cancel"});
 	}
 	
-	function create() {
-		var page = $('#add-material'); 
-		preAjax(page);
-		Material.create(dwr.util.getValues('add-material'), function(stat) {
-			postAjax(page);
-			var cn = detectAndDoClassName(stat);
-			var type = detectAndDoType(stat, 'create-purchaseorder');
-			acknowledge(cn, stat, type);
-		});
-	}
-
 	function generate() {
+		if(oInvalid) {
+			oInvalid = false;
+			return;
+		}
 		var obj = {};
-		$('#oo td').each(function(i, tr) {
-			var material = $(tr).find('#material');
-			var quantity = $(tr).find('#qty');
-			if(material.val().trim() != '')
+		$('table.purchase-order').each(function(i, tbl) {
+			//alert('sdfd');
+			var material = $(tbl).find('#material');
+			var quantity = $(tbl).find('#qty');
+			if(material.val() != '' && quantity.val())
 				obj[material.val()] = obj[material.val()] 
 						? obj[material.val()] + parseInt(quantity.val())
 						: parseInt(quantity.val());
 		});
-		PurchaseOrder.generate();
-	}
-
-	function createOrder() {
-		var order = $('#order-clone');
-		var nOrder = order.clone().appendTo($('#orders'));
-		order.removeAttr('id');
-		auto(nOrder.find('#material'));
-		nOrder.find('#material').val('');
-		nOrder.find('#quantity').val('');
-		order.find('#cntrl label').remove();
-		$('#remove-clone label').clone()
-			.removeAttr('id')
-			.appendTo(order.find('#cntrl')).css('display', 'inline');
-		parent.setIframeHeight('create-purchase-order');
+		PurchaseOrder.generate(obj, function(data) {
+			var po = $('#po-confirm');
+			//po.innerHTML = "";
+			
+			$.each(data, function(vId, vM) {
+				$.each(vM, function(i, ele) {
+					$('<div/>').html(ele.materials.name).appendTo(po);
+				});
+			});
+		});
 	}
 	
-	function deleteOrder(obj) {
-		$(obj.parentNode.parentNode).remove();
-		parent.setIframeHeight('create-purchase-order');
+	function handleMustMatch(ele) {
+		oInvalid = true;
+		$(ele).siblings('#newMaterial').click();
 	}
 	
-	var ii = 0;
-	function testOrders(n) {
-		$('<div/>').html('test' + ii++).css('float', 'left').insertBefore($(n));
+	function JConfirmCallback(ele, stat) {
+		if(stat == "n") {
+			$(ele).siblings('#material').focus();
+		} else {
+			oInvalid = false;
+		}
 	}
 </script>
 
@@ -97,50 +95,35 @@
 <form id="create-purchaseorder">
 <table width="100%" style="padding-top: 20px;">
 <tbody id="orders">
-	<tr id="header">
-		<td align="center"><label name="name_lbl">Material</label></td>
-		<td align="center"><label name="quantity_lbl">Quantity</label></td>
-		<td></td>
-		<td id="remove-clone" style="display: none;"><label onclick="deleteOrder(this);" class="remove">-</label></td>
-	</tr>
-	<tr id="order-clone">
-		<td><input id="material1" class="text" onkeypress="$(this.parentNode.nextSibling.nextSibling.nextSibling).find('input').attr('name', $(this).val())"/>
-		</td>
-		<td><input id="quantity" class="text"/></td>
-		<td id="cntrl"><label onclick="createOrder(this);" class="add">+</label></td>
-		<td></td>
-	</tr>
-	<tr id="test-orders">
+	<tr>
 		<td colspan="4">
-		<div onclick="testOrders(this)" style="float: left;">+</div>
-		</td>
-	</tr>
-	<tr id="oo">
-		<td colspan="4">
-			<div>
-					<input id="qty" type="text" class="text" style="border-bottom: none; font-size: 30px; height: 50px; width:100px;"/>
-					<div>units</div>
-					<div><input id="material" type="text" class="text" style="border-bottom: none; font-size: 20px; height: 20px; width:100px;"/></div>
+			<div style="width: 250px; padding-top:10px; display: none; float: left;" id="purchase-order" name="purchase-order">
+				<table class="purchase-order">
+					<tbody>
+						<tr>
+							<td rowspan="2">
+								<input id="qty" type="text" class="text purchase-order-qty" />
+							</td>
+							<td>
+								<label style="color: #d6dee6;">nos.</label><div style="float: right;">
+								<label style="cursor: pointer; color: #d6dee6;" onclick="$(this).parents('.purchase-order').parent().remove();">del</label></div> <br/>
+								<input id="material" type="text" class="text purchase-order-material"/>
+								<a id="newMaterial" href="#"></a>
+							</td>
+						</tr>
+					</tbody>
+				</table>
 			</div>
-		</td>
-		<td colspan="4">
-			<div>
-					<input id="qty" type="text" class="text" style="border-bottom: none; font-size: 30px; height: 50px; width:100px;"/>
-					<div>units</div>
-					<div><input id="material" type="text" class="text" style="border-bottom: none; font-size: 20px; height: 20px; width:100px;"/></div>
+			<div id="cntrl">
+				<a href="#" style="margin-top: 40px;" class="shortbutton">add</a>
 			</div>
 		</td>
 	</tr>
 </tbody>	
 </table>
-<table width="100%">
-	<tr>
-		<td colspan="4" align="center" style="padding-top: 20px;"><a
-			id="create" class="awesome green" href="#" onclick="generate();">Generate</a>
-		<a class="awesome green" href="#" onclick="fresh('create-purchaseorder')">Clear</a>
-		</td>
-	</tr>
-</table>
+<div id="po-confirm">
+	
+</div>
 </form>
 
 </body>
