@@ -107,7 +107,7 @@ jQuery.autocomplete = function(input, options) {
 		hasFocus = false;
 		hideResults();
 	});
-
+	
 	hideResultsNow();
 
 	function onChange() {
@@ -141,7 +141,6 @@ jQuery.autocomplete = function(input, options) {
 		lis.removeClass("ac_over");
 
 		$(lis[active]).addClass("ac_over");
-
 		// Weird behaviour in IE
 		// if (lis[active] && lis[active].scrollIntoView) {
 		// 	lis[active].scrollIntoView(false);
@@ -431,7 +430,9 @@ jQuery.autocomplete = function(input, options) {
 			}
 		}
 
-		if( options.onFindValue ) setTimeout(function() { options.onFindValue(li) }, 1);
+		if( options.onFindValue ) setTimeout(function() { 
+				options.onFindValue( { item: li, ele: $input }); 
+			}, 1);
 	}
 
 	function addToCache(q, data) {

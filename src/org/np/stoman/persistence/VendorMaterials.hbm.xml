@@ -6,7 +6,7 @@
     <class name="org.np.stoman.persistence.VendorMaterials" table="vendor_materials" catalog="stoman">
         <id name="vendorMaterialId" type="int">
             <column name="vendor_material_id" />
-            <generator class="native" />
+            <generator class="increment" />
         </id>
         <many-to-one name="vendors" class="org.np.stoman.persistence.Vendors" fetch="select">
             <column name="vendor_id" not-null="true" />

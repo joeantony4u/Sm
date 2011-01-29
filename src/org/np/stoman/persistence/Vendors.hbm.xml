@@ -4,7 +4,7 @@
 <!-- Generated 17 Oct, 2010 12:55:11 PM by Hibernate Tools 3.2.2.GA -->
 <hibernate-mapping>
     <class name="org.np.stoman.persistence.Vendors" table="vendors" catalog="stoman">
-        <id name="vendorId" type="int" unsaved-value="null">
+        <id name="vendorId" type="integer" unsaved-value="null">
             <column name="vendor_id" />
             <generator class="increment" />
         </id>

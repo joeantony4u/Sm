@@ -21,6 +21,7 @@ public class VendorMaterials implements java.io.Serializable {
 	private Date priceStartDate;
 	private Date modifiedDate;
 	private Integer maxQtyPerOrder;
+	private String data;
 
 	public VendorMaterials() {
 	}
@@ -105,4 +106,11 @@ public class VendorMaterials implements java.io.Serializable {
 		this.maxQtyPerOrder = maxQtyPerOrder;
 	}
 
+	public String getData() {
+		return data;
+	}
+
+	public void setData(String data) {
+		this.data = data;
+	}
 }
