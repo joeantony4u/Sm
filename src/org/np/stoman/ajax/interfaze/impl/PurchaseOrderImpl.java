@@ -71,6 +71,7 @@ public class PurchaseOrderImpl extends BaseImpl implements PurchaseOrder {
 				continue;
 			CriteriaBuilder cb = new CriteriaBuilder(VendorMaterials.class);
 			cb.getCriteria().setFetchMode("vendors", FetchMode.JOIN);
+			cb.getCriteria().setFetchMode("vendors.addresses", FetchMode.JOIN);
 			List<VendorMaterials> vms = getHibernateSupport().get(
 					cb.getCriteria(),
 					EQ.restrict(new Object[] { cb.wrap("materials.name"), m }));

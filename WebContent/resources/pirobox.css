@@ -6,19 +6,19 @@
 .piro_html table,.piro_html tbody,.piro_html tr,.piro_html th,.piro_html td{margin:0;padding:0;border:none;}
 .piro_html img{ margin:0; padding:0; border:none;}
 
-.piro_html .h_t_l{ width:10px; height:10px; background: url(images/pirobox/new_skin.png) top left no-repeat;}
-.piro_html .h_t_r{ width:10px; height:10px; background: url(images/pirobox/new_skin.png) top right no-repeat;}
-.piro_html .h_t_c{ cursor:move; height:10px;background: url(images/pirobox/new_skin_top.png) top repeat-x;}
+.piro_html .h_t_l{ width:10px; height:10px; }
+.piro_html .h_t_r{ width:10px; height:10px; }
+.piro_html .h_t_c{ cursor:move; height:10px;}
 
-.piro_html .h_c_l{width:10px; background: url(images/pirobox/new_skin_left.png) left repeat-y; }
-.piro_html .h_c_c{background: url(images/pirobox/caption.png);margin:0; padding:0;}
-.piro_html .h_c_c .div_reg{ background: url(images/pirobox/caption.png); width:480px; overflow:hidden; height:480px; margin:0; padding:0; }
+.piro_html .h_c_l{width:10px;  }
+.piro_html .h_c_c{margin:0; padding:0;}
+.piro_html .h_c_c .div_reg{  width:480px; overflow:hidden; height:480px; margin:0; padding:0; }
 .piro_html .h_c_c .div_reg img{ cursor:move;}
-.piro_html .h_c_r{width:10px; background: url(images/pirobox/new_skin_left.png) right repeat-y;}
+.piro_html .h_c_r{width:10px; }
 
-.piro_html .h_b_c{ cursor:move; height:10px;background: url(images/pirobox/new_skin_top.png) bottom repeat-x;}
-.piro_html .h_b_l{ width:10px; height:10px;background: url(images/pirobox/new_skin.png) bottom left no-repeat;}
-.piro_html .h_b_r{ width:10px; height:10px;background: url(images/pirobox/new_skin.png) bottom right no-repeat;}
+.piro_html .h_b_c{ cursor:move; height:10px;}
+.piro_html .h_b_l{ width:10px; height:10px;}
+.piro_html .h_b_r{ width:10px; height:10px;}
 
 .piro_overlay{position:fixed; top:0; left:0; width:100%; height:100%;  z-index:150000;background:#fff;display:none; cursor:pointer;}
 .piro_loader{position:absolute;top:50%;left:50%;margin:-59px 0 0 -59px;width:118px;height:118px;display:block;z-index:150005;  cursor:pointer; }
@@ -28,7 +28,8 @@
 .caption{position:absolute;bottom:10px;left:10px;margin:0;display:block; padding:0px; color:black; cursor:text; background: url(images/pirobox/caption.png); z-index:150018}
 .caption p{ display:block; margin:0;padding:7px 5px; text-align:center; font-weight:normal; font-size:14px; color:white; z-index:150019; color:white;}
 
-.nav_container{position:absolute; right:5px; bottom:-20px;  height:25px; width:60px; background:  url(images/pirobox/bottom_nav.png) bottom; z-index:1500190000000;}
+/*.nav_container{position:absolute; right:5px; bottom:-20px;  height:25px; width:60px; background:  url(images/pirobox/bottom_nav.png) bottom; z-index:1500190000000;}*/
+.nav_container{position:absolute; right:5px; bottom:-20px;  height:25px; width:60px; z-index:1500190000000;}
 .piro_close{position:absolute;right:20px; top:0;height:20px;width:20px;background: transparent url(images/pirobox/close.png) no-repeat center center;cursor:pointer;margin:0 0 0 0;z-index:150022;display:none;}
 a.piro_next{position:absolute;width:20px; top:0; right:0px; height:20px;text-indent:-999em;outline:none; display:block; margin:0;background:url(images/pirobox/next.png) center right no-repeat; border:none; cursor:pointer;z-index:150023}
 a:hover.piro_next{background:url(images/pirobox/next.png) center right no-repeat;}

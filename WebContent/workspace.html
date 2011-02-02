@@ -134,7 +134,7 @@
 	
 	function addPO2Modal(a, ul) {
 		$('#po-modal').append(a);
-		$('#po-modal').append(ul);
+		//$('#po-modal').append(ul);
 			
 		var li = ul.find('li');
 		var orders = li.html().split(' | ');
@@ -143,6 +143,16 @@
 			ul.append(order);
 		});
 		li.remove();
+		var div = $('<div/>', {id: ul.attr('id')});
+		div.append(ul.removeAttr('id'));
+		$('#po-modal').append(div);
+		var ifDiv = $('<div/>').append($('<iframe/>', {
+											src: 'pages/addVendor.html',
+											width: '490px',
+											height: '400px',
+											frameborder: '0'
+									    }));
+		div.append(ifDiv);
 	}
 	
 	function showPOModal(ref) {
@@ -150,11 +160,15 @@
 		//alert(ref + " " + $('#po-modal a[data-pov="' + ref + '"]'));
 		//alert($('#po-modal ul#' + ref)[0].innerHTML);
 	}
+
+	function addPOConfirm(ele) {
+		$('#po-modal').append(ele);
+	}
 	
 	function invokePiroBox() {
 		$('a.pirobox_gall1').piroBox_ext({
         	piro_speed : 900,
-        	bg_alpha : 0.6,
+        	bg_alpha : 1.0,
         	piro_scroll : true 
     	});
 	}

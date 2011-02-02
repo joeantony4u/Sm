@@ -88,7 +88,7 @@ var minus;
 							.appendTo($('<td/>').appendTo($('<tr/>').appendTo(po)));
 				var vendor = $('<td/>').append('<div/>', {className: 'vendor'})
 								.appendTo(ul.parents('tr'));
-				
+				ul.attr('vAddress', vM[0].vendors.addresses);
 				var modal = $('<a/>', {href: '#', rel: 'inline-300-150', className: 'pirobox_gall1'})
 								.append(vendor.find('div')).appendTo(vendor)
 								.html(vM[0].vendors.name)
@@ -99,14 +99,16 @@ var minus;
 				$.each(vM, function(i, ele) {
 					li.html(ele.data + " " + ele.materials.name + " | ")
 						.appendTo(ul);
-					li.html(li.html() +  ele.data + " " + ele.materials.name + " | ")
-					li.html(li.html() +  ele.data + " " + ele.materials.name + " | ")					
+					//li.html(li.html() +  ele.data + " " + ele.materials.name + " | ")
+					//li.html(li.html() +  ele.data + " " + ele.materials.name + " | ")					
 				});
 				ul.marquee();
-				parent.addPO2Modal($('<a/>', {href: '#' + vM[0].vendors.name, rel: 'inline-' + 200 + '-' + (ul.height() * li.html().split(' | ').length), className: 'pirobox_gall1', 'data-pov': vM[0].vendors.name})
+				parent.addPO2Modal($('<a/>', {href: '#' + vM[0].vendors.name, rel: 'inline-500-500', className: 'pirobox_gall1', 'data-pov': vM[0].vendors.name})
 						.append(vendor.find('div')), ul.clone());
 			});
-			
+			var confirmBtn = $('<button/>', {html: 'Confirm', id: 'po-confirm-button'}).click(function() {this.innerHTML="b"});
+			parent.addPOConfirm($('<a/>', {href: '#po-confirm-button', rel: 'inline-500-500', className: 'pirobox_gall1'})
+					.append(confirmBtn));
 			parent.invokePiroBox();
 		});
 	}
